@@ -34,7 +34,7 @@ private class MonhoDbImpl(
       driver.execute(null, """
           |CREATE TABLE Movies (
           |	Name TEXT NOT NULL ,
-          |	ProductYear TEXT NOT NULL ,
+          |	ProductYear INT NOT NULL ,
           |	Budget INT NOT NULL ,
           |	Country TEXT NOT NULL ,
           |	RusFees INT NOT NULL ,
@@ -58,8 +58,8 @@ private class MonhoDbImpl(
           |CREATE TABLE Sessions(
           |    MovieName TEXT NOT NULL,
           |    HallName TEXT NOT NULL,
-          |    Start INT NOT NULL,
-          |    End INT NOT NULL,
+          |    Start TEXT NOT NULL,
+          |    End TEXT NOT NULL,
           |    OccupiedSeats INT NOT NULL
           |)
           """.trimMargin(), 0)
@@ -109,16 +109,16 @@ private class ManhoQueriesImpl(
   public override fun <T : Any> getSessions(mapper: (
     MovieName: String,
     HallName: String,
-    Start: Int,
-    End: Int,
+    Start: String,
+    End: String,
     OccupiedSeats: Int
   ) -> T): Query<T> = Query(40898842, getSessions, driver, "Manho.sq", "getSessions",
       "SELECT * FROM Sessions") { cursor ->
     mapper(
       cursor.getString(0)!!,
       cursor.getString(1)!!,
-      cursor.getLong(2)!!.toInt(),
-      cursor.getLong(3)!!.toInt(),
+      cursor.getString(2)!!,
+      cursor.getString(3)!!,
       cursor.getLong(4)!!.toInt()
     )
   }
@@ -136,7 +136,7 @@ private class ManhoQueriesImpl(
 
   public override fun <T : Any> getMovies(mapper: (
     Name: String,
-    ProductYear: String,
+    ProductYear: Int,
     Budget: Int,
     Country: String,
     RusFees: Int,
@@ -147,7 +147,7 @@ private class ManhoQueriesImpl(
       "SELECT * FROM Movies") { cursor ->
     mapper(
       cursor.getString(0)!!,
-      cursor.getString(1)!!,
+      cursor.getLong(1)!!.toInt(),
       cursor.getLong(2)!!.toInt(),
       cursor.getString(3)!!,
       cursor.getLong(4)!!.toInt(),
@@ -183,7 +183,7 @@ private class ManhoQueriesImpl(
 
   public override fun insertMovie(
     Name: String,
-    ProductYear: String,
+    ProductYear: Int,
     Budget: Int,
     Country: String,
     RusFees: Int,
@@ -196,7 +196,7 @@ private class ManhoQueriesImpl(
     |VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """.trimMargin(), 8) {
       bindString(1, Name)
-      bindString(2, ProductYear)
+      bindLong(2, ProductYear.toLong())
       bindLong(3, Budget.toLong())
       bindString(4, Country)
       bindLong(5, RusFees.toLong())
@@ -221,8 +221,8 @@ private class ManhoQueriesImpl(
   public override fun insertSession(
     MovieName: String,
     HallName: String,
-    Start: Int,
-    End: Int,
+    Start: String,
+    End: String,
     OccupiedSeats: Int
   ): Unit {
     driver.execute(758440676, """
@@ -231,8 +231,8 @@ private class ManhoQueriesImpl(
     """.trimMargin(), 5) {
       bindString(1, MovieName)
       bindString(2, HallName)
-      bindLong(3, Start.toLong())
-      bindLong(4, End.toLong())
+      bindString(3, Start)
+      bindString(4, End)
       bindLong(5, OccupiedSeats.toLong())
     }
     notifyQueries(758440676, {database.manhoQueries.getSessions})

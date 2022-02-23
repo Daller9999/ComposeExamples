@@ -1,6 +1,6 @@
 CREATE TABLE Movies (
 	Name TEXT NOT NULL ,
-	ProductYear TEXT NOT NULL ,
+	ProductYear INT NOT NULL ,
 	Budget INT NOT NULL ,
 	Country TEXT NOT NULL ,
 	RusFees INT NOT NULL ,

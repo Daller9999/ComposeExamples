@@ -26,7 +26,7 @@ public interface ManhoQueries : Transacter {
 
   public fun <T : Any> getMovies(mapper: (
     Name: String,
-    ProductYear: String,
+    ProductYear: Int,
     Budget: Int,
     Country: String,
     RusFees: Int,
@@ -41,7 +41,7 @@ public interface ManhoQueries : Transacter {
 
   public fun insertMovie(
     Name: String,
-    ProductYear: String,
+    ProductYear: Int,
     Budget: Int,
     Country: String,
     RusFees: Int,

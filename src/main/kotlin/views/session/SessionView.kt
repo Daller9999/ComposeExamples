@@ -57,8 +57,8 @@ class SessionView {
                         DataBaseController.addSession(
                             textName.value,
                             textHall.value,
-                            start.value.toIntOrNull() ?: 0,
-                            end.value.toIntOrNull() ?: 0,
+                            start.value,
+                            end.value,
                             tickets.value.toIntOrNull() ?: 0
                         )
                         textName.value = ""

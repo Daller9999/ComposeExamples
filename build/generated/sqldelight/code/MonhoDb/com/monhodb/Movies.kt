@@ -5,7 +5,7 @@ import kotlin.String
 
 public data class Movies(
   public val Name: String,
-  public val ProductYear: String,
+  public val ProductYear: Int,
   public val Budget: Int,
   public val Country: String,
   public val RusFees: Int,

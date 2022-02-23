@@ -50,7 +50,7 @@ class MovieView {
                     ButtonView("Добавить") {
                         DataBaseController.addMovie(
                             name = textName.value,
-                            year = textYear.value,
+                            year = textYear.value.toIntOrNull() ?: 0,
                             budget = textBudget.value.toIntOrNull() ?: 0,
                             country = textCountry.value,
                             moneyRu = textMoneyRu.value.toIntOrNull() ?: 0,

@@ -44,7 +44,7 @@ object DataBaseController {
 
     fun addMovie(
         name: String,
-        year: String,
+        year: Int,
         budget: Int,
         country: String,
         moneyRu: Int,

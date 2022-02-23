@@ -39,7 +39,7 @@ class MainView {
                             modifier = Modifier.width(350.dp),
                             onClick = { movieViewCallback.onButtonSession() }
                         ) {
-                            Text("Добавить саенс")
+                            Text("Добавить сеанс")
                         }
                         Button(
                             modifier = Modifier.width(350.dp),
