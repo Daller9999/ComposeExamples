@@ -63,7 +63,7 @@ object DataBaseController {
         }
     }
 
-    fun addSession(movieName: String, hallName: String, start: Int, end: Int, occupiedSeats: Int) {
+    fun addSession(movieName: String, hallName: String, start: String, end: String, occupiedSeats: Int) {
         scope.launch {
             queries.insertSession(movieName, hallName, start, end, occupiedSeats)
         }

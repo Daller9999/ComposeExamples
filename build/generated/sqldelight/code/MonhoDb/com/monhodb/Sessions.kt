@@ -6,8 +6,8 @@ import kotlin.String
 public data class Sessions(
   public val MovieName: String,
   public val HallName: String,
-  public val Start: Int,
-  public val End: Int,
+  public val Start: String,
+  public val End: String,
   public val OccupiedSeats: Int
 ) {
   public override fun toString(): String = """

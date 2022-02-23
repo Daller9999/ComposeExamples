@@ -17,8 +17,8 @@ public interface ManhoQueries : Transacter {
   public fun <T : Any> getSessions(mapper: (
     MovieName: String,
     HallName: String,
-    Start: Int,
-    End: Int,
+    Start: String,
+    End: String,
     OccupiedSeats: Int
   ) -> T): Query<T>
 
@@ -55,8 +55,8 @@ public interface ManhoQueries : Transacter {
   public fun insertSession(
     MovieName: String,
     HallName: String,
-    Start: Int,
-    End: Int,
+    Start: String,
+    End: String,
     OccupiedSeats: Int
   ): Unit
 }

@@ -21,8 +21,8 @@ CREATE TABLE Halls(
 CREATE TABLE Sessions(
     MovieName TEXT NOT NULL,
     HallName TEXT NOT NULL,
-    Start INT NOT NULL,
-    End INT NOT NULL,
+    Start TEXT NOT NULL,
+    End TEXT NOT NULL,
     OccupiedSeats INT NOT NULL
 );
 
