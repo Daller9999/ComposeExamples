@@ -17,7 +17,13 @@ repositories {
 }
 
 dependencies {
+    val ktorVersion = "1.6.0"
+    val kotlinxSerializationVersion = "1.6.0"
+
     implementation(compose.desktop.currentOs)
+    implementation("io.ktor:ktor-client-core:$ktorVersion")
+    implementation("io.ktor:ktor-client-serialization:$kotlinxSerializationVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-native-mt")
 }
 
 tasks.withType<KotlinCompile> {
