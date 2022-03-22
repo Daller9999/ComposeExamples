@@ -44,7 +44,7 @@ class ApiCall(private var client: HttpClient) {
             parameter("language", "ru-RU")
             parameter("page", 1)
         }
-        return jsonMovie.toMovieData(this,"Популярное", apiHelper)
+        return jsonMovie.toMovieData("Популярное", apiHelper)
     }
 
     suspend fun getActualMovieListNowAutoDecode(): MovieData {
@@ -56,7 +56,7 @@ class ApiCall(private var client: HttpClient) {
             parameter("language", "ru-RU")
             parameter("page", 1)
         }
-        return jsonMovie.toMovieData(this,"Рекомендуемое", apiHelper)
+        return jsonMovie.toMovieData("Рекомендуемое", apiHelper)
     }
 
     suspend fun getActualMovieListString(): String {
