@@ -22,10 +22,13 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberWindowState
 import api.ApiCall
 import data.MovieData
 import data.MovieInfo
@@ -38,6 +41,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+val size = mutableStateOf(DpSize(800.dp, 600.dp))
 val state = mutableStateOf(true)
 val movieInfo = mutableStateOf(MovieInfo("", 0f, null, 0, "", false, ""))
 
@@ -45,16 +49,16 @@ val movieList = arrayListOf<MovieData>()
 
 @Composable
 @Preview
-fun App(apiCall: ApiCall) {
+fun App(apiCall: ApiCall, windowState: WindowState) {
     if (state.value) {
         movieView(apiCall)
     } else {
-        currentMovieView(apiCall)
+        currentMovieView(apiCall, windowState)
     }
 }
 
 @Composable
-private fun currentMovieView(apiCall: ApiCall) {
+private fun currentMovieView(apiCall: ApiCall, windowState: WindowState) {
     MaterialTheme {
         val movie = movieInfo.value
         val image = remember { mutableStateOf<ImageBitmap?>(null) }
@@ -69,9 +73,18 @@ private fun currentMovieView(apiCall: ApiCall) {
                 Text("Назад")
             }
 
+            Text(
+                text = movie.title,
+                color = Color.White,
+                textAlign = TextAlign.Center,
+                fontSize = 22.sp,
+                modifier = Modifier.padding(all = 20.dp).fillMaxWidth()
+            )
+
+            val height = windowState.size.height * 0.8f
             Row {
                 Card(
-                    modifier = Modifier.width(400.dp).height(500.dp).padding(all = 20.dp),
+                    modifier = Modifier.width(height * 3 / 4).height(height).padding(all = 20.dp),
                     shape = RoundedCornerShape(size = 16.dp)
                 ) {
                     Image(
@@ -167,8 +180,8 @@ fun main() = application {
             })
         }
     })
-
-    Window(onCloseRequest = ::exitApplication) {
-        App(apiCall)
+    val stateWindow = rememberWindowState()
+    Window(state = stateWindow, onCloseRequest = ::exitApplication) {
+        App(apiCall, stateWindow)
     }
 }
