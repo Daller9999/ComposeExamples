@@ -1,5 +1,8 @@
 package api
 
+import androidx.compose.foundation.Image
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
 import data.MovieData
 import mapper.toMovieData
 import api.json.JsonMovie
@@ -23,6 +26,15 @@ class ApiCall(private var client: HttpClient) {
         }
     }
 
+    suspend fun loadUrl(url: String): ImageBitmap? {
+        return try {
+            val data = client.get<ByteArray>(url)
+            org.jetbrains.skia.Image.makeFromEncoded(data).toComposeImageBitmap()
+        } catch (ex: Exception) {
+            null
+        }
+    }
+
     suspend fun getActualMovieListAutoDecode(): MovieData {
         val urlBase = "/3/movie/popular"
         val fullUrl = apiHelper.getServerUrl() + urlBase
@@ -32,7 +44,7 @@ class ApiCall(private var client: HttpClient) {
             parameter("language", "ru-RU")
             parameter("page", 1)
         }
-        return jsonMovie.toMovieData("Популярное", apiHelper)
+        return jsonMovie.toMovieData(this,"Популярное", apiHelper)
     }
 
     suspend fun getActualMovieListNowAutoDecode(): MovieData {
@@ -44,7 +56,7 @@ class ApiCall(private var client: HttpClient) {
             parameter("language", "ru-RU")
             parameter("page", 1)
         }
-        return jsonMovie.toMovieData("Рекомендуемое", apiHelper)
+        return jsonMovie.toMovieData(this,"Рекомендуемое", apiHelper)
     }
 
     suspend fun getActualMovieListString(): String {

@@ -69,7 +69,7 @@ fun App(apiCall: ApiCall) {
                             LazyRow {
                                 for (movie in data.movies) {
                                     item {
-                                        MovieView().Movie(movie)
+                                        MovieView().Movie(movie, apiCall)
                                     }
                                 }
                             }
