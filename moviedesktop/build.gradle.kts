@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.31"
     id("org.jetbrains.compose") version "1.0.0"
+    id("kotlinx-serialization") version "1.5.31"
 }
 
 group = "me.dalerhamzaev"
@@ -12,6 +13,7 @@ version = "1.0"
 
 repositories {
     google()
+    jcenter()
     mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
@@ -24,6 +26,8 @@ dependencies {
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-serialization:$kotlinxSerializationVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-native-mt")
+    implementation("io.ktor:ktor-client-cio:$ktorVersion")
+    implementation("com.squareup.picasso:picasso:2.71828")
 }
 
 tasks.withType<KotlinCompile> {

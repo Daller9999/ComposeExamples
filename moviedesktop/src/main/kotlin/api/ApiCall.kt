@@ -32,7 +32,19 @@ class ApiCall(private var client: HttpClient) {
             parameter("language", "ru-RU")
             parameter("page", 1)
         }
-        return jsonMovie.toMovieData(apiHelper)
+        return jsonMovie.toMovieData("Популярное", apiHelper)
+    }
+
+    suspend fun getActualMovieListNowAutoDecode(): MovieData {
+        val urlBase = "/3/movie/now_playing"
+        val fullUrl = apiHelper.getServerUrl() + urlBase
+        val jsonMovie: JsonMovie = client.request(fullUrl) {
+            method = HttpMethod.Get
+            parameter("api_key", apiHelper.getApiKey())
+            parameter("language", "ru-RU")
+            parameter("page", 1)
+        }
+        return jsonMovie.toMovieData("Рекомендуемое", apiHelper)
     }
 
     suspend fun getActualMovieListString(): String {
