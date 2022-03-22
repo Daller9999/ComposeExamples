@@ -19,7 +19,7 @@ class MainView {
                 Text(
                     modifier = Modifier.fillMaxWidth().height(70.dp).padding(top = 20.dp),
                     textAlign = TextAlign.Center,
-                    text = "Добро пожаловть в MONHO"
+                    text = "Добро пожаловть в MAXNO"
                 )
                 Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     Column(modifier = Modifier.padding(top = 10.dp)) {

@@ -4,7 +4,7 @@ import androidx.compose.ui.window.application
 fun main() = application {
     val mainView = CoreView()
     DataBaseController.init()
-    Window(title = "Monho", onCloseRequest = ::exitApplication) {
+    Window(title = "Maxno", onCloseRequest = ::exitApplication) {
         mainView.App()
     }
 }
