@@ -1,0 +1,55 @@
+CREATE TABLE Movies (
+	Name TEXT NOT NULL ,
+	ProductYear INT NOT NULL ,
+	Budget INT NOT NULL ,
+	Country TEXT NOT NULL ,
+	RusFees INT NOT NULL ,
+	AllFees INT NOT NULL ,
+	GenreName TEXT NOT NULL ,
+	Time INT NOT NULL
+);
+
+CREATE TABLE Genre(
+    Name Text NOT NULL
+);
+
+CREATE TABLE Halls(
+    Name TEXT NOT NULL,
+    SeatsCount INT NOT NULL
+);
+
+CREATE TABLE Sessions(
+    MovieName TEXT NOT NULL,
+    HallName TEXT NOT NULL,
+    Start TEXT NOT NULL,
+    End TEXT NOT NULL,
+    OccupiedSeats INT NOT NULL
+);
+
+insertGenre:
+INSERT INTO Genre (Name)
+VALUES(?);
+
+getGenres:
+SELECT * FROM Genre;
+
+getHalls:
+SELECT * FROM Halls;
+
+getSessions:
+SELECT * FROM Sessions;
+
+getMovies:
+SELECT * FROM Movies;
+
+insertMovie:
+INSERT INTO Movies (Name, ProductYear, Budget, Country, RusFees, AllFees, GenreName, Time)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+
+insertHall:
+INSERT INTO Halls (Name, SeatsCount)
+VALUES (?, ?);
+
+insertSession:
+INSERT INTO Sessions (MovieName, HallName, Start, End, OccupiedSeats)
+VALUES(?, ?, ?, ?, ?);
