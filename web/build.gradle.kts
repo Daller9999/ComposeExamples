@@ -37,6 +37,7 @@ kotlin {
 //                implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:17.0.2-pre.297-kotlin-1.6.10")
                 implementation(npm("react", "17.0.2"))
                 implementation(npm("react-dom", "17.0.2"))
+                implementation("com.google.code.gson:gson:2.9.0")
             }
         }
         val jsTest by getting {

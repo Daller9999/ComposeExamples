@@ -30,6 +30,7 @@ import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import api.ApiCall
+import com.google.gson.Gson
 import data.MovieData
 import data.MovieInfo
 import io.ktor.client.*
@@ -41,7 +42,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-val size = mutableStateOf(DpSize(800.dp, 600.dp))
 val state = mutableStateOf(true)
 val movieInfo = mutableStateOf(MovieInfo("", 0f, null, 0, "", false, ""))
 
@@ -77,7 +77,7 @@ private fun currentMovieView(apiCall: ApiCall, windowState: WindowState) {
                 text = movie.title,
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                fontSize = 22.sp,
+                fontSize = 28.sp,
                 modifier = Modifier.padding(all = 20.dp).fillMaxWidth()
             )
 
@@ -122,7 +122,7 @@ private fun movieView(apiCall: ApiCall) {
             list.add(apiCall.getActualMovieListNowAutoDecode())
             movieList.addAll(list)
             listRemember.value = list
-            println(list)
+            println(Gson().toJson(list))
         }
     } else {
         listRemember.value = movieList
@@ -181,7 +181,7 @@ fun main() = application {
         }
     })
     val stateWindow = rememberWindowState()
-    Window(state = stateWindow, onCloseRequest = ::exitApplication) {
+    Window(state = stateWindow, onCloseRequest = ::exitApplication, title = "Библиотека фильмов") {
         App(apiCall, stateWindow)
     }
 }

@@ -23,6 +23,9 @@
     "95ae823c20132b21a1079fd103feed1d": {
       "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-js/0.16.3/5820096bcb0d08c0c3e8301e8a45c92868c03dd1/atomicfu-jsir-0.16.3.klib"
     },
+    "aba76f6fde7219168d10a0df1050afbb": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.9.0/8a1167e089096758b49f9b34066ef98b2f4b37aa/gson-2.9.0.jar"
+    },
     "337ff817e087aded273dfc9ba494baf4": {
       "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-js-runner/1.5.31/20ef83e15f8c2cde090f3bfd8c1eba72947f7ab8/kotlin-test-js-runner-1.5.31.jar",
       "target": "kotlin-test-js-runner/1.5.31"

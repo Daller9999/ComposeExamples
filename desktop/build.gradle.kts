@@ -28,6 +28,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-native-mt")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.google.code.gson:gson:2.9.0")
 }
 
 tasks.withType<KotlinCompile> {
