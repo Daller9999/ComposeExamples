@@ -31,14 +31,10 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                val ktor = "1.5.4"
                 implementation(compose.web.core)
                 implementation(compose.runtime)
                 implementation(npm("react", "17.0.2"))
                 implementation(npm("react-dom", "17.0.2"))
-//                implementation("io.ktor:ktor-client-core:$ktor")
-//                implementation("io.ktor:ktor-client-js:$ktor")
-//                implementation("io.ktor:ktor-client-serialization:1.6.8")
             }
         }
         val jsTest by getting {
