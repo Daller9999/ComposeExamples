@@ -13,19 +13,88 @@ import org.jetbrains.compose.web.dom.*
 import org.jetbrains.compose.web.renderComposable
 
 private val currentFlower = mutableStateOf(FlowerArray())
-private val currentMovie = mutableStateOf(FlowerArray())
+private val currentMovie = mutableStateOf(JsonMovieData.default())
 
 fun main() {
+    val int = window.location.search.substring(7).toIntOrNull()
+    console.log(int)
+    if (int != null) {
+        currentMovie.value = MovieData.getMovie(int)
+    }
+
     renderComposable(rootElementId = "root") {
-        movies()
+        if (int == null)
+            movies()
+        else
+            currentMovie()
+    }
+}
+
+@Composable
+private fun currentMovie() {
+    document.body?.style?.backgroundColor = "#2E4053"
+    val movie = currentMovie.value
+    P(attrs = {
+        style {
+            width(100.percent)
+            height(100.percent)
+            alignContent(Center)
+        }
+    }) {
+        Header {
+            Label(attrs = {
+                style {
+                    fontSize(40.px)
+                    textAlign(Center.toString())
+                    display(DisplayStyle.Block)
+                    color(Color.white)
+                }
+            }) {
+                Text(movie.title)
+            }
+        }
+        val height = window.screen.height * 0.7f
+        val width = height * 3 / 4
+        Div({
+            style {
+                display(DisplayStyle.Flex)
+            }
+        }) {
+            Img(
+                src = movie.imageUrl,
+                attrs = {
+                    style {
+                        width(width.px)
+                        height(height.px)
+                        margin(50.px)
+                        borderRadius(
+                            topLeft = 20.px,
+                            topRight = 20.px,
+                            bottomLeft = 20.px,
+                            bottomRight = 20.px
+                        )
+                    }
+                }
+            )
+            Div(attrs = {
+                style {
+                    fontSize(20.px)
+                    width(100.percent)
+                    height(100.percent)
+                    margin(50.px)
+                    textAlign(Center.toString())
+                    color(Color.white)
+                }
+            }) {
+                Text(movie.overview)
+            }
+        }
     }
 }
 
 @Composable
 private fun movies() {
-    val dataJson: ArrayList<JsonMovie> = JSON.parse(MovieData.string)
     document.body?.style?.backgroundColor = "#2E4053"
-    console.log(dataJson)
     P(attrs = {
         style {
             width(100.percent)
@@ -45,34 +114,78 @@ private fun movies() {
                 Text("Библиотека фильмов")
             }
         }
-        for (data in FlowersData.flowerArray){
+        for (data in MovieData.arrayMovies) {
             Div({
                 style {
                     width(100.percent)
-                    height(440.px)
+                    height(70.px)
                     display(DisplayStyle.Block)
-                    overflowX("auto")
-                    whiteSpace("nowrap")
                 }
             }) {
-                for (movie in data.srcArray) {
-                    Img(
-                        src = movie,
-                        attrs = {
-                            style {
-                                width(400.px)
-                                height(400.px)
-                                margin(20.px)
-                                borderRadius(
-                                    topLeft = 20.px,
-                                    topRight = 20.px,
-                                    bottomLeft = 20.px,
-                                    bottomRight = 20.px
-                                )
-                            }
+                H2 {
+                    Label(attrs = {
+                        style {
+                            fontSize(30.px)
+                            margin(20.px)
+                            display(DisplayStyle.Block)
+                            color(Color.white)
                         }
-                    )
+                    }) {
+                        Text(data.type)
+                    }
                 }
+            }
+            Div({
+                style {
+                    width(100.percent)
+                    height(550.px)
+                    display(DisplayStyle.Flex)
+                    overflowX("scroll")
+                }
+            }) {
+                for (movie in data.movies) {
+                    A(attrs = {
+                        href("${window.document.location}?movie=${movie.id}")
+                        target(ATarget.Blank)
+
+                        style {
+                            width(300.px)
+                            margin(30.px)
+                            textDecoration("none")
+                            textAlign(Center.toString())
+                            backgroundColor(Color.transparent)
+                        }
+                    }) {
+                        Img(
+                            src = movie.imageUrl,
+                            attrs = {
+                                style {
+                                    width(300.px)
+                                    height(400.px)
+                                    marginBottom(20.px)
+                                    borderRadius(
+                                        topLeft = 20.px,
+                                        topRight = 20.px,
+                                        bottomLeft = 20.px,
+                                        bottomRight = 20.px
+                                    )
+                                }
+                            }
+                        )
+                        Div(attrs = {
+                            style {
+                                fontSize(20.px)
+                                width(300.px)
+                                height(50.px)
+                                textAlign(Center.toString())
+                                color(Color.white)
+                            }
+                        }) {
+                            Text(movie.title)
+                        }
+                    }
+                }
+
             }
         }
     }
@@ -171,7 +284,8 @@ private fun showCurrentFlower() {
 
 @Composable
 private fun renderMainPage() {
-    document.body?.style?.backgroundImage = "url(https://get.wallhere.com/photo/sunlight-sunset-nature-field-sunrise-morning-horizon-tundra-plateau-flower-dawn-grassland-plant-poppy-meadow-plain-wildflower-prairie-natural-environment-land-plant-flowering-plant-grass-family-86247.jpg)"
+    document.body?.style?.backgroundImage =
+        "url(https://get.wallhere.com/photo/sunlight-sunset-nature-field-sunrise-morning-horizon-tundra-plateau-flower-dawn-grassland-plant-poppy-meadow-plain-wildflower-prairie-natural-environment-land-plant-flowering-plant-grass-family-86247.jpg)"
     document.body?.style?.backgroundRepeat = "none"
     document.body?.style?.backgroundAttachment = "fixed"
     P(attrs = {
