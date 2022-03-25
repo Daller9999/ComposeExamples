@@ -315,12 +315,8 @@
   Week.prototype.constructor = Week;
   Blank.prototype = Object.create(ATarget.prototype);
   Blank.prototype.constructor = Blank;
-  MouseEventListener.prototype = Object.create(SyntheticEventListener.prototype);
-  MouseEventListener.prototype.constructor = MouseEventListener;
   ElementScopeImpl.prototype = Object.create(ElementScopeBase.prototype);
   ElementScopeImpl.prototype.constructor = ElementScopeImpl;
-  SyntheticMouseEvent.prototype = Object.create(SyntheticEvent.prototype);
-  SyntheticMouseEvent.prototype.constructor = SyntheticMouseEvent;
   function indexOf(_this_, element) {
     if (element == null) {
       var inductionVariable = 0;
@@ -1097,9 +1093,6 @@
   };
   function emptyList() {
     return EmptyList_getInstance();
-  }
-  function arrayListOf(elements) {
-    return elements.length === 0 ? ArrayList_init_$Create$() : ArrayList_init_$Create$_1(new ArrayAsCollection(elements, true));
   }
   function _get_lastIndex__0(_this_) {
     return _this_._get_size__0_k$() - 1 | 0;
@@ -28536,13 +28529,6 @@
     kind: 'class',
     interfaces: []
   };
-  function NamedEventListener() {
-  }
-  NamedEventListener.$metadata$ = {
-    simpleName: 'NamedEventListener',
-    kind: 'interface',
-    interfaces: []
-  };
   function _no_name_provided__97() {
   }
   _no_name_provided__97.prototype.invoke_sv8swh_k$ = function () {
@@ -29106,11 +29092,6 @@
     tmp._listeners = tmp$ret$0;
     this._$stable_17 = 8;
   }
-  EventsListenerBuilder.prototype.onClick_hxe0av_k$ = function (listener) {
-    Companion_getInstance_17();
-    this._listeners.add_2bq_k$(new MouseEventListener('click', listener));
-    Unit_getInstance();
-  };
   EventsListenerBuilder.prototype.collectListeners_0_k$ = function () {
     return this._listeners;
   };
@@ -29593,65 +29574,6 @@
     kind: 'class',
     interfaces: []
   };
-  function SyntheticEventListener(event, listener) {
-    this._event = event;
-    this._listener = listener;
-    this._name_0 = this._event;
-    this._$stable_45 = 0;
-  }
-  SyntheticEventListener.prototype._get_listener__0_k$ = function () {
-    return this._listener;
-  };
-  SyntheticEventListener.prototype._get_name__0_k$ = function () {
-    return this._name_0;
-  };
-  SyntheticEventListener.prototype.handleEvent_xfv2uo_k$ = function (event) {
-    var tmp$ret$1;
-    $l$block_0: {
-      var tmp0_unsafeCast_0 = new SyntheticEvent(event);
-      var tmp$ret$0;
-      $l$block: {
-        tmp$ret$0 = tmp0_unsafeCast_0;
-        break $l$block;
-      }
-      tmp$ret$1 = tmp$ret$0;
-      break $l$block_0;
-    }
-    this._listener(tmp$ret$1);
-  };
-  SyntheticEventListener.prototype.handleEvent = function (event) {
-    return this.handleEvent_xfv2uo_k$(event);
-  };
-  SyntheticEventListener.$metadata$ = {
-    simpleName: 'SyntheticEventListener',
-    kind: 'class',
-    interfaces: [NamedEventListener]
-  };
-  function MouseEventListener(event, listener) {
-    SyntheticEventListener.call(this, event, listener);
-  }
-  MouseEventListener.prototype.handleEvent_xfv2uo_k$ = function (event) {
-    var tmp = this._get_listener__0_k$();
-    var tmp$ret$1;
-    $l$block_0: {
-      var tmp$ret$0;
-      $l$block: {
-        tmp$ret$0 = event;
-        break $l$block;
-      }
-      tmp$ret$1 = tmp$ret$0;
-      break $l$block_0;
-    }
-    tmp(new SyntheticMouseEvent(tmp$ret$1));
-  };
-  MouseEventListener.prototype.handleEvent = function (event) {
-    return this.handleEvent_xfv2uo_k$(event);
-  };
-  MouseEventListener.$metadata$ = {
-    simpleName: 'MouseEventListener',
-    kind: 'class',
-    interfaces: []
-  };
   var controlledInputsValuesWeakMap;
   var controlledRadioGroups;
   function saveControlledInputState(element, value) {
@@ -29828,7 +29750,7 @@
   function CSSUnitValueTyped(value, unit) {
     this._value_9 = value;
     this._unit = unit;
-    this._$stable_46 = 0;
+    this._$stable_45 = 0;
   }
   CSSUnitValueTyped.prototype._get_value__0_k$ = function () {
     return this._value_9;
@@ -29873,7 +29795,7 @@
   });
   function Color_0() {
     Color_instance_0 = this;
-    this._$stable_47 = 0;
+    this._$stable_46 = 0;
   }
   Color_0.$metadata$ = {
     simpleName: 'Color',
@@ -29939,7 +29861,7 @@
       break $l$block_0;
     }
     tmp_0._variables = tmp$ret$1;
-    this._$stable_48 = 0;
+    this._$stable_47 = 0;
   }
   StyleBuilderImpl.prototype._get_properties__0_k$ = function () {
     return this._properties;
@@ -29975,21 +29897,21 @@
     interfaces: []
   };
   function StylePropertyDeclaration(name, value) {
-    this._name_1 = name;
+    this._name_0 = name;
     this._value_10 = value;
-    this._$stable_49 = 8;
+    this._$stable_48 = 8;
   }
   StylePropertyDeclaration.prototype.component1_0_k$ = function () {
-    return this._name_1;
+    return this._name_0;
   };
   StylePropertyDeclaration.prototype.component2_0_k$ = function () {
     return this._value_10;
   };
   StylePropertyDeclaration.prototype.toString = function () {
-    return '' + 'StylePropertyDeclaration(name=' + this._name_1 + ', value=' + this._value_10 + ')';
+    return '' + 'StylePropertyDeclaration(name=' + this._name_0 + ', value=' + this._value_10 + ')';
   };
   StylePropertyDeclaration.prototype.hashCode = function () {
-    var result = getStringHashCode(this._name_1);
+    var result = getStringHashCode(this._name_0);
     result = imul(result, 31) + hashCode(this._value_10) | 0;
     return result;
   };
@@ -30001,7 +29923,7 @@
     else {
     }
     var tmp0_other_with_cast = other instanceof StylePropertyDeclaration ? other : THROW_CCE();
-    if (!(this._name_1 === tmp0_other_with_cast._name_1))
+    if (!(this._name_0 === tmp0_other_with_cast._name_0))
       return false;
     if (!equals(this._value_10, tmp0_other_with_cast._value_10))
       return false;
@@ -30039,7 +29961,7 @@
           var tmp0_5 = index;
           index = tmp0_5 + 1 | 0;
           var otherProp_4 = properties.get_ha5a7z_k$(tmp0_5);
-          tmp$ret$1 = element_2._name_1 === otherProp_4._name_1 ? toString_1(element_2._value_10) === toString_1(otherProp_4._value_10) : false;
+          tmp$ret$1 = element_2._name_0 === otherProp_4._name_0 ? toString_1(element_2._value_10) === toString_1(otherProp_4._value_10) : false;
           break $l$block_0;
         }
         if (!tmp$ret$1) {
@@ -30095,15 +30017,6 @@
   function overflowX(_this_, value) {
     _this_.property_wbz76b_k$('overflow-x', value);
   }
-  function padding(_this_, value) {
-    _this_.property_wbz76b_k$('padding', joinToString$default(value, ' ', null, null, 0, null, null, 62, null));
-  }
-  function paddingBottom(_this_, value) {
-    _this_.property_t4iuxv_k$('padding-bottom', value);
-  }
-  function paddingLeft(_this_, value) {
-    _this_.property_t4iuxv_k$('padding-left', value);
-  }
   function display(_this_, displayStyle) {
     var tmp$ret$2;
     $l$block_1: {
@@ -30130,9 +30043,6 @@
   }
   function textDecoration(_this_, value) {
     _this_.property_wbz76b_k$('text-decoration', value);
-  }
-  function whiteSpace(_this_, value) {
-    _this_.property_wbz76b_k$('white-space', value);
   }
   function TagElement$composable(elementBuilder, applyAttrs, content, $composer, $changed) {
     var $composer_0 = $composer;
@@ -30616,7 +30526,7 @@
   };
   function ElementScopeBase() {
     this._nextDisposableDomEffectKey = 0;
-    this._$stable_50 = 8;
+    this._$stable_49 = 8;
   }
   ElementScopeBase.$metadata$ = {
     simpleName: 'ElementScopeBase',
@@ -31614,7 +31524,7 @@
   var radioGroupCompositionLocalValue;
   var radioGroupCompositionLocalName;
   function RadioGroupScope() {
-    this._$stable_51 = 0;
+    this._$stable_50 = 0;
   }
   RadioGroupScope.$metadata$ = {
     simpleName: 'RadioGroupScope',
@@ -31655,202 +31565,7 @@
       return i.invoke_0_k$();
     };
   }
-  function SyntheticEvent(nativeEvent) {
-    this._nativeEvent = nativeEvent;
-    var tmp = this;
-    var tmp$ret$1;
-    $l$block_0: {
-      var tmp0_unsafeCast_0 = this._nativeEvent.target;
-      var tmp$ret$0;
-      $l$block: {
-        tmp$ret$0 = tmp0_unsafeCast_0;
-        break $l$block;
-      }
-      tmp$ret$1 = tmp$ret$0;
-      break $l$block_0;
-    }
-    tmp._target = tmp$ret$1;
-    this._bubbles = this._nativeEvent.bubbles;
-    this._cancelable = this._nativeEvent.cancelable;
-    this._composed = this._nativeEvent.composed;
-    this._currentTarget = this._nativeEvent.currentTarget;
-    this._eventPhase = this._nativeEvent.eventPhase;
-    this._defaultPrevented = this._nativeEvent.defaultPrevented;
-    this._timestamp = this._nativeEvent.timeStamp;
-    this._type = this._nativeEvent.type;
-    this._isTrusted = this._nativeEvent.isTrusted;
-    this._$stable_52 = 0;
-  }
-  SyntheticEvent.$metadata$ = {
-    simpleName: 'SyntheticEvent',
-    kind: 'class',
-    interfaces: []
-  };
   var normalizedKeys;
-  function SyntheticMouseEvent(nativeEvent) {
-    SyntheticEvent.call(this, nativeEvent);
-    this._mouseEvent = nativeEvent;
-    this._altKey = nativeEvent.altKey;
-    this._button = nativeEvent.button;
-    this._buttons = nativeEvent.buttons;
-    this._clientX = nativeEvent.clientX;
-    this._clientY = nativeEvent.clientY;
-    this._ctrlKey = nativeEvent.ctrlKey;
-    this._metaKey = nativeEvent.metaKey;
-    var tmp = this;
-    var tmp$ret$0;
-    $l$block: {
-      tmp$ret$0 = nativeEvent;
-      break $l$block;
-    }
-    var tmp_0 = tmp$ret$0.movementX;
-    var tmp0_elvis_lhs = (!(tmp_0 == null) ? typeof tmp_0 === 'number' : false) ? tmp_0 : null;
-    tmp._movementX = tmp0_elvis_lhs == null ? 0 : tmp0_elvis_lhs;
-    var tmp_1 = this;
-    var tmp$ret$1;
-    $l$block_0: {
-      tmp$ret$1 = nativeEvent;
-      break $l$block_0;
-    }
-    var tmp_2 = tmp$ret$1.movementY;
-    var tmp0_elvis_lhs_0 = (!(tmp_2 == null) ? typeof tmp_2 === 'number' : false) ? tmp_2 : null;
-    tmp_1._movementY = tmp0_elvis_lhs_0 == null ? 0 : tmp0_elvis_lhs_0;
-    this._offsetX = nativeEvent.offsetX;
-    this._offsetY = nativeEvent.offsetY;
-    this._pageX = nativeEvent.pageX;
-    this._pageY = nativeEvent.pageY;
-    this._region = nativeEvent.region;
-    this._relatedTarget = nativeEvent.relatedTarget;
-    this._screenX = nativeEvent.screenX;
-    this._screenY = nativeEvent.screenY;
-    this._shiftKey = nativeEvent.shiftKey;
-    this._x = nativeEvent.x;
-    this._y = nativeEvent.y;
-    this._$stable_53 = 0;
-  }
-  SyntheticMouseEvent.$metadata$ = {
-    simpleName: 'SyntheticMouseEvent',
-    kind: 'class',
-    interfaces: []
-  };
-  function FlowersData() {
-    FlowersData_instance = this;
-    var tmp = this;
-    var tmp$ret$0;
-    $l$block: {
-      tmp$ret$0 = ArrayList_init_$Create$();
-      break $l$block;
-    }
-    tmp._flowerArray = tmp$ret$0;
-    var tmp_0 = this;
-    var tmp_1 = FlowerArray_init_$Create$(0, null, null, null, null, null, 63, null);
-    tmp_0._currentFlower = mutableStateOf$default(tmp_1, null, 2, null);
-    this._currentCount = 0;
-    var tmp$ret$1;
-    $l$block_0: {
-      tmp$ret$1 = ArrayList_init_$Create$();
-      break $l$block_0;
-    }
-    var array = tmp$ret$1;
-    array.add_2bq_k$(new FlowerArray(0, 'https://domashniecvety.ru/wp-content/uploads/6/8/b/68b4445d4fc9914adcbdea764ef778fd.jpg', '\u0410\u043B\u044C\u0441\u0442\u0440\u043E\u043C\u0435\u0440\u0438\u044F', '\u0420\u043E\u0434 \u044E\u0436\u043D\u043E\u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0438\u0445 \u043A\u043E\u0440\u043D\u0435\u0432\u0438\u0449\u043D\u044B\u0445 \u0438 \u043A\u043B\u0443\u0431\u043D\u0435\u0432\u044B\u0445 \u043A\u0440\u0430\u0441\u0438\u0432\u043E\u0446\u0432\u0435\u0442\u0443\u0449\u0438\u0445 \u0442\u0440\u0430\u0432\u044F\u043D\u0438\u0441\u0442\u044B\u0445 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0439 \u0438\u0437 \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0430 \u0410\u043B\u044C\u0441\u0442\u0440\u0451\u043C\u0435\u0440\u0438\u0435\u0432\u044B\u0435. \u0412 \u0440\u0443\u0441\u0441\u043A\u043E\u044F\u0437\u044B\u0447\u043D\u043E\u0439 \u043B\u0438\u0442\u0435\u0440\u0430\u0442\u0443\u0440\u0435 \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u044E\u0442\u0441\u044F \u0438 \u0434\u0440\u0443\u0433\u0438\u0435 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u044B \u043D\u0430\u043F\u0438\u0441\u0430\u043D\u0438\u044F \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F \u0440\u043E\u0434\u0430 - \xAB\u0430\u043B\u0441\u0442\u0440\u043E\u043C\u0435\u0440\u0438\u044F\xBB, \xAB\u0430\u043B\u044C\u0441\u0442\u0440\u043E\u043C\u0435\u0440\u0438\u044F\xBB. \u0427\u0438\u0441\u043B\u043E \u0432\u0438\u0434\u043E\u0432 - \u0431\u043E\u043B\u0435\u0435 \u0441\u0442\u0430.', arrayListOf(['https://lakusha.ru/upload/iblock/bec/agava.jpg', 'https://na-dache.pro/uploads/posts/2021-05/1620993276_20-p-agava-foto-24.jpg', 'https://clubcosmetics.ru/image/cache/data/Secret%20Skin/Agava1-800x800.jpg', 'https://na-dache.pro/uploads/posts/2021-11/1636406920_34-na-dache-pro-p-domashnii-tsvetok-agava-foto-35.jpg', 'https://c.pxhere.com/photos/f5/5f/photo-55050.jpg!d', 'https://magazin-naturalist.ru/photos/catalog_photos/20367.jpg']), '\u0418\u0437 \u043B\u0438\u0441\u0442\u044C\u0435\u0432 \u043C\u043D\u043E\u0433\u0438\u0445 \u0432\u0438\u0434\u043E\u0432 \u0430\u0433\u0430\u0432\u044B \u0438\u0437\u0433\u043E\u0442\u0430\u0432\u043B\u0438\u0432\u0430\u044E\u0442 \u043A\u0430\u043D\u0430\u0442\u044B, \u0432\u0435\u0440\u0451\u0432\u043A\u0438, \u0448\u043F\u0430\u0433\u0430\u0442, \u043F\u043E\u043B\u043E\u0432\u0438\u043A\u0438, \u0443\u043F\u0430\u043A\u043E\u0432\u043E\u0447\u043D\u044B\u0435 \u0438 \u0434\u0440\u0443\u0433\u0438\u0435 \u0433\u0440\u0443\u0431\u044B\u0435 \u0442\u043A\u0430\u043D\u0438; \u0438\u0437 \u043E\u0442\u0445\u043E\u0434\u043E\u0432 \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u044F\u0442 \u0431\u0443\u043C\u0430\u0433\u0443, \u0433\u043B\u0430\u0432\u043D\u044B\u043C \u043E\u0431\u0440\u0430\u0437\u043E\u043C \u043E\u0431\u0451\u0440\u0442\u043E\u0447\u043D\u0443\u044E. \u041D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u0432\u0438\u0434\u044B \u0430\u0433\u0430\u0432\u044B \u0440\u0430\u0437\u0432\u043E\u0434\u044F\u0442 \u0432 \u0442\u0440\u043E\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u043E\u0431\u043B\u0430\u0441\u0442\u044F\u0445 \u043E\u0431\u043E\u0438\u0445 \u043F\u043E\u043B\u0443\u0448\u0430\u0440\u0438\u0439 \u0434\u043B\u044F \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F \u0432\u043E\u043B\u043E\u043A\u043D\u0430. \u041D\u0430\u0438\u0431\u043E\u043B\u0435\u0435 \u0446\u0435\u043D\u043D\u044B \u0410\u0433\u0430\u0432\u0430 \u0441\u0438\u0437\u0430\u043B\u0435\u0432\u0430\u044F (Agave sisalana Perrine), \u0434\u0430\u044E\u0449\u0430\u044F \u0442\u0430\u043A \u043D\u0430\u0437\u044B\u0432\u0430\u0435\u043C\u044B\u0439 \u0441\u0438\u0437\u0430\u043B\u044C, \u0410\u0433\u0430\u0432\u0430 \u0444\u0443\u0440\u043A\u0440\u0435\u0435\u0432\u0438\u0434\u043D\u0430\u044F, \u0438\u043B\u0438 \u042E\u043A\u0430\u0442\u0430\u043D\u0441\u043A\u0430\u044F \u043A\u043E\u043D\u043E\u043F\u043B\u044F (Agave fourcroydes Lem.) \u2014 \u0433\u0435\u043D\u0435\u043A\u0435\u043D (\u044E\u043A\u0430\u0442\u0430\u043D\u0441\u043A\u0438\u0439 \u0441\u0438\u0437\u0430\u043B\u044C), \u0410\u0433\u0430\u0432\u0430 \u043A\u0430\u043D\u0442\u0430\u043B\u0430 (Agave cantala Roxb.) \u2014 \u043A\u0430\u043D\u0442\u0430\u043B\u0443, \u0438 \u0434\u0440\u0443\u0433\u0438\u0435. \u0421\u043F\u0440\u0435\u0441\u0441\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u0432\u043E\u043B\u043E\u043A\u043D\u0430 \u0430\u0433\u0430\u0432\u044B, \u0438\u043C\u0435\u043D\u0443\u0435\u043C\u044B\u0435 \u0441\u0438\u0437\u0430\u043B\u044C, \u043E\u0431\u044B\u0447\u043D\u043E \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u044E\u0442 \u0434\u043B\u044F \u043C\u0438\u0448\u0435\u043D\u0435\u0439 \u0438\u0433\u0440 \u0434\u0430\u0440\u0442\u0441.\n\n\u041C\u043D\u043E\u0433\u0438\u0435 \u0447\u0430\u0441\u0442\u0438 \u0430\u0433\u0430\u0432\u044B \u0441\u044A\u0435\u0434\u043E\u0431\u043D\u044B: \u043B\u0438\u0441\u0442\u044C\u044F, \u0446\u0432\u0435\u0442\u044B, \u0441\u0435\u0440\u0434\u0446\u0435\u0432\u0438\u043D\u0430 \u0438 \u0441\u043E\u043A \u0443\u043F\u043E\u0442\u0440\u0435\u0431\u043B\u044F\u044E\u0442 \u0432 \u043F\u0438\u0449\u0443. \u041D\u0430 \u043B\u0438\u0441\u0442\u044C\u044F\u0445 \u043E\u0431\u0438\u0442\u0430\u044E\u0442 \u0433\u0443\u0441\u0435\u043D\u0438\u0446\u044B \u0431\u0430\u0431\u043E\u0447\u043A\u0438 \u0438\u0437 \u0440\u043E\u0434\u0430 Megathymus, \u0438\u0445 \u0436\u0430\u0440\u044F\u0442 \u0432\u043C\u0435\u0441\u0442\u0435 \u0441 \u043B\u0438\u0441\u0442\u044C\u044F\u043C\u0438 \u0438 \u0435\u0434\u044F\u0442, \u0441\u0447\u0438\u0442\u0430\u044F \u0434\u0435\u043B\u0438\u043A\u0430\u0442\u0435\u0441\u043E\u043C. \u0421\u043E\u043A \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u044F\u0442 \u0432\u0437\u0440\u043E\u0441\u043B\u044B\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F (\u0441 6\u20148 \u0433\u043E\u0434\u0430), \u0437\u0438\u043C\u043E\u0439 \u0438 \u0432\u0435\u0441\u043D\u043E\u0439, \u043F\u0435\u0440\u0435\u0434 \u043D\u0430\u0447\u0430\u043B\u043E\u043C \u0446\u0432\u0435\u0442\u0435\u043D\u0438\u044F, \u043B\u0438\u0441\u0442\u044C\u044F \u0430\u0433\u0430\u0432\u044B \u043D\u0430\u0438\u0431\u043E\u043B\u0435\u0435 \u0438\u043C \u0431\u043E\u0433\u0430\u0442\u044B, \u0430 \u0432 \u0441\u0435\u0437\u043E\u043D, \u0434\u043B\u044F\u0449\u0438\u0439\u0441\u044F \u043E\u043A\u043E\u043B\u043E \u0434\u0432\u0443\u0445 \u043C\u0435\u0441\u044F\u0446\u0435\u0432, \u0432 \u0434\u0435\u043D\u044C \u043C\u043E\u0436\u043D\u043E \u0441\u043E\u0431\u0440\u0430\u0442\u044C \u043E\u043A\u043E\u043B\u043E 0,27 \u043B\u0438\u0442\u0440\u0430 \u0441\u043E\u043A\u0430. \u0410\u0433\u0430\u0432\u043E\u0432\u044B\u0439 \u0441\u043E\u043A \u0441\u0430\u0445\u0430\u0440\u0438\u0441\u0442\u044B\u0439, \u043F\u043E\u0447\u0442\u0438 \u043F\u0440\u043E\u0437\u0440\u0430\u0447\u043D\u044B\u0439 \u0441 \u0437\u0435\u043B\u0435\u043D\u043E\u0432\u0430\u0442\u044B\u043C \u043E\u0442\u0442\u0435\u043D\u043A\u043E\u043C, \u0441\u043B\u0430\u0434\u043A\u0438\u0439 \u0441 \u0433\u043E\u0440\u0447\u0438\u043D\u043A\u043E\u0439, \u0435\u0433\u043E \u043F\u044C\u044E\u0442 \u043A\u0430\u043A \u043E\u0441\u0432\u0435\u0436\u0430\u044E\u0449\u0438\u0439 \u043D\u0430\u043F\u0438\u0442\u043E\u043A \u0438 \u0432\u044B\u0432\u0430\u0440\u0438\u0432\u0430\u044E\u0442 \u0432 \u0441\u0438\u0440\u043E\u043F. \u0411\u0435\u0437 \u043A\u043E\u043D\u0441\u0435\u0440\u0432\u0430\u0446\u0438\u0438 \u0431\u044B\u0441\u0442\u0440\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0435\u0442 \u0431\u0440\u043E\u0434\u0438\u0442\u044C: \u0438\u0437 \u0441\u043E\u043A\u0430 \u0430\u0433\u0430\u0432\u044B \u0442\u0451\u043C\u043D\u043E-\u0437\u0435\u043B\u0451\u043D\u043E\u0439 (Agave atrovirens Karw. ex Salm-Dyck) \u0438 \u0434\u0440\u0443\u0433\u0438\u0445 \u0433\u043E\u0442\u043E\u0432\u044F\u0442 \u0430\u043B\u043A\u043E\u0433\u043E\u043B\u044C\u043D\u044B\u0439 \u043D\u0430\u043F\u0438\u0442\u043E\u043A \u043F\u0443\u043B\u044C\u043A\u0435 \u0438 \u0443\u043A\u0441\u0443\u0441, \u0430 \u0438\u0437 \u0441\u0435\u0440\u0434\u0446\u0435\u0432\u0438\u043D\u044B \u0430\u0433\u0430\u0432\u044B \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u044F\u0442 \u043A\u0440\u0435\u043F\u043A\u0438\u0435 \u0430\u043B\u043A\u043E\u0433\u043E\u043B\u044C\u043D\u044B\u0435 \u043D\u0430\u043F\u0438\u0442\u043A\u0438 \u2014 \u0442\u0435\u043A\u0438\u043B\u0430 \u0438 \u043C\u0435\u0441\u043A\u0430\u043B\u044C. \u0422\u043E\u043B\u044C\u043A\u043E \u0410\u0433\u0430\u0432\u0430 \u0433\u043E\u043B\u0443\u0431\u0430\u044F (Agave tequilana Web.) \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0441\u044F \u0434\u043B\u044F \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0430 \u0442\u0435\u043A\u0438\u043B\u044B. \u0414\u043B\u044F \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u0434\u0441\u0442\u0432\u0430 \u0442\u0435\u043A\u0438\u043B\u044B \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0441\u044F \u0441\u0435\u0440\u0434\u0446\u0435\u0432\u0438\u043D\u0430 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F. \u041F\u0443\u0442\u0451\u043C \u043F\u0435\u0440\u0435\u0433\u043E\u043D\u043A\u0438 \u0438\u0437 \u0441\u043E\u043A\u0430 \u0433\u043E\u043B\u0443\u0431\u043E\u0439 \u0430\u0433\u0430\u0432\u044B \u0434\u0435\u043B\u0430\u044E\u0442 \u0434\u0438\u0441\u0442\u0438\u043B\u043B\u044F\u0442, \u043E\u043D \u0438 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u043E\u0441\u043D\u043E\u0432\u043E\u0439 \u0434\u043B\u044F \u0442\u0435\u043A\u0438\u043B\u044B. \u0418\u0437 \u0441\u0442\u0435\u0431\u043B\u0435\u0439 Agave cocui \u0434\u0435\u043B\u0430\u0435\u0442\u0441\u044F \u0442\u0440\u0430\u0434\u0438\u0446\u0438\u043E\u043D\u043D\u044B\u0439 \u0432\u0435\u043D\u0435\u0441\u0443\u044D\u043B\u044C\u0441\u043A\u0438\u0439 \u043D\u0430\u043F\u0438\u0442\u043E\u043A \u043A\u043E\u043A\u0443\u0439.\n\n\u0418\u0437 \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u0432\u0438\u0434\u043E\u0432 \u0430\u0433\u0430\u0432\u044B \u0434\u0435\u043B\u0430\u044E\u0442 \u0441\u043B\u0430\u0434\u043A\u0438\u0439 \u0441\u0438\u0440\u043E\u043F, \u043F\u043E\u0445\u043E\u0436\u0438\u0439 \u043F\u043E \u043A\u043E\u043D\u0441\u0438\u0441\u0442\u0435\u043D\u0446\u0438\u0438 \u043D\u0430 \u043C\u0451\u0434. \u0422\u044F\u0436\u0451\u043B\u044B\u0435 \u0438 \u043A\u0440\u0443\u043F\u043D\u044B\u0435 \u0441\u0442\u0440\u0435\u043B\u043A\u0438, \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u0430\u0433\u0430\u0432\u0430 \u0432\u044B\u0431\u0440\u0430\u0441\u044B\u0432\u0430\u0435\u0442 \u043F\u0435\u0440\u0435\u0434 \u0446\u0432\u0435\u0442\u0435\u043D\u0438\u0435\u043C, \u0436\u0430\u0440\u044F\u0442 \u0438 \u0443\u043F\u043E\u0442\u0440\u0435\u0431\u043B\u044F\u044E\u0442 \u0432 \u043F\u0438\u0449\u0443.\n\n\u041A\u043E\u0440\u043D\u0438 \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u0430\u0433\u0430\u0432 \u0432 \u041C\u0435\u043A\u0441\u0438\u043A\u0435 \u043F\u0440\u0438\u043C\u0435\u043D\u044F\u044E\u0442 \u0432 \u043C\u0435\u0434\u0438\u0446\u0438\u043D\u0435. \u0412 \u043B\u0438\u0441\u0442\u044C\u044F\u0445 \u0430\u0433\u0430\u0432\u044B \u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u043E\u0439 \u0438 \u0441\u0438\u0441\u0430\u043B\u044C\u0441\u043A\u043E\u0439 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u0441\u044F \u0441\u0442\u0435\u0440\u043E\u0438\u0434\u043D\u044B\u0435 \u0441\u0430\u043F\u043E\u043D\u0438\u043D\u044B, \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u044B\u0435 \u0434\u043B\u044F \u0441\u0438\u043D\u0442\u0435\u0437\u0430 \u0441\u0442\u0435\u0440\u043E\u0438\u0434\u043D\u044B\u0445 \u0433\u043E\u0440\u043C\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445 \u043F\u0440\u0435\u043F\u0430\u0440\u0430\u0442\u043E\u0432 \u2014 \u043A\u043E\u0440\u0442\u0438\u0437\u043E\u043D\u0430, \u043F\u0440\u043E\u0433\u0435\u0441\u0442\u0435\u0440\u043E\u043D\u0430. \u0412 \u041A\u0438\u0442\u0430\u0435 \u0438\u0437 \u043E\u0431\u043E\u0438\u0445 \u0432\u0438\u0434\u043E\u0432 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u044B \u0432\u0435\u0449\u0435\u0441\u0442\u0432\u0430, \u0441\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u044E\u0449\u0438\u0435 \u043D\u043E\u0432\u0443\u044E \u0433\u0440\u0443\u043F\u043F\u0443 \u043A\u043E\u043D\u0442\u0440\u0430\u0446\u0435\u043F\u0442\u0438\u0432\u043E\u0432, \u043E\u0431\u043B\u0430\u0434\u0430\u044E\u0449\u0438\u0445 \u0432\u0430\u0436\u043D\u044B\u043C \u043F\u0440\u0435\u0438\u043C\u0443\u0449\u0435\u0441\u0442\u0432\u043E\u043C \u2014 \u0438\u0445 \u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u0442\u044C \u043E\u0434\u0438\u043D\u2014\u0434\u0432\u0430 \u0440\u0430\u0437\u0430 \u0432 \u043C\u0435\u0441\u044F\u0446. \u0410\u0433\u0430\u0432\u0430 \u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F (Agave americana L.) \u043F\u0440\u0438\u043C\u0435\u043D\u044F\u0435\u0442\u0441\u044F \u0432 \u0433\u043E\u043C\u0435\u043E\u043F\u0430\u0442\u0438\u0438.\n\n\u0410\u0433\u0430\u0432\u0430 \u0430\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u0441\u043A\u0430\u044F, \u0410\u0433\u0430\u0432\u0430 \u043E\u0442\u0442\u044F\u043D\u0443\u0442\u0430\u044F (Agave attenuata Salm-Dyck), \u0410\u0433\u0430\u0432\u0430 \u043A\u043E\u0440\u043E\u043B\u0435\u0432\u044B \u0412\u0438\u043A\u0442\u043E\u0440\u0438\u0438 (Agave victoriae-reginae T.Moore) \u0438 \u043C\u043D\u043E\u0433\u0438\u0435 \u0434\u0440\u0443\u0433\u0438\u0435 \u0440\u0430\u0437\u0432\u043E\u0434\u044F\u0442\u0441\u044F \u043A\u0430\u043A \u043A\u043E\u043C\u043D\u0430\u0442\u043D\u044B\u0435 \u0438 \u043E\u0440\u0430\u043D\u0436\u0435\u0440\u0435\u0439\u043D\u044B\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F.'));
-    Unit_getInstance();
-    array.add_2bq_k$(new FlowerArray(1, 'https://flo.discus-club.ru/images/stories/komnatnie/aglaonema/aglaonema1.jpg', '\u0410\u0433\u043B\u0430\u043E\u043D\u0435\u043C\u0430', '\u0410\u0433\u043B\u0430\u043E\u043D\u0435\u043C\u0430 \u2014 \u043A\u043E\u043C\u043D\u0430\u0442\u043D\u043E\u0435 \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0440\u043E\u0434\u043E\u043C \u0438\u0437 \u041A\u0438\u0442\u0430\u044F, \u0418\u043D\u0434\u0438\u0438 \u0438 \u042E\u0433\u043E-\u0412\u043E\u0441\u0442\u043E\u0447\u043D\u043E\u0439 \u0410\u0437\u0438\u0438. \u041E\u0442\u043D\u043E\u0441\u0438\u0442\u0441\u044F \u043A \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0443 \u0410\u0440\u043E\u0438\u0434\u043D\u044B\u0435.', arrayListOf(['https://flo.discus-club.ru/images/stories/komnatnie/aglaonema/aglaonema6.jpg', 'https://flo.discus-club.ru/images/stories/komnatnie/aglaonema/aglaonema2.jpg', 'https://flo.discus-club.ru/images/stories/komnatnie/aglaonema/aglaonema3.jpg', 'https://flo.discus-club.ru/images/stories/komnatnie/aglaonema/aglaonema5.jpg', 'https://flo.discus-club.ru/images/stories/komnatnie/aglaonema/aglaonema8.jpg']), '\u0410\u0433\u043B\u0430\u043E\u043D\u0435\u043C\u0430 \u2013 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0441 \u043F\u044B\u0448\u043D\u043E\u0439 \u043A\u0440\u043E\u043D\u043E\u0439, \u043B\u0438\u0441\u0442\u044C\u044F \u043A\u043E\u0442\u043E\u0440\u043E\u0439 \u043E\u0441\u0442\u0430\u044E\u0442\u0441\u044F \u0437\u0435\u043B\u0435\u043D\u044B\u043C\u0438 \u043A\u0440\u0443\u0433\u043B\u044B\u0439 \u0433\u043E\u0434. \u0420\u043E\u0434\u0438\u043D\u043E\u0439 \u0446\u0432\u0435\u0442\u043A\u0430 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u042E\u0433\u043E-\u0412\u043E\u0441\u0442\u043E\u0447\u043D\u0430\u044F \u0410\u0437\u0438\u044F. \u041F\u0440\u0438\u0431\u044B\u043B \u043E\u043D \u0432 \u043D\u0430\u0448\u0438 \u0448\u0438\u0440\u043E\u0442\u044B \u0441 \u043F\u0440\u043E\u0441\u0442\u043E\u0440\u043E\u0432 \u041A\u0438\u0442\u0430\u044F, \u0424\u0438\u043B\u0438\u043F\u043F\u0438\u043D\u0441\u043A\u0438\u0445 \u043E\u0441\u0442\u0440\u043E\u0432\u043E\u0432, \u041D\u043E\u0432\u043E\u0439 \u0413\u0432\u0438\u043D\u0435\u0438, \u0418\u043D\u0434\u0438\u0438 \u0438\u043B\u0438 \u0434\u0430\u0436\u0435 \u0421\u0443\u043C\u0430\u0442\u0440\u044B. \u0410\u0440\u0435\u0430\u043B \u0435\u0435 \u043E\u0431\u0438\u0442\u0430\u043D\u0438\u044F \u0432 \u043F\u0440\u0438\u0440\u043E\u0434\u043D\u044B\u0445 \u0443\u0441\u043B\u043E\u0432\u0438\u044F\u0445 \u0434\u043E\u0432\u043E\u043B\u044C\u043D\u043E \u043E\u0431\u0448\u0438\u0440\u0435\u043D. \u0412 \u043A\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u043A\u043E\u043C\u043D\u0430\u0442\u043D\u043E\u0433\u043E \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u0430\u0433\u043B\u0430\u043E\u043D\u0435\u043C\u0430 \u0437\u0430\u0432\u043E\u0435\u0432\u0430\u043B\u0430 \u0441\u0432\u043E\u044E \u043F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u043E\u0441\u0442\u044C \u0431\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u044F \u044F\u0440\u043A\u043E\u0441\u0442\u0438, \u043A\u0440\u0430\u0441\u0438\u0432\u043E\u043C\u0443 \u043E\u043A\u0440\u0430\u0441\u0443 \u0438 \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u044B\u043C \u0446\u0432\u0435\u0442\u043A\u0430\u043C.\n\n\u0410\u0433\u043B\u0430\u043E\u043D\u0435\u043C\u0430 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0441\u044F \u043A \u043E\u0434\u043D\u043E\u043C\u0443 \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0443 \u0410\u0440\u043E\u0438\u0434\u043D\u044B\u0435 \u0432\u043C\u0435\u0441\u0442\u0435 \u0441 \u0434\u0438\u0444\u0444\u0435\u043D\u0431\u0430\u0445\u0438\u0435\u0439. \u041E\u0442\u0441\u044E\u0434\u0430 \u0443\u0432\u0435\u0440\u0435\u043D\u043D\u043E\u0441\u0442\u044C \u043C\u043D\u043E\u0433\u0438\u0445 \u0432 \u0442\u043E\u043C, \u0447\u0442\u043E \u043E\u043D\u0430 \u0442\u0430\u043A\u0430\u044F \u0436\u0435 \u044F\u0434\u043E\u0432\u0438\u0442\u0430\u044F, \u043A\u0430\u043A \u0438 \u0435\u0435 \u0431\u043E\u043B\u0435\u0435 \u043A\u0440\u0443\u043F\u043D\u043E\u043B\u0438\u0441\u0442\u043D\u0430\u044F \u0441\u0435\u0441\u0442\u0440\u0430 \u043F\u043E \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0443.\n\n'));
-    Unit_getInstance();
-    array.add_2bq_k$(new FlowerArray(2, 'https://stroy-podskazka.ru/images/article/thumb/718-0/2021/09/vse-o-verbene-ampelnoj-1.jpg', '\u0412\u0435\u0440\u0431\u0435\u043D\u0430 \u0430\u043C\u043F\u0435\u043B\u044C\u043D\u0430\u044F', '\u0412\u0435\u0440\u0431\u0435\u043D\u0430 \u0430\u043C\u043F\u0435\u043B\u044C\u043D\u0430\u044F \u0432\u044B\u0440\u0430\u0449\u0438\u0432\u0430\u0435\u0442\u0441\u044F \u043A\u0430\u043A \u043E\u0434\u043D\u043E\u043B\u0435\u0442\u043D\u0435\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435. \u0422\u0440\u0430\u0432\u044F\u043D\u0438\u0441\u0442\u044B\u0439 \u0446\u0432\u0435\u0442\u043E\u043A \u0447\u0430\u0449\u0435 \u0432\u0441\u0435\u0433\u043E \u0441\u0430\u0436\u0430\u044E\u0442 \u0432 \u043F\u043E\u0434\u0432\u0435\u0441\u043D\u044B\u0435 \u043A\u043E\u0440\u0437\u0438\u043D\u044B, \u043F\u043E\u0442\u043E\u043C\u0443 \u0447\u0442\u043E \u0441\u0442\u0435\u0431\u043B\u0438 \u0432\u0435\u0440\u0431\u0435\u043D\u044B \u0441\u0432\u0438\u0441\u0430\u044E\u0442 \u043D\u0430 60 \u0441\u043C.', arrayListOf(['https://greenagri.ru/image/cache/catalog/import_files/5e/4eae688cfd15dc193805444bd5a3f7d1-760x600.jpg', 'https://i.ytimg.com/vi/MwEIJq5hc3Y/maxresdefault.jpg', 'https://pro-dachnikov.com/uploads/posts/2021-11/1637546985_9-pro-dachnikov-com-p-verbena-kvarts-miks-foto-11.jpg', 'https://images.ua.prom.st/2964436229_w500_h500_semena-verbeny-obsession.jpg', 'https://img4.goodfon.ru/original/3200x1200/9/12/verbena-petuniia-verbena-petunia.jpg']), '\u0412\u0435\u0440\u0431\u0435\u043D\u0430 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0441\u044F \u043A \u043C\u043D\u043E\u0433\u043E\u043B\u0435\u0442\u043D\u0438\u043C \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F\u043C, \u043D\u043E \u0432 \u0443\u043C\u0435\u0440\u0435\u043D\u043D\u044B\u0445 \u0448\u0438\u0440\u043E\u0442\u0430\u0445 \u043E\u043D\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0441\u044F \u043A\u0430\u043A \u043E\u0434\u043D\u043E\u043B\u0435\u0442\u043D\u044F\u044F \u043A\u0443\u043B\u044C\u0442\u0443\u0440\u0430, \u043F\u043E\u0441\u043A\u043E\u043B\u044C\u043A\u0443 \u043F\u0435\u0440\u0435\u043D\u0435\u0441\u0442\u0438 \u0441\u0443\u0440\u043E\u0432\u044B\u0435 \u0437\u0438\u043C\u043D\u0438\u0435 \u0443\u0441\u043B\u043E\u0432\u0438\u044F \u043E\u043D\u0430 \u043D\u0435 \u0432 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0438. \u041F\u043E\u0431\u0435\u0433\u0438 \u0430\u043C\u043F\u0435\u043B\u044C\u043D\u043E\u0439 \u043A\u0440\u0430\u0441\u0430\u0432\u0438\u0446\u044B \u0434\u043E\u0441\u0442\u0438\u0433\u0430\u044E\u0442 60 \u0441\u043C, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u0438\u0434\u0435\u0430\u043B\u044C\u043D\u0430\u044F \u0435\u0435 \u043B\u043E\u043A\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F \u2014 \u043F\u043E\u0434\u0432\u0435\u0441\u043D\u043E\u0435 \u043A\u0430\u0448\u043F\u043E \u0438\u043B\u0438 \u0432\u044B\u0441\u043E\u043A\u0430\u044F \u043A\u043B\u0443\u043C\u0431\u0430. \u0412 \u044D\u0442\u043E\u043C \u0441\u043B\u0443\u0447\u0430\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u043E\u0431\u0440\u0430\u0437\u0443\u0435\u0442 \u043F\u044B\u0448\u043D\u044B\u0439 \u043A\u0430\u0441\u043A\u0430\u0434, \u043F\u043E\u043A\u0440\u044B\u0442\u044B\u0439 \u044F\u0440\u043A\u0438\u043C\u0438 \u0446\u0432\u0435\u0442\u043A\u0430\u043C\u0438 \u0438\u043D\u0442\u0435\u043D\u0441\u0438\u0432\u043D\u043E\u0433\u043E \u043E\u043A\u0440\u0430\u0441\u0430. \u041F\u0440\u0435\u043E\u0431\u043B\u0430\u0434\u0430\u044E\u0449\u0438\u043C\u0438 \u0442\u043E\u043D\u0430\u043C\u0438 \u0431\u0443\u0434\u0443\u0442 \u0432\u0438\u0448\u043D\u0435\u0432\u044B\u0435, \u0441\u0438\u043D\u0438\u0435, \u0441\u0438\u0440\u0435\u043D\u0435\u0432\u044B\u0435, \u043A\u0440\u0430\u0441\u043D\u044B\u0435, \u043B\u043E\u0441\u043E\u0441\u0435\u0432\u044B\u0435, \u0440\u043E\u0437\u043E\u0432\u044B\u0435, \u0431\u0435\u043B\u044B\u0435 \u0438 \u0435\u0449\u0435 \u043C\u0430\u0441\u0441\u0430 \u043F\u0440\u043E\u043C\u0435\u0436\u0443\u0442\u043E\u0447\u043D\u044B\u0445 \u043E\u0442\u0442\u0435\u043D\u043A\u043E\u0432.'));
-    Unit_getInstance();
-    array.add_2bq_k$(new FlowerArray(3, 'https://leplants.ru/static/cache/59/de/59de6fe3abe5fcf1f02585182aecd39e.jpg', '\u0413\u0438\u043F\u043E\u044D\u0441\u0442\u0435\u0441', '\u041A\u043E\u043C\u043D\u0430\u0442\u043D\u044B\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B\u044C\u043D\u043E \u0443\u043A\u0440\u0430\u0448\u0430\u044E\u0442 \u0438\u043D\u0442\u0435\u0440\u044C\u0435\u0440 \u043F\u043E\u043C\u0435\u0449\u0435\u043D\u0438\u044F, \u043F\u043E\u0434\u0447\u0435\u0440\u043A\u0438\u0432\u0430\u044F \u0441\u0442\u0438\u043B\u0438\u0441\u0442\u0438\u043A\u0443 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u043D\u043E\u0433\u043E \u0434\u0438\u0437\u0430\u0439\u043D\u0430. \u041D\u0430 \u0441\u0435\u0433\u043E\u0434\u043D\u044F\u0448\u043D\u0438\u0439 \u0434\u0435\u043D\u044C \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u043E\u0433\u0440\u043E\u043C\u043D\u044B\u0439 \u0432\u044B\u0431\u043E\u0440 \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u0438\u0432\u043D\u044B\u0445 \u0446\u0432\u0435\u0442\u043E\u0432, \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u043C\u043E\u0436\u043D\u043E \u043B\u0435\u0433\u043A\u043E \u0432\u044B\u0440\u0430\u0449\u0438\u0432\u0430\u0442\u044C \u0432 \u0434\u043E\u043C\u0430\u0448\u043D\u0438\u0445 \u0443\u0441\u043B\u043E\u0432\u0438\u044F\u0445, \u043F\u0440\u0438 \u044D\u0442\u043E\u043C \u043E\u0441\u043E\u0431\u043E\u0439 \u043F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u043E\u0441\u0442\u044C\u044E \u0443 \u0446\u0432\u0435\u0442\u043E\u0432\u043E\u0434\u043E\u0432 \u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0441\u044F \u0433\u0438\u043F\u043E\u044D\u0441\u0442\u0435\u0441. \u041E\u043D \u043E\u0442\u043B\u0438\u0447\u0430\u0435\u0442\u0441\u044F \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E\u0439 \u043E\u043A\u0440\u0430\u0441\u043A\u043E\u0439, \u043F\u0440\u043E\u0441\u0442 \u0432 \u0443\u0445\u043E\u0434\u0435 \u0438 \u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u043D\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u043A\u043E\u043C\u043D\u0430\u0442\u0443 \u043D\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0439 \u0430\u0442\u043C\u043E\u0441\u0444\u0435\u0440\u043E\u0439.', arrayListOf(['https://www.provenwinners.com/sites/provenwinners.com/files/imagecache/1024-max/ifa_upload/hippo_rose_mono.jpg', 'http://www.bloomingarden.ru/images/companies/1/Hypoestes%20Confetti%20Compact-07.jpg?1441112105464', 'https://cvetyportal.ru/wp-content/uploads/2018/07/gipoe%60stes-75.jpg', 'https://www.miodimore.ru/wp-content/uploads/2019/09/gipoehstes.jpg', 'https://na-dache.pro/uploads/posts/2021-05/1620294092_2-p-fittoniya-gipoestes-foto-2.jpg']), '\u0413\u0438\u043F\u043E\u044D\u0441\u0442\u0435\u0441 \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u0442 \u0441\u043E\u0431\u043E\u0439 \u043A\u0440\u0430\u0441\u0438\u0432\u043E\u0435 \u043A\u043E\u043C\u043D\u0430\u0442\u043D\u043E\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435, \u043A\u043E\u0442\u043E\u0440\u043E\u0435 \u0431\u044B\u043B\u043E \u0437\u0430\u0432\u0435\u0437\u0435\u043D\u043E \u0432 \u043D\u0430\u0448\u0443 \u0441\u0442\u0440\u0430\u043D\u0443 \u0441 \u0434\u0430\u043B\u0435\u043A\u043E\u0433\u043E \u043E\u0441\u0442\u0440\u043E\u0432\u0430 \u041C\u0430\u0434\u0430\u0433\u0430\u0441\u043A\u0430\u0440. \u0414\u0430\u043D\u043D\u044B\u0439 \u0446\u0432\u0435\u0442\u043E\u043A \u043E\u0442\u043D\u043E\u0441\u044F\u0442 \u043A \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0443 \u0410\u043A\u0430\u043D\u0442\u043E\u0432\u044B\u0445, \u043E\u043D \u0438\u043C\u0435\u0435\u0442 \u0432\u0438\u0434 \u0440\u0430\u0437\u0432\u0435\u0442\u0432\u043B\u0435\u043D\u043D\u043E\u0433\u043E \u043A\u0443\u0441\u0442\u0430\u0440\u043D\u0438\u043A\u0430 \u0441 \u043D\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0439 \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u0439 \u043B\u0438\u0441\u0442\u0432\u043E\u0439, \u043A\u043E\u0442\u043E\u0440\u0430\u044F \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0437\u0443\u0435\u0442\u0441\u044F \u044F\u0440\u043A\u043E\u0439 \u043E\u043A\u0440\u0430\u0441\u043A\u043E\u0439 \u0438 \u043F\u043E\u043A\u0440\u044B\u0442\u0430 \xAB\u0440\u0430\u0434\u0443\u0436\u043D\u044B\u043C\u0438 \u0432\u0435\u0441\u043D\u0443\u0448\u043A\u0430\u043C\u0438\xBB. \u0412\u044B\u0441\u043E\u0442\u0430 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u043D\u0435 \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0435\u0442 50 \u0441\u043C.\n\n\u041B\u0438\u0441\u0442\u044C\u044F \u0443 \u0433\u0438\u043F\u043E\u044D\u0441\u0442\u0435\u0441\u0430 \u043E\u0432\u0430\u043B\u044C\u043D\u043E\u0439 \u0444\u043E\u0440\u043C\u044B, \u043E\u043D\u0438 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u043A\u0430\u043A \u0441 \u0440\u043E\u0432\u043D\u044B\u043C\u0438 \u0442\u0430\u043A \u0438 \u0437\u0430\u043E\u0441\u0442\u0440\u0435\u043D\u043D\u044B\u043C\u0438 \u043A\u0440\u0430\u044F\u043C\u0438. \u0418\u0445 \u0434\u043B\u0438\u043D\u0430 \u043E\u0431\u044B\u0447\u043D\u043E \u0441\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u0442 \u043E\u0442 5 \u0434\u043E 8 \u0441\u043C, \u0448\u0438\u0440\u0438\u043D\u0430 \u043D\u0435 \u0431\u043E\u043B\u0435\u0435 4 \u0441\u043C. \u0413\u043B\u0430\u0432\u043D\u043E\u0439 \u043E\u0441\u043E\u0431\u0435\u043D\u043D\u043E\u0441\u0442\u044C\u044E \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u0441\u0447\u0438\u0442\u0430\u0435\u0442\u0441\u044F \u043D\u0430\u043B\u0438\u0447\u0438\u0435 \u043D\u0430 \u043B\u0438\u0441\u0442\u0432\u0435 \u043C\u043D\u043E\u0436\u0435\u0441\u0442\u0432\u0430 \u0442\u043E\u0447\u0435\u043A \u0440\u0430\u0437\u043B\u0438\u0447\u043D\u043E\u0433\u043E \u043E\u0442\u0442\u0435\u043D\u043A\u0430: \u043A\u0440\u0430\u0441\u043D\u043E\u0433\u043E, \u0431\u0435\u043B\u043E\u0433\u043E, \u0440\u043E\u0437\u043E\u0432\u043E\u0433\u043E, \u043F\u0443\u0440\u043F\u0443\u0440\u043D\u043E\u0433\u043E.\n\n'));
-    Unit_getInstance();
-    array.add_2bq_k$(new FlowerArray(4, 'https://dachadecor.ru/images/dd/dd_givokost_polevaya_3.jpg', '\u0414\u0435\u043B\u044C\u0444\u0438\u043D\u0438\u0443\u043C', '\u0420\u043E\u0434 \u043E\u0434\u043D\u043E\u043B\u0435\u0442\u043D\u0438\u0445 \u0438 \u043C\u043D\u043E\u0433\u043E\u043B\u0435\u0442\u043D\u0438\u0445 \u0442\u0440\u0430\u0432\u044F\u043D\u0438\u0441\u0442\u044B\u0445 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0439 \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0430 \u041B\u044E\u0442\u0438\u043A\u043E\u0432\u044B\u0435. \u0412\u043A\u043B\u044E\u0447\u0430\u0435\u0442 \u043E\u043A\u043E\u043B\u043E 450 \u0432\u0438\u0434\u043E\u0432, \u043F\u0440\u043E\u0438\u0437\u0440\u0430\u0441\u0442\u0430\u044E\u0449\u0438\u0445 \u0432 \u0421\u0435\u0432\u0435\u0440\u043D\u043E\u043C \u043F\u043E\u043B\u0443\u0448\u0430\u0440\u0438\u0438 \u0438 \u0432 \u0433\u043E\u0440\u0430\u0445 \u0442\u0440\u043E\u043F\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u0410\u0444\u0440\u0438\u043A\u0438. \u041C\u043D\u043E\u0433\u0438\u0435 \u0432\u0438\u0434\u044B \u043F\u0440\u043E\u0438\u0441\u0445\u043E\u0434\u044F\u0442 \u0438\u0437 \u042E\u0433\u043E-\u0412\u043E\u0441\u0442\u043E\u0447\u043D\u043E\u0439 \u0410\u0437\u0438\u0438 \u0438 \u043E\u0441\u043E\u0431\u0435\u043D\u043D\u043E \u0438\u0437 \u041A\u0438\u0442\u0430\u044F, \u0433\u0434\u0435 \u043F\u0440\u043E\u0438\u0437\u0440\u0430\u0441\u0442\u0430\u0435\u0442 \u0431\u043E\u043B\u0435\u0435 150 \u0432\u0438\u0434\u043E\u0432. \u0420\u043E\u0434 \u0416\u0438\u0432\u043E\u043A\u043E\u0441\u0442\u044C \u0431\u043B\u0438\u0437\u043E\u043A \u043A \u0440\u043E\u0434\u0443 \u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0445 \u044F\u0434\u043E\u0432\u0438\u0442\u044B\u0445 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0439 \u0410\u043A\u043E\u043D\u0438\u0442.', arrayListOf(['https://www.plantarium.ru/dat/plants/5/543/577543_84c4dbe4.jpg', 'https://pro-dachnikov.com/uploads/posts/2021-11/1637433896_41-pro-dachnikov-com-p-zhivokost-klinovidnaya-foto-42.jpg', 'https://i.artfile.me/wallpaper/30-12-2009/1600x1200/cvety-delfinium-430215.jpg', 'https://pro-dachnikov.com/uploads/posts/2021-11/1637654106_30-pro-dachnikov-com-p-zhivokost-visokaya-foto-31.jpg', 'https://images.ru.prom.st/426922454_w640_h640_delfinium.jpg']), '\u0412\u043E \u0432\u0441\u0435\u0445 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u044F\u0445 \u0443\u043F\u043E\u043C\u0438\u043D\u0430\u0435\u0442\u0441\u044F, \u0447\u0442\u043E \u044D\u0442\u043E \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0432\u044B\u0433\u043B\u044F\u0434\u0438\u0442 \u043A\u0430\u043A \u0441\u0432\u0435\u0447\u0438, \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u0440\u044F\u0434\u043E\u043C \u0431\u0443\u0442\u043E\u043D\u043E\u0432. \u0412 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438 \u043E\u0442 \u0440\u0435\u0433\u0438\u043E\u043D\u0430 \u043E\u0431\u0438\u0442\u0430\u043D\u0438\u044F, \u0435\u0441\u0442\u044C \u0440\u0430\u0437\u043D\u044B\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F, \u0432 \u0442\u043E\u043C \u0447\u0438\u0441\u043B\u0435 \xAB\u0448\u043F\u043E\u0440\u043D\u0438\u043A\xBB \u0438 \xAB\u0436\u0438\u0432\u043E\u043A\u043E\u0441\u0442\u044C\xBB. \u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u043E\u0441\u0442\u044C \u043A\u0443\u043B\u044C\u0442\u0443\u0440\u044B \u043E\u0431\u0443\u0441\u043B\u043E\u0432\u043B\u0435\u043D\u0430 \u0442\u0435\u043C, \u0447\u0442\u043E \u043E\u043D\u0430 \u043F\u0435\u0440\u0435\u043D\u043E\u0441\u0438\u0442 \u0434\u0430\u0436\u0435 \u043E\u0447\u0435\u043D\u044C \u0445\u043E\u043B\u043E\u0434\u043D\u044B\u0435 \u0432\u0440\u0435\u043C\u0435\u043D\u0430. \u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \xAB\u0434\u0435\u043B\u044C\u0444\u0438\u043D\u0438\u0443\u043C\xBB \u0441\u0432\u044F\u0437\u0430\u043D\u043E \u0441 \u043E\u0441\u043E\u0431\u0435\u043D\u043D\u043E\u0441\u0442\u044F\u043C\u0438 \u043A\u043E\u043B\u043E\u0441\u0430 \u2013 \u043E\u043D \u0432\u043D\u0435\u0448\u043D\u0435 \u043F\u043E\u0445\u043E\u0436 \u043D\u0430 \u0433\u043E\u043B\u043E\u0432\u0443 \u043C\u043E\u0440\u0441\u043A\u043E\u0433\u043E \u0434\u0435\u043B\u044C\u0444\u0438\u043D\u0430. \u0410 \u0441\u043B\u043E\u0432\u043E \xAB\u0448\u043F\u043E\u0440\u043D\u0438\u043A\xBB \u043F\u043E\u044F\u0432\u0438\u043B\u043E\u0441\u044C \u0438\u0437-\u0437\u0430 \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u043D\u044B\u0445 \u0433\u043B\u0430\u0437\u043A\u043E\u0432 \u0432\u043D\u0443\u0442\u0440\u0438 \u0447\u0430\u0448\u0435\u043B\u0438\u0441\u0442\u0438\u043A\u043E\u0432.\n\n\u041D\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E \u043E\u0442 \u0442\u043E\u0433\u043E, \u043A\u0430\u043A \u043D\u0430\u0437\u044B\u0432\u0430\u044E\u0442 \u044D\u0442\u043E \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435, \u0432\u0441\u0435 \u0441\u0445\u043E\u0434\u044F\u0442\u0441\u044F \u0432\u043E \u043C\u043D\u0435\u043D\u0438\u0438, \u0447\u0442\u043E \u043E\u043D\u043E \u043E\u0442\u043B\u0438\u0447\u043D\u043E \u043F\u043E\u0434\u0445\u043E\u0434\u0438\u0442 \u0434\u043B\u044F \u043C\u0435\u0441\u0442 \u0441\u043E \u0441\u0442\u0443\u0434\u0435\u043D\u043E\u0439 \u0437\u0438\u043C\u043E\u0439. \u0418 \u0431\u043E\u043B\u0435\u0435 \u0442\u043E\u0433\u043E, \u0434\u0430\u0436\u0435 \u0435\u0441\u043B\u0438 \u043D\u0430\u0441\u0442\u0443\u043F\u0438\u043B\u043E \u043F\u0440\u043E\u0445\u043B\u0430\u0434\u043D\u043E\u0435 \u043B\u0435\u0442\u043E, \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0433\u0430\u0440\u0430\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u043E \u0440\u0430\u0441\u043A\u0440\u043E\u0435\u0442\u0441\u044F \u0432\u043E \u0432\u0441\u0435\u0439 \u043A\u0440\u0430\u0441\u043E\u0442\u0435. \u042D\u0442\u043E \u043E\u0431\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u0441\u0442\u0432\u043E \u0442\u043E\u0436\u0435 \u0434\u0435\u043B\u0430\u0435\u0442 \u0434\u0435\u043B\u044C\u0444\u0438\u043D\u0438\u0443\u043C \u0432\u043E\u0441\u0442\u0440\u0435\u0431\u043E\u0432\u0430\u043D\u043D\u044B\u043C \u0441\u0440\u0435\u0434\u0438 \u0441\u0430\u0434\u043E\u0432\u043E\u0434\u043E\u0432 \u0441\u0440\u0435\u0434\u043D\u0435\u0439 \u043A\u043B\u0438\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u0437\u043E\u043D\u044B \u0420\u043E\u0441\u0441\u0438\u0438.\n\n\u0412 \u044D\u0442\u0438\u0445 \u0440\u0435\u0433\u0438\u043E\u043D\u0430\u0445 \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u0442\u0441\u044F \u043D\u0435 \u043C\u0435\u043D\u0435\u0435 90 \u0440\u0430\u0437\u043D\u043E\u0432\u0438\u0434\u043D\u043E\u0441\u0442\u0435\u0439 \u0434\u0435\u043B\u044C\u0444\u0438\u043D\u0438\u0443\u043C\u0430. \u0412\u0440\u0435\u043C\u044F \u0435\u0433\u043E \u0436\u0438\u0437\u043D\u0438 \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u044F\u0435\u0442\u0441\u044F, \u043F\u0440\u0435\u0436\u0434\u0435 \u0432\u0441\u0435\u0433\u043E, \u0444\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u043F\u043E\u0433\u043E\u0434\u043E\u0439. \u0412 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438 \u043E\u0442 \u043D\u0435\u0435, \u043E\u0434\u043D\u0438 \u0438 \u0442\u0435 \u0436\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u043C\u043E\u0433\u0443\u0442 \u043F\u0440\u043E\u0436\u0438\u0442\u044C \u0438 4 \u0433\u043E\u0434\u0430, \u0438 8 \u043B\u0435\u0442. \u041F\u0440\u043E\u0441\u0442\u044B\u0435 \u0431\u0443\u0442\u043E\u043D\u044B \u0443 \u044D\u0442\u0438\u0445 \u0446\u0432\u0435\u0442\u043E\u0432 \u043E\u0431\u044B\u0447\u043D\u043E \u0438\u043C\u0435\u044E\u0442 5 \u043B\u0435\u043F\u0435\u0441\u0442\u043A\u043E\u0432.\n\n\u0421\u0435\u0440\u0435\u0434\u0438\u043D\u0443 \u0437\u0430\u043D\u0438\u043C\u0430\u0435\u0442 \u0448\u043F\u043E\u0440\u0435\u0446. \u0422\u0430\u043A\u043E\u0435 \u0441\u043E\u0447\u0435\u0442\u0430\u043D\u0438\u0435 \u0434\u0435\u043B\u0430\u0435\u0442 \u0434\u0435\u043B\u044C\u0444\u0438\u043D\u0438\u0443\u043C \u043F\u0440\u0435\u0432\u043E\u0441\u0445\u043E\u0434\u043D\u044B\u043C \u043C\u0435\u0434\u043E\u043D\u043E\u0441\u043E\u043C. \u041A\u0443\u043B\u044C\u0442\u0443\u0440\u0430 \u043C\u043E\u0436\u0435\u0442 \u043E\u043F\u044B\u043B\u044F\u0442\u044C\u0441\u044F \u0448\u043C\u0435\u043B\u044F\u043C\u0438 \u043B\u0438\u0431\u043E \u043D\u0435\u0431\u043E\u043B\u044C\u0448\u0438\u043C\u0438 \u043F\u0442\u0438\u0446\u0430\u043C\u0438. \u041E\u043A\u0440\u0430\u0441\u043A\u0430 \u0446\u0432\u0435\u0442\u043A\u043E\u0432 \u0440\u0430\u0437\u043D\u043E\u043E\u0431\u0440\u0430\u0437\u043D\u0430. \u041E\u0434\u043D\u0430\u043A\u043E \u0431\u043E\u043B\u044C\u0448\u0438\u043D\u0441\u0442\u0432\u043E \u0432\u0438\u0434\u043E\u0432 \u0443\u043A\u0440\u0430\u0448\u0435\u043D\u043E \u0441\u0438\u043D\u0438\u043C\u0438 \u043B\u0438\u0431\u043E \u0444\u0438\u043E\u043B\u0435\u0442\u043E\u0432\u044B\u043C\u0438 \u0431\u0443\u0442\u043E\u043D\u0430\u043C\u0438. \u0427\u0435\u043C \u0431\u0435\u043B\u0435\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435, \u0442\u0435\u043C \u043E\u0431\u044B\u0447\u043D\u043E \u0441\u0438\u043B\u044C\u043D\u0435\u0435 \u0435\u0433\u043E \u0437\u0430\u043F\u0430\u0445.'));
-    Unit_getInstance();
-    array.add_2bq_k$(new FlowerArray(5, 'https://2sotki.ru/wp-content/uploads/d/e/7/de72ab92bedf375701935ced1767ece8.jpg', '\u0418\u0431\u0435\u0440\u0438\u0441', '\u0420\u043E\u0434 \u0442\u0440\u0430\u0432\u044F\u043D\u0438\u0441\u0442\u044B\u0445 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0439 \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0430 \u041A\u0430\u043F\u0443\u0441\u0442\u043D\u044B\u0435. \u0414\u0440\u0443\u0433\u0438\u0435 \u0440\u0443\u0441\u0441\u043A\u0438\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F: \u041F\u0435\u0440\u0435\u0447\u043D\u0438\u043A, \u0421\u0442\u0435\u043D\u043D\u0438\u043A, \u0420\u0430\u0437\u043D\u043E\u043B\u0435\u043F\u0435\u0441\u0442\u043A\u0430.', arrayListOf(['https://2sotki.ru/wp-content/uploads/d/e/7/de72ab92bedf375701935ced1767ece8.jpg', 'https://i03.tvoysad.ru/2020/06/04/IMG_20200604_09522822876afc0f20cd77.jpg', 'https://sun9-51.userapi.com/c858432/v858432766/1ef837/I-IYbGn4O94.jpg', 'https://distano.ru/wp-content/uploads/e/d/5/ed57033dadc0b93e1e6e2e4ef09ceba2.jpeg', 'https://i.pinimg.com/originals/e9/4f/a7/e94fa7d8997b1ab119d58168dd4607d2.jpg']), '\u0418\u0431\u0435\u0440\u0438\u0441 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435\u043C, \u043A\u043E\u0442\u043E\u0440\u043E\u0435 \u0432 \u0441\u0432\u043E\u0435\u043C \u0440\u043E\u0441\u0442\u0435 \u043E\u043F\u0438\u0440\u0430\u0435\u0442\u0441\u044F \u043D\u0430 \u043A\u043E\u0440\u0435\u043D\u044C \u043F\u043E \u0442\u0438\u043F\u0443 \u0441\u0442\u0435\u0440\u0436\u043D\u044F. \u041F\u043E \u044D\u0442\u043E\u0439 \u043F\u0440\u0438\u0447\u0438\u043D\u0435 \u043F\u0435\u0440\u0435\u0441\u0430\u0436\u0438\u0432\u0430\u0442\u044C \u0435\u0433\u043E \u0431\u044B\u0432\u0430\u0435\u0442 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u0430\u0442\u0438\u0447\u043D\u043E. \u041F\u043E\u0431\u0435\u0433\u0438 \u043A\u0443\u043B\u044C\u0442\u0443\u0440\u044B \u0432\u043E \u043C\u043D\u043E\u0433\u043E\u043C \u0437\u0430\u0432\u0438\u0441\u044F\u0442 \u043E\u0442 \u043A\u043E\u043D\u043A\u0440\u0435\u0442\u043D\u043E\u0433\u043E \u0432\u0438\u0434\u0430. \u041E\u043D\u0438 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u043A\u0430\u043A \u043F\u0440\u044F\u043C\u043E\u0441\u0442\u043E\u044F\u0447\u0438\u043C\u0438, \u0442\u0430\u043A \u0438 \u0441\u0442\u0435\u043B\u044E\u0449\u0438\u043C\u0438\u0441\u044F. \u041B\u0438\u0441\u0442\u0432\u0430 \u043E\u0442\u043B\u0438\u0447\u0430\u0435\u0442\u0441\u044F \u043F\u0440\u043E\u0441\u0442\u044B\u043C \u0441\u0442\u0440\u043E\u0435\u043D\u0438\u0435\u043C. \u041B\u0438\u0441\u0442\u043E\u0432\u044B\u0435 \u043F\u043B\u0430\u0441\u0442\u0438\u043D\u043A\u0438 \u0438\u043C\u0435\u044E\u0442 \u043C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0435 \u0440\u0430\u0437\u043C\u0435\u0440\u044B, \u0445\u0430\u0440\u0430\u043A\u0442\u0435\u0440\u0438\u0437\u0443\u044E\u0442\u0441\u044F \u0442\u0435\u043C\u043D\u043E-\u0437\u0435\u043B\u0435\u043D\u044B\u043C \u043E\u043A\u0440\u0430\u0441\u043E\u043C. \u041F\u043E\u0434\u043E\u0431\u043D\u044B\u0439 \u043A\u0443\u0441\u0442\u0430\u0440\u043D\u0438\u043A \u044D\u0444\u0444\u0435\u043A\u0442\u043D\u043E \u0443\u043A\u0440\u0430\u0448\u0430\u044E\u0442 \u0441\u043E\u0446\u0432\u0435\u0442\u0438\u044F, \u0438\u043C\u0435\u044E\u0449\u0438\u0435 \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u0443\u044E \u0444\u043E\u0440\u043C\u0443 \u0437\u043E\u043D\u0442\u0438\u043A\u0430. \u041E\u043D\u0438 \u0441\u043E\u0431\u0438\u0440\u0430\u044E\u0442\u0441\u044F \u0438\u0437 \u0431\u043E\u043B\u044C\u0448\u043E\u0433\u043E \u0447\u0438\u0441\u043B\u0430 \u043C\u0438\u043D\u0438\u0430\u0442\u044E\u0440\u043D\u044B\u0445 \u0446\u0432\u0435\u0442\u043E\u0447\u043A\u043E\u0432, \u0434\u0438\u0430\u043C\u0435\u0442\u0440 \u043A\u043E\u0438\u0445 \u0440\u0435\u0434\u043A\u043E \u043F\u0440\u0435\u0432\u044B\u0448\u0430\u0435\u0442 1 \u0441\u043C.\n\u0426\u0432\u0435\u0442 \u0438\u0431\u0435\u0440\u0438\u0441\u0430 \u0432\u0441\u0435\u0433\u0434\u0430 \u0434\u043E\u0431\u0440\u043E\u0442\u043D\u044B\u0439 \u0438 \u043F\u044B\u0448\u043D\u044B\u0439. \u0417\u0430 \u0431\u043E\u043B\u044C\u0448\u0438\u043C \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u043C \u0431\u043E\u0433\u0430\u0442\u044B\u0445 \u0441\u043E\u0446\u0432\u0435\u0442\u0438\u0439 \u043D\u0435 \u0432\u0441\u0435\u0433\u0434\u0430 \u043C\u043E\u0436\u043D\u043E \u043B\u0435\u0433\u043A\u043E \u0437\u0430\u043C\u0435\u0442\u0438\u0442\u044C \u043B\u0438\u0441\u0442\u0432\u0443. \u0420\u0430\u0441\u0446\u0432\u0435\u0442\u043A\u0430 \u0446\u0432\u0435\u0442\u043A\u043E\u0432 \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438 \u043E\u0442 \u043A\u043E\u043D\u043A\u0440\u0435\u0442\u043D\u043E\u0433\u043E \u0441\u043E\u0440\u0442\u0430 \u043F\u043E\u043B\u0443\u043A\u0443\u0441\u0442\u0430\u0440\u043D\u0438\u043A\u0430. \u0412\u0441\u0442\u0440\u0435\u0447\u0430\u044E\u0442\u0441\u044F \u0431\u0435\u043B\u043E\u0441\u043D\u0435\u0436\u043D\u044B\u0435, \u043B\u0438\u043B\u043E\u0432\u044B\u0435, \u0440\u043E\u0437\u043E\u0432\u044B\u0435, \u0441\u0438\u0440\u0435\u043D\u0435\u0432\u044B\u0435 \u0438 \u043A\u0440\u0430\u0441\u043D\u044B\u0435 \u043E\u0442\u0442\u0435\u043D\u043A\u0438. \u0421\u043E\u0446\u0432\u0435\u0442\u0438\u044F \u044F\u0432\u043B\u044F\u044E\u0442\u0441\u044F \u0434\u0443\u0448\u0438\u0441\u0442\u044B\u043C\u0438, \u0447\u0442\u043E \u043F\u0440\u0438\u0434\u0430\u0435\u0442 \u0441\u0430\u0434\u043E\u0432\u043E\u043C\u0443 \u0443\u0447\u0430\u0441\u0442\u043A\u0443 \u043D\u0435\u043F\u043E\u0432\u0442\u043E\u0440\u0438\u043C\u0443\u044E \u0441\u0432\u0435\u0436\u0435\u0441\u0442\u044C \u0432\u043E\u0437\u0434\u0443\u0445\u0430 \u0438 \u043E\u0441\u043E\u0431\u0435\u043D\u043D\u044B\u0439, \u043C\u0430\u043D\u044F\u0449\u0438\u0439 \u0430\u0440\u043E\u043C\u0430\u0442.\n\u0418\u0431\u0435\u0440\u0438\u0441 \u043E\u0442\u043B\u0438\u0447\u0430\u0435\u0442\u0441\u044F \u0432\u0435\u0441\u044C\u043C\u0430 \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u044B\u043C \u0446\u0432\u0435\u0442\u0435\u043D\u0438\u0435\u043C. \u0417\u0430\u0446\u0432\u0435\u0442\u0430\u0435\u0442 \u044D\u0442\u043E \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0432\u0435\u0441\u043D\u043E\u0439 \u0432 \u043C\u0430\u0435 \u043B\u0438\u0431\u043E \u0432 \u0430\u0432\u0433\u0443\u0441\u0442\u0435, \u043E\u0431\u044B\u0447\u043D\u043E \u0446\u0432\u0435\u0442\u0435\u0442 \u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u043E \u0440\u043E\u0441\u043A\u043E\u0448\u043D\u043E \u0438 \u043F\u0435\u0441\u0442\u0440\u043E, \u043D\u043E, \u043A \u0441\u043E\u0436\u0430\u043B\u0435\u043D\u0438\u044E, \u043D\u0435 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0434\u043E\u043B\u0433\u043E \u2013 \u0432\u0441\u0435\u0433\u043E \u043E\u043A\u043E\u043B\u043E 8 \u043D\u0435\u0434\u0435\u043B\u044C. \u0421\u043E\u0446\u0432\u0435\u0442\u0438\u044F \u0434\u0430\u044E\u0442 \u043F\u043B\u043E\u0434\u044B, \u043F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043B\u0435\u043D\u043D\u044B\u0435 \u0432 \u0444\u043E\u0440\u043C\u0435 \u043E\u0432\u0430\u043B\u044C\u043D\u043E\u0433\u043E \u0438\u043B\u0438 \u043A\u0440\u0443\u0433\u043B\u043E\u0433\u043E \u0434\u0432\u0443\u0445\u0441\u0442\u043E\u0440\u043E\u043D\u043D\u0435\u0433\u043E \u0441\u0442\u0440\u0443\u0447\u043A\u0430. \u0415\u0441\u043B\u0438 \u0441\u0435\u043C\u0435\u0447\u043A\u0438 \u0432\u044B\u0441\u0443\u0448\u0438\u0442\u044C, \u0438\u0445 \u0432\u0441\u0445\u043E\u0436\u0435\u0441\u0442\u044C \u0438\u043C\u0435\u0435\u0442 \u0441\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u044C \u0441\u043E\u0445\u0440\u0430\u043D\u044F\u0442\u044C\u0441\u044F \u043D\u0430 \u043F\u0440\u043E\u0442\u044F\u0436\u0435\u043D\u0438\u0438 \u0434\u043E\u043B\u0433\u0438\u0445 4 \u043B\u0435\u0442. \u041C\u043D\u043E\u0433\u0438\u0435 \u0441\u0430\u0434\u043E\u0432\u043E\u0434\u044B \u043F\u0440\u0435\u0434\u043F\u043E\u0447\u0438\u0442\u0430\u044E\u0442 \u0437\u0430\u043D\u0438\u043C\u0430\u0442\u044C\u0441\u044F \u0432\u044B\u0440\u0430\u0449\u0438\u0432\u0430\u043D\u0438\u0435\u043C \u043C\u043D\u043E\u0433\u043E\u043B\u0435\u0442\u043D\u0435\u0433\u043E \u0438\u0431\u0435\u0440\u0438\u0441\u0430 \u0438\u0437 \u0441\u0435\u043C\u0435\u0447\u0435\u043A. \u0418\u0445 \u043F\u0440\u043E\u0441\u0442\u043E \u0432\u044B\u0441\u0430\u0436\u0438\u0432\u0430\u044E\u0442 \u0432 \u0445\u043E\u0440\u043E\u0448\u043E \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u043D\u044B\u0445 \u0442\u0435\u043F\u043B\u0438\u0446\u0430\u0445, \u043F\u043E\u0441\u043B\u0435 \u0447\u0435\u0433\u043E \u0442\u0449\u0430\u0442\u0435\u043B\u044C\u043D\u043E \u0437\u0430 \u043D\u0438\u043C\u0438 \u0443\u0445\u0430\u0436\u0438\u0432\u0430\u044E\u0442 \u043F\u043E \u0432\u0441\u0435\u043C \u043F\u0440\u0430\u0432\u0438\u043B\u0430\u043C. \u0426\u0432\u0435\u0442\u043A\u043E\u0432 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C \u0442\u0430\u043A \u043C\u043D\u043E\u0433\u043E, \u0447\u0442\u043E \u043E\u043D\u0438 \u0441\u043A\u0440\u043E\u044E\u0442 \u0437\u0430 \u0441\u043E\u0431\u043E\u0439 \u0432\u0441\u044E \u043B\u0438\u0441\u0442\u0432\u0443.'));
-    Unit_getInstance();
-    array.add_2bq_k$(new FlowerArray(6, 'https://www.wallpapers13.com/wp-content/uploads/2018/04/Caladium-Bulbs-Red-Flash-Large-leaves-with-light-red-hearts-and-green-edges-manage-in-hot-and-humid-places.jpg', '\u041A\u0430\u043B\u0430\u0434\u0438\u0443\u043C', '\u0420\u043E\u0434 \u0442\u0440\u043E\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0445 \u0442\u0440\u0430\u0432\u044F\u043D\u0438\u0441\u0442\u044B\u0445 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0439 \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0430 \u0410\u0440\u043E\u0438\u0434\u043D\u044B\u0435. \u0420\u043E\u0434 \u0432\u043A\u043B\u044E\u0447\u0430\u0435\u0442 \u043E\u043A\u043E\u043B\u043E 15 \u0432\u0438\u0434\u043E\u0432, \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u044E\u0449\u0438\u0445\u0441\u044F \u0432 \u0442\u0440\u043E\u043F\u0438\u0447\u0435\u0441\u043A\u043E\u0439 \u0410\u043C\u0435\u0440\u0438\u043A\u0435. \u0420\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u043E\u0431\u0440\u0430\u0437\u0443\u044E\u0442 \u0433\u0443\u0441\u0442\u043E\u0439 \u0442\u0440\u043E\u043F\u0438\u0447\u0435\u0441\u043A\u0438\u0439 \u043F\u043E\u0434\u043B\u0435\u0441\u043E\u043A. \u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u044E\u0442\u0441\u044F \u0432 \u0441\u0435\u043B\u044C\u0441\u043A\u043E\u043C \u0445\u043E\u0437\u044F\u0439\u0441\u0442\u0432\u0435 \u0434\u043B\u044F \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F \u043A\u0440\u0430\u0445\u043C\u0430\u043B\u0430, \u043D\u0430\u0438\u0431\u043E\u043B\u0435\u0435 \u0447\u0430\u0441\u0442\u043E - \u0432 \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u043C \u0441\u0430\u0434\u043E\u0432\u043E\u0434\u0441\u0442\u0432\u0435 \u0440\u0430\u0434\u0438 \u043A\u0440\u0443\u043F\u043D\u044B\u0445 \u044F\u0440\u043A\u043E-\u043E\u043A\u0440\u0430\u0448\u0435\u043D\u043D\u044B\u0445 \u043B\u0438\u0441\u0442\u043E\u0432\u044B\u0445 \u043B\u043E\u043F\u0430\u0441\u0442\u0435\u0439 \u0440\u0430\u0437\u043D\u044B\u0445 \u0446\u0432\u0435\u0442\u043E\u0432.', arrayListOf(['https://na-dache.pro/uploads/posts/2021-05/1620972727_79-p-kaladium-foto-101.jpg', 'https://ttcomm.ru/wp-content/uploads/2019/04/b6a878899e71d72e8693.jpg', 'https://im0-tub-ru.yandex.net/i?id=38917d16b46ccc96325f9de0442a634e-l&ref=rim&n=13&w=1080&h=1080', 'https://2sotki.ru/wp-content/uploads/8/f/5/8f57c5977b4b27a859c7e163d77eb81a.jpg', 'https://2sotki.ru/wp-content/uploads/8/f/5/8f57c5977b4b27a859c7e163d77eb81a.jpg']), '\u041A\u0430\u043B\u0430\u0434\u0438\u0443\u043C \u2013 \u044D\u0442\u043E \u043B\u044E\u0431\u0438\u043C\u043E\u0435 \u043C\u043D\u043E\u0433\u0438\u043C\u0438 \u0446\u0435\u043D\u0438\u0442\u0435\u043B\u044F\u043C\u0438 \u044D\u043A\u0437\u043E\u0442\u0438\u043A\u0438 \u0441\u0430\u0434\u043E\u0432\u043E\u0435 \u0438\u043B\u0438 \u043A\u043E\u043C\u043D\u0430\u0442\u043D\u043E\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0441 \u0431\u043E\u043B\u044C\u0448\u0438\u043C\u0438 \u043D\u0430\u0440\u044F\u0434\u043D\u044B\u043C\u0438 \u043B\u0438\u0441\u0442\u044C\u044F\u043C\u0438, \u0438\u043C\u0435\u044E\u0449\u0438\u043C\u0438 \u0440\u0430\u0437\u043D\u043E\u043E\u0431\u0440\u0430\u0437\u043D\u0443\u044E \u043E\u043A\u0440\u0430\u0441\u043A\u0443. \u0418\u0445 \u0444\u043E\u0440\u043C\u0443 \u0447\u0430\u0441\u0442\u043E \u0441\u0440\u0430\u0432\u043D\u0438\u0432\u0430\u044E\u0442 \u0441 \u0444\u043E\u0440\u043C\u043E\u0439 \u043D\u0430\u043A\u043E\u043D\u0435\u0447\u043D\u0438\u043A\u0430 \u043A\u043E\u043F\u044C\u044F \u0438\u043B\u0438 \u0441\u0435\u0440\u0434\u0446\u0430. \u0418\u0437\u0440\u0435\u0437\u0430\u043D\u043D\u044B\u0435 \u043F\u0440\u043E\u0436\u0438\u043B\u043A\u0430\u043C\u0438 \u043B\u0438\u0441\u0442\u044C\u044F \u0437\u0430\u0447\u0430\u0441\u0442\u0443\u044E \u043E\u0434\u0430\u0440\u0435\u043D\u044B \u043F\u0440\u0438\u0440\u043E\u0434\u043E\u0439 \u0438\u043B\u0438 \u0441\u0435\u043B\u0435\u043A\u0446\u0438\u043E\u043D\u0435\u0440\u0430\u043C\u0438 \u043A\u043E\u043D\u0442\u0440\u0430\u0441\u0442\u043D\u043E\u0439 \u043E\u043A\u0440\u0430\u0441\u043A\u043E\u0439, \u0441\u043E\u0441\u0442\u043E\u044F\u0449\u0435\u0439 \u0438\u0437 \u0434\u0432\u0443\u0445 \u043E\u0442\u0442\u0435\u043D\u043A\u043E\u0432. \u0421\u0430\u043C\u044B\u0435 \u0440\u0430\u0441\u043F\u0440\u043E\u0441\u0442\u0440\u0430\u043D\u0451\u043D\u043D\u044B\u0435 \u0446\u0432\u0435\u0442\u0430 \u043B\u0438\u0441\u0442\u044C\u0435\u0432 \u043A\u0430\u043B\u0430\u0434\u0438\u0443\u043C\u0430: \u043F\u0443\u0440\u043F\u0443\u0440, \u0436\u0451\u043B\u0442\u044B\u0439, \u0431\u0435\u043B\u044B\u0439, \u043A\u0440\u0430\u0441\u043D\u044B\u0439, \u0437\u0435\u043B\u0451\u043D\u044B\u0439. \u042D\u0442\u0430 \u043B\u0438\u0430\u043D\u0430 \u043D\u0435 \u0438\u043C\u0435\u0435\u0442 \u0441\u0442\u0435\u0431\u043B\u044F, \u043E\u0431\u043B\u0430\u0434\u0430\u0435\u0442 \u043F\u0440\u0438\u043A\u043E\u0440\u043D\u0435\u0432\u044B\u043C \u0440\u043E\u0441\u0442\u043E\u043C \u043B\u0438\u0441\u0442\u044C\u0435\u0432, \u043A\u043E\u0442\u043E\u0440\u044B\u0435 \u0441\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0435\u043C \u0440\u0430\u0437\u0440\u0430\u0441\u0442\u0430\u044E\u0442\u0441\u044F \u0438 \u0441\u043E\u0437\u0434\u0430\u044E\u0442 \u043F\u043B\u043E\u0442\u043D\u044B\u0435 \u0440\u043E\u0437\u0435\u0442\u043A\u0438 \u0434\u0438\u0430\u043C\u0435\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u043C \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u043C \u0434\u043E \u043F\u043E\u043B\u0443\u043C\u0435\u0442\u0440\u0430.\n\n\u0412 \u043E\u0441\u043D\u043E\u0432\u0430\u043D\u0438\u0438 \u043A\u043E\u0440\u043D\u0435\u0432\u043E\u0439 \u0441\u0438\u0441\u0442\u0435\u043C\u044B \u043A\u0430\u043B\u0430\u0434\u0438\u0443\u043C\u0430 \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u043A\u0440\u0443\u0433\u043B\u043E\u0432\u0430\u0442\u043E-\u0441\u043F\u043B\u044E\u0449\u0435\u043D\u043D\u044B\u0439 \u043A\u043B\u0443\u0431\u0435\u043D\u044C \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u043C \u0432 \u0434\u0438\u0430\u043C\u0435\u0442\u0440\u0435 7-10 \u0441\u043C, \u0432 \u0432\u0435\u0440\u0445\u0443\u0448\u043A\u0435 \u043A\u043E\u0442\u043E\u0440\u043E\u0433\u043E \u043E\u0442\u043B\u0438\u0447\u043D\u043E \u043F\u0440\u043E\u0441\u043C\u0430\u0442\u0440\u0438\u0432\u0430\u044E\u0442\u0441\u044F \u0437\u0430\u0447\u0430\u0442\u043A\u0438 \u0431\u0443\u0434\u0443\u0449\u0435\u0433\u043E \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u0438 \u0447\u0443\u0442\u044C \u0432 \u0441\u0442\u043E\u0440\u043E\u043D\u0435 \u2013 \u043E\u0434\u0438\u043D\u043E\u043A\u0438\u0435 \u0437\u0430\u0441\u043D\u0443\u0432\u0448\u0438\u0435 \u043F\u043E\u0447\u043A\u0438.\n\u0421\u0442\u043E\u0438\u0442 \u043E\u0442\u043C\u0435\u0442\u0438\u0442\u044C, \u0447\u0442\u043E \u0437\u0430 \u0446\u0432\u0435\u0442\u043E\u043A \u043A\u0430\u043B\u0430\u0434\u0438\u0443\u043C\u0430 \u0447\u0430\u0441\u0442\u043E \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u0435\u0442\u0441\u044F \u0435\u0433\u043E \u0441\u043E\u0446\u0432\u0435\u0442\u0438\u0435. \u041E\u043D\u043E \u043F\u043E\u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0432\u0441\u043B\u0435\u0434 \u0437\u0430 \u043E\u0442\u043A\u0440\u044B\u0442\u0438\u0435\u043C \u0442\u0440\u0435\u0442\u044C\u0435\u0433\u043E \u0438\u043B\u0438 \u0447\u0435\u0442\u0432\u0451\u0440\u0442\u043E\u0433\u043E \u043B\u0438\u0441\u0442\u0430 \u0438 \u0441\u043C\u043E\u0442\u0440\u0438\u0442\u0441\u044F \u043A\u0430\u043A \u0441\u043E\u043B\u0438\u0434\u043D\u044B\u0439 \u043F\u043E\u0447\u0430\u0442\u043E\u043A, \u0441\u043A\u043B\u0430\u0434\u044B\u0432\u0430\u044E\u0449\u0438\u0439\u0441\u044F \u0438\u0437 \u0436\u0435\u043D\u0441\u043A\u0438\u0445 \u0438 \u043C\u0443\u0436\u0441\u043A\u0438\u0445 \u0446\u0432\u0435\u0442\u043E\u0432, \u0437\u0430\u0432\u0435\u0440\u043D\u0443\u0442\u044B\u0445 \u0432 \u0437\u0430\u043E\u0441\u0442\u0440\u0451\u043D\u043D\u043E\u0435 \u043E\u0434\u0435\u044F\u043B\u043E. \u041E\u0447\u0435\u043D\u044C \u0447\u0430\u0441\u0442\u043E \xAB\u043E\u0434\u0435\u044F\u043B\u043E\xBB \u043F\u0440\u0438\u043D\u0438\u043C\u0430\u0435\u0442 \u0442\u0443 \u0436\u0435 \u043E\u043A\u0440\u0430\u0441\u043A\u0443, \u0447\u0442\u043E \u0438 \u043B\u0438\u0441\u0442\u0432\u0435\u043D\u043D\u0430\u044F \u0447\u0430\u0441\u0442\u044C. \u0412\u0435\u0441\u044C \u043F\u0440\u043E\u0446\u0435\u0441\u0441 \u043D\u0430\u0441\u043B\u0430\u0436\u0434\u0435\u043D\u0438\u044F \u0446\u0432\u0435\u0442\u0430\u043C\u0438 \u043E\u0431\u044B\u0447\u043D\u043E \u0434\u043B\u0438\u0442\u0441\u044F \u043D\u0435 \u0431\u043E\u043B\u0435\u0435 \u0441\u0443\u0442\u043E\u043A, \u0430 \u0447\u0435\u0440\u0435\u0437 4-5 \u043D\u0435\u0434\u0435\u043B\u044C \u043D\u0430 \u043C\u0435\u0441\u0442\u0435 \u0441\u043E\u0446\u0432\u0435\u0442\u0438\u044F \u0437\u0440\u0435\u044E\u0442 \u043A\u0440\u0443\u0433\u043B\u043E\u0432\u0430\u0442\u044B\u0435 \u043E\u0440\u0430\u043D\u0436\u0435\u0432\u043E-\u043A\u0440\u0430\u0441\u043D\u044B\u0435 \u044F\u0433\u043E\u0434\u044B.\n\n\u041A\u0430\u043B\u0430\u0434\u0438\u0443\u043C \u2013 \u044D\u0442\u043E \u044F\u0434\u043E\u0432\u0438\u0442\u043E\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435. \u041E\u043D\u043E \u043E\u043F\u0430\u0441\u043D\u043E \u043A\u0430\u043A \u043F\u0440\u0438 \u043F\u043E\u043F\u0430\u0434\u0430\u043D\u0438\u0438 \u0432 \u043F\u0438\u0449\u0435\u0432\u043E\u0434, \u0442\u0430\u043A \u0438 \u043F\u0440\u043E\u0441\u0442\u043E \u043F\u0440\u0438 \u0440\u0430\u0431\u043E\u0442\u0435 \u0441 \u043D\u0438\u043C.'));
-    Unit_getInstance();
-    array.add_2bq_k$(new FlowerArray(7, 'https://avatars.mds.yandex.net/get-zen_doc/3512693/pub_60164fd07fd0a5390f35d245_601659f87fd0a5390f43170e/scale_1200', '\u041A\u0440\u043E\u043A\u0443\u0441', '\u0428\u0430\u0444\u0440\u0430\u0301\u043D (\u043B\u0430\u0442. Crocus) \u2014 \u0440\u043E\u0434 \u043C\u043D\u043E\u0433\u043E\u043B\u0435\u0442\u043D\u0438\u0445 \u043A\u043B\u0443\u0431\u043D\u0435\u043B\u0443\u043A\u043E\u0432\u0438\u0447\u043D\u044B\u0445 \u0442\u0440\u0430\u0432\u044F\u043D\u0438\u0441\u0442\u044B\u0445 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0439 \u0441\u0435\u043C\u0435\u0439\u0441\u0442\u0432\u0430 \u0418\u0440\u0438\u0441\u043E\u0432\u044B\u0435, \u0438\u043B\u0438 \u041A\u0430\u0441\u0430\u0442\u0438\u043A\u043E\u0432\u044B\u0435 (Iridaceae). \u0412 \u043B\u0438\u0442\u0435\u0440\u0430\u0442\u0443\u0440\u0435 \u043F\u043E \u0434\u0435\u043A\u043E\u0440\u0430\u0442\u0438\u0432\u043D\u043E\u043C\u0443 \u0446\u0432\u0435\u0442\u043E\u0432\u043E\u0434\u0441\u0442\u0432\u0443 \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u0442\u0441\u044F \u0437\u0430\u0438\u043C\u0441\u0442\u0432\u043E\u0432\u0430\u043D\u043D\u043E\u0435 \u043B\u0430\u0442\u0438\u043D\u0441\u043A\u043E\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u043A\u0440\u043E\u0301\u043A\u0443\u0441. \u0415\u0433\u043E \u043A\u043B\u0443\u0431\u043D\u0435\u043B\u0443\u043A\u043E\u0432\u0438\u0446\u044B \u0434\u043E\u0441\u0442\u0438\u0433\u0430\u044E\u0442 3 \u0441\u043C \u0432 \u0434\u0438\u0430\u043C\u0435\u0442\u0440\u0435, \u043E\u043A\u0440\u0443\u0433\u043B\u044B\u0435 \u0438\u043B\u0438 \u0441\u043F\u043B\u044E\u0441\u043D\u0443\u0442\u044B\u0435, \u043E\u0434\u0435\u0442\u044B \u0447\u0435\u0448\u0443\u044F\u043C\u0438, \u0434\u0430\u044E\u0442 \u043F\u0443\u0447\u043E\u043A \u043A\u043E\u0440\u043D\u0435\u0432\u044B\u0445 \u043C\u043E\u0447\u0435\u043A, \u0441\u0442\u0440\u043E\u0435\u043D\u0438\u0435 \u0438 \u043E\u043A\u0440\u0430\u0441\u043A\u0430 \u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u0432\u0430\u0440\u044C\u0438\u0440\u0443\u044E\u0442\u0441\u044F \u0443 \u0440\u0430\u0437\u043B\u0438\u0447\u043D\u044B\u0445 \u0432\u0438\u0434\u043E\u0432. \u0421\u0442\u0435\u0431\u0435\u043B\u044C \u043D\u0435 \u0440\u0430\u0437\u0432\u0438\u0432\u0430\u0435\u0442\u0441\u044F.', arrayListOf(['https://st4.depositphotos.com/17407654/27676/i/1600/depositphotos_276766260-stock-photo-colorful-crocuses-garden.jpg', 'https://cdn.pixabay.com/photo/2020/04/04/12/10/krokus-5002004_1280.jpg', 'https://im0-tub-ru.yandex.net/i?id=eb0d757828850208e537a0e9fe9e543c-l&ref=rim&n=13&w=1080&h=1080', 'https://photocentra.ru/images/main97/970882_main.jpg', 'https://img4.goodfon.ru/original/5906x3937/6/81/shafran-krokusy-zhioltye-vesna.jpg']), '\u041A\u0440\u043E\u043A\u0443\u0441 (\u0448\u0430\u0444\u0440\u0430\u043D) \u2013 \u044D\u0442\u043E \u043D\u0435 \u0442\u043E\u043B\u044C\u043A\u043E \u0441\u0430\u0434\u043E\u0432\u043E\u0435, \u043D\u043E \u0438 \u0434\u0438\u043A\u043E\u0440\u0430\u0441\u0442\u0443\u0449\u0435\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435, \u043A\u043E\u0442\u043E\u0440\u043E\u0435 \u043C\u043E\u0436\u043D\u043E \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u0442\u044C \u043D\u0430 \u043B\u0443\u0433\u0430\u0445, \u0432 \u0441\u0442\u0435\u043F\u044F\u0445 \u0438 \u043B\u0435\u0441\u0430\u0445 \u043D\u0430 \u0411\u043B\u0438\u0436\u043D\u0435\u043C \u0412\u043E\u0441\u0442\u043E\u043A\u0435, \u0432 \u0410\u0437\u0438\u0438, \u0432 \u0441\u0442\u0440\u0430\u043D\u0430\u0445 \u0421\u0440\u0435\u0434\u0438\u0437\u0435\u043C\u043D\u043E\u043C\u043E\u0440\u044C\u044F, \u0430 \u0442\u0430\u043A\u0436\u0435 \u0432 \u0415\u0432\u0440\u043E\u043F\u0435. \u042D\u0442\u0438 \u043C\u043D\u043E\u0433\u043E\u043B\u0435\u0442\u043D\u0438\u0435 \u0438 \u043E\u0434\u043D\u043E\u043B\u0435\u0442\u043D\u0438\u0435 \u0446\u0432\u0435\u0442\u043A\u0438 \u0432\u044B\u0431\u0438\u0440\u0430\u044E\u0442 \u0434\u043B\u044F \u0430\u0440\u0435\u0430\u043B\u043E\u0432 \u0441\u0432\u043E\u0435\u0433\u043E \u043E\u0431\u0438\u0442\u0430\u043D\u0438\u044F \u0437\u043E\u043D\u044B \u0437\u0438\u043C\u043E\u0441\u0442\u043E\u0439\u043A\u043E\u0441\u0442\u0438, \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u0445\u043E\u0440\u043E\u0448\u043E \u043F\u0435\u0440\u0435\u043D\u043E\u0441\u044F\u0442 \u043D\u0435\u0434\u043E\u0441\u0442\u0430\u0442\u043E\u043A \u0441\u0432\u0435\u0442\u0430 \u0438 \u0432\u043B\u0430\u0433\u0438. \u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u0443 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u0434\u043E\u0432\u043E\u043B\u044C\u043D\u043E \u043F\u0440\u043E\u0441\u0442\u043E\u0435: \u0432\u043D\u0435\u0448\u043D\u0435 \u0446\u0432\u0435\u0442\u043E\u043A \u0432\u044B\u0433\u043B\u044F\u0434\u0438\u0442 \u043A\u0430\u043A \u0431\u043E\u043A\u0430\u043B \u043D\u0430 \u043D\u043E\u0436\u043A\u0435, \u0441\u043E\u0441\u0442\u043E\u044F\u0449\u0438\u0439 \u0438\u0437 \u043D\u0435\u0441\u043A\u043E\u043B\u044C\u043A\u0438\u0445 \u043E\u0432\u0430\u043B\u044C\u043D\u044B\u0445 \u043B\u0435\u043F\u0435\u0441\u0442\u043A\u043E\u0432.\n\n\u0412 \u0434\u0438\u043A\u043E\u0439 \u043F\u0440\u0438\u0440\u043E\u0434\u0435 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u0431\u044B\u0432\u0430\u044E\u0442 \u043F\u043E \u0440\u0430\u0437\u043C\u0435\u0440\u0443 \u043D\u0438\u0437\u043A\u043E\u0440\u043E\u0441\u043B\u044B\u043C\u0438, \u0442\u043E\u0433\u0434\u0430 \u043A\u0430\u043A \u0433\u0438\u0431\u0440\u0438\u0434\u043D\u044B\u0435 \u0444\u043E\u0440\u043C\u044B \u043C\u043E\u0433\u0443\u0442 \u0434\u043E\u0441\u0442\u0438\u0433\u0430\u0442\u044C \u0431\u043E\u043B\u0435\u0435 \u043A\u0440\u0443\u043F\u043D\u044B\u0445 \u0440\u0430\u0437\u043C\u0435\u0440\u043E\u0432. \u041A\u0430\u0436\u0434\u044B\u0439 \u0446\u0432\u0435\u0442\u043E\u043A \u0438\u043C\u0435\u0435\u0442 \u0436\u0435\u043B\u0442\u044B\u0435 \u0440\u044B\u043B\u044C\u0446\u0430, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435 \u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u043E \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \xAB\u0448\u0430\u0444\u0440\u0430\u043D\xBB, \u0447\u0442\u043E \u0432 \u043F\u0435\u0440\u0435\u0432\u043E\u0434\u0435 \u0441 \u0430\u0440\u0430\u0431\u0441\u043A\u043E\u0433\u043E \u044F\u0437\u044B\u043A\u0430 \u0434\u043E\u0441\u043B\u043E\u0432\u043D\u043E \u043E\u0437\u043D\u0430\u0447\u0430\u0435\u0442 \xAB\u0436\u0435\u043B\u0442\u044B\u0439\xBB. \u0418\u043C\u0435\u043D\u043D\u043E \u0437\u0430 \u0436\u0435\u043B\u0442\u044B\u0435 \u0440\u044B\u043B\u044C\u0446\u0430 \u043A\u0440\u043E\u043A\u0443\u0441\u044B \u0446\u0435\u043D\u044F\u0442\u0441\u044F \u0441 \u0442\u043E\u0447\u043A\u0438 \u0437\u0440\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0437\u043D\u043E\u0433\u043E \u043F\u0440\u0438\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F, \u0442\u043E\u0433\u0434\u0430 \u043A\u0430\u043A \u0441\u0430\u0434\u043E\u0432\u043E\u0434\u044B \u043B\u044E\u0431\u044F\u0442 \u044D\u0442\u0438 \u0446\u0432\u0435\u0442\u044B \u0437\u0430 \u0438\u0445 \u043A\u0440\u0430\u0441\u043E\u0442\u0443 \u0438 \u043F\u0440\u043E\u0441\u0442\u043E\u0442\u0443 \u0432\u044B\u0440\u0430\u0449\u0438\u0432\u0430\u043D\u0438\u044F.\n\u041A\u0430\u043A \u043F\u0440\u0430\u0432\u0438\u043B\u043E, \u0432 \u0432\u044B\u0441\u043E\u0442\u0443 \u043A\u0440\u043E\u043A\u0443\u0441\u044B \u0432\u044B\u0440\u0430\u0441\u0442\u0430\u044E\u0442 \u0434\u043E 10-12 \u0441\u043C, \u0430 \u0438\u0445 \u043B\u0443\u043A\u043E\u0432\u0438\u0447\u043A\u0438 \u0438\u043C\u0435\u044E\u0442 \u0434\u0438\u0430\u043C\u0435\u0442\u0440 \u043D\u0435 \u0431\u043E\u043B\u0435\u0435 3-3,5 \u0441\u043C. \u041A\u0430\u0436\u0434\u0430\u044F \u043B\u0443\u043A\u043E\u0432\u043A\u0430 \u0438\u043C\u0435\u0435\u0442 \u0437\u0430\u0449\u0438\u0442\u043D\u044B\u0435 \u0447\u0435\u0448\u0443\u0439\u043A\u0438, \u0430 \u0442\u0430\u043A\u0436\u0435 \u0441\u043D\u0430\u0431\u0436\u0435\u043D\u0430 \u043A\u043E\u0440\u043D\u0435\u0432\u043E\u0439 \u043C\u043E\u0447\u043A\u043E\u0432\u0430\u0442\u043E\u0439 \u0441\u0438\u0441\u0442\u0435\u043C\u043E\u0439. \u0421\u0442\u0435\u0431\u0435\u043B\u044C \u0443 \u0448\u0430\u0444\u0440\u0430\u043D\u0430 \u043F\u0440\u0430\u043A\u0442\u0438\u0447\u0435\u0441\u043A\u0438 \u043D\u0435 \u0432\u044B\u0440\u0430\u0436\u0435\u043D, \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0439 \u0430\u043A\u0446\u0435\u043D\u0442 \u0443 \u044D\u0442\u043E\u0433\u043E \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F \u043F\u0440\u0438\u0440\u043E\u0434\u0430 \u0441\u0434\u0435\u043B\u0430\u043B\u0430 \u043D\u0430 \u0446\u0432\u0435\u0442\u043E\u043A \u0438 \u043E\u0441\u0442\u0440\u043E\u043A\u043E\u043D\u0435\u0447\u043D\u0443\u044E \u043B\u0438\u0441\u0442\u0432\u0443. \u041B\u0438\u0441\u0442\u044C\u044F \u0446\u0432\u0435\u0442\u043A\u0430 \u0441\u043E\u0431\u0440\u0430\u043D\u044B \u0432 \u043F\u0440\u0438\u043A\u043E\u0440\u043D\u0435\u0432\u0443\u044E \u0440\u043E\u0437\u0435\u0442\u043A\u0443, \u043F\u0440\u043E\u0440\u0430\u0441\u0442\u0430\u044E\u0442 \u043E\u043D\u0438 \u0438\u0437 \u043B\u0443\u043A\u043E\u0432\u043A\u0438 \u043F\u043E\u0434 \u043F\u0440\u0438\u043A\u0440\u044B\u0442\u0438\u0435\u043C \u0437\u0430\u0449\u0438\u0442\u043D\u044B\u0445 \u0447\u0435\u0448\u0443\u0435\u043A.\n\n\u0418\u0437 \u043E\u0434\u043D\u043E\u0439 \u043B\u0443\u043A\u043E\u0432\u043A\u0438 \u0432\u044B\u0440\u0430\u0441\u0442\u0430\u0435\u0442 \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0435, \u043A\u043E\u0442\u043E\u0440\u043E\u0435 \u0437\u0430\u0446\u0432\u0435\u0442\u0430\u0435\u0442 \u0435\u0434\u0438\u043D\u0438\u0447\u043D\u044B\u043C \u0446\u0432\u0435\u0442\u043A\u043E\u043C, \u0434\u0438\u0430\u043C\u0435\u0442\u0440 \u043A\u043E\u0442\u043E\u0440\u043E\u0433\u043E \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C 2-5 \u0441\u043C, \u0430 \u043E\u043A\u0440\u0430\u0441\u043A\u0430 \u0441\u0430\u043C\u0430\u044F \u0440\u0430\u0437\u043D\u043E\u043E\u0431\u0440\u0430\u0437\u043D\u0430\u044F: \u0431\u0435\u043B\u0430\u044F, \u043B\u0438\u043B\u043E\u0432\u0430\u044F, \u043F\u0435\u0441\u0442\u0440\u0430\u044F \u0434\u0432\u0443\u0445\u0446\u0432\u0435\u0442\u043D\u0430\u044F \u0438\u043B\u0438 \u0441 \u043E\u0432\u0430\u043B\u044C\u043D\u044B\u043C\u0438 \u043F\u044F\u0442\u043D\u0430\u043C\u0438, \u0440\u043E\u0437\u043E\u0432\u0430\u044F, \u0436\u0435\u043B\u0442\u0430\u044F, \u0431\u043B\u0435\u0434\u043D\u043E-\u0441\u0438\u0440\u0435\u043D\u0435\u0432\u0430\u044F, \u043A\u0440\u0435\u043C\u043E\u0432\u0430\u044F. \u0426\u0432\u0435\u0442\u043E\u043D\u043E\u0441 \u0443 \u0446\u0432\u0435\u0442\u043A\u0430 \u043A\u043E\u0440\u043E\u0442\u043A\u0438\u0439.\n\n'));
-    Unit_getInstance();
-    this._flowerArray.addAll_dxd4eo_k$(array);
-    Unit_getInstance();
-    this._$stable_54 = 8;
-  }
-  FlowersData.$metadata$ = {
-    simpleName: 'FlowersData',
-    kind: 'object',
-    interfaces: []
-  };
-  var FlowersData_instance;
-  function FlowersData_getInstance() {
-    if (FlowersData_instance == null)
-      new FlowersData();
-    return FlowersData_instance;
-  }
-  function FlowerArray_init_$Init$(id, src_0, title, titleShort, srcArray, titleFull, $mask0, $marker, $this) {
-    if (!(($mask0 & 1) === 0))
-      id = 0;
-    if (!(($mask0 & 2) === 0))
-      src_0 = '';
-    if (!(($mask0 & 4) === 0))
-      title = '';
-    if (!(($mask0 & 8) === 0))
-      titleShort = '';
-    if (!(($mask0 & 16) === 0))
-      srcArray = emptyList();
-    if (!(($mask0 & 32) === 0))
-      titleFull = '';
-    FlowerArray.call($this, id, src_0, title, titleShort, srcArray, titleFull);
-    return $this;
-  }
-  function FlowerArray_init_$Create$(id, src_0, title, titleShort, srcArray, titleFull, $mask0, $marker) {
-    return FlowerArray_init_$Init$(id, src_0, title, titleShort, srcArray, titleFull, $mask0, $marker, Object.create(FlowerArray.prototype));
-  }
-  function FlowerArray(id, src_0, title, titleShort, srcArray, titleFull) {
-    this._id_0 = id;
-    this._src = src_0;
-    this._title = title;
-    this._titleShort = titleShort;
-    this._srcArray = srcArray;
-    this._titleFull = titleFull;
-    this._$stable_55 = 8;
-  }
-  FlowerArray.prototype.toString = function () {
-    return '' + 'FlowerArray(id=' + this._id_0 + ', src=' + this._src + ', title=' + this._title + ', titleShort=' + this._titleShort + ', srcArray=' + this._srcArray + ', titleFull=' + this._titleFull + ')';
-  };
-  FlowerArray.prototype.hashCode = function () {
-    var result = this._id_0;
-    result = imul(result, 31) + getStringHashCode(this._src) | 0;
-    result = imul(result, 31) + getStringHashCode(this._title) | 0;
-    result = imul(result, 31) + getStringHashCode(this._titleShort) | 0;
-    result = imul(result, 31) + hashCode(this._srcArray) | 0;
-    result = imul(result, 31) + getStringHashCode(this._titleFull) | 0;
-    return result;
-  };
-  FlowerArray.prototype.equals = function (other) {
-    if (this === other)
-      return true;
-    if (!(other instanceof FlowerArray))
-      return false;
-    else {
-    }
-    var tmp0_other_with_cast = other instanceof FlowerArray ? other : THROW_CCE();
-    if (!(this._id_0 === tmp0_other_with_cast._id_0))
-      return false;
-    if (!(this._src === tmp0_other_with_cast._src))
-      return false;
-    if (!(this._title === tmp0_other_with_cast._title))
-      return false;
-    if (!(this._titleShort === tmp0_other_with_cast._titleShort))
-      return false;
-    if (!equals(this._srcArray, tmp0_other_with_cast._srcArray))
-      return false;
-    if (!(this._titleFull === tmp0_other_with_cast._titleFull))
-      return false;
-    return true;
-  };
-  FlowerArray.$metadata$ = {
-    simpleName: 'FlowerArray',
-    kind: 'class',
-    interfaces: []
-  };
-  var currentFlower;
   var currentMovie;
   function main() {
     var tmp$ret$1;
@@ -31868,7 +31583,7 @@
     console.log(int);
     if (!(int == null)) {
       currentMovie._set_value__iav7o_k$(MovieData_getInstance().getMovie_ha5a7z_k$(int));
-    }renderComposable$composable('root', composableLambdaInstance(-985533753, true, _no_name_provided_$factory_123(int)));
+    }renderComposable$composable('root', composableLambdaInstance(-985533833, true, _no_name_provided_$factory_123(int)));
     Unit_getInstance();
   }
   function _no_name_provided__138() {
@@ -31938,7 +31653,7 @@
   function _no_name_provided__139() {
   }
   _no_name_provided__139.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_138());
+    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_128());
   };
   _no_name_provided__139.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
@@ -32030,7 +31745,7 @@
   function _no_name_provided__142() {
   }
   _no_name_provided__142.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_147());
+    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_137());
   };
   _no_name_provided__142.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
@@ -32046,7 +31761,7 @@
   _no_name_provided__143.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable(this._$data_0._type_0, $composer_0, 0);
+      Text$composable(this._$data_0._type, $composer_0, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
@@ -32066,9 +31781,9 @@
   _no_name_provided__144.prototype.invoke_j69ozo_k$ = function ($this$H2, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      var tmp = _no_name_provided_$factory_145();
+      var tmp = _no_name_provided_$factory_135();
       var tmp_0 = $composer_0;
-      Label$composable(null, tmp, composableLambda(tmp_0, -819893842, true, _no_name_provided_$factory_146(this._$data_1)), $composer_0, 432, 1);
+      Label$composable(null, tmp, composableLambda(tmp_0, -819894178, true, _no_name_provided_$factory_136(this._$data_1)), $composer_0, 432, 1);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
@@ -32186,7 +31901,7 @@
   function _no_name_provided__148() {
   }
   _no_name_provided__148.prototype.invoke_ksytq9_k$ = function ($this$Img) {
-    $this$Img.style_gcyay2_k$(_no_name_provided_$factory_155());
+    $this$Img.style_gcyay2_k$(_no_name_provided_$factory_145());
   };
   _no_name_provided__148.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_ksytq9_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
@@ -32199,7 +31914,7 @@
   function _no_name_provided__149() {
   }
   _no_name_provided__149.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_156());
+    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_146());
   };
   _no_name_provided__149.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
@@ -32215,7 +31930,7 @@
   _no_name_provided__150.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable(this._$movie._title_0, $composer_0, 0);
+      Text$composable(this._$movie._title, $composer_0, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
@@ -32274,7 +31989,7 @@
     interfaces: []
   };
   function invoke$lambda($movie) {
-    return _no_name_provided_$factory_151($movie);
+    return _no_name_provided_$factory_141($movie);
   }
   function _no_name_provided__152($movie) {
     this._$movie_0 = $movie;
@@ -32292,10 +32007,10 @@
   _no_name_provided__153.prototype.invoke_sv8dqv_k$ = function ($this$A, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Img$composable(this._$movie_1._imageUrl, null, _no_name_provided_$factory_152(), $composer_0, 384, 2);
-      var tmp = _no_name_provided_$factory_153();
+      Img$composable(this._$movie_1._imageUrl, null, _no_name_provided_$factory_142(), $composer_0, 384, 2);
+      var tmp = _no_name_provided_$factory_143();
       var tmp_0 = $composer_0;
-      Div$composable(tmp, composableLambda(tmp_0, -819892114, true, _no_name_provided_$factory_154(this._$movie_1)), $composer_0, 54, 0);
+      Div$composable(tmp, composableLambda(tmp_0, -819892194, true, _no_name_provided_$factory_144(this._$movie_1)), $composer_0, 54, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
@@ -32313,11 +32028,11 @@
     this._$movie_2 = $movie;
   }
   _no_name_provided__154.prototype.invoke_m2exwv_k$ = function ($this$A) {
-    href($this$A, '' + window.document.location + '?movie=' + this._$movie_2._id_1);
+    href($this$A, '' + window.document.location + '?movie=' + this._$movie_2._id_0);
     Unit_getInstance();
     target($this$A, Blank_getInstance());
     Unit_getInstance();
-    $this$A.style_gcyay2_k$(_no_name_provided_$factory_157());
+    $this$A.style_gcyay2_k$(_no_name_provided_$factory_147());
   };
   _no_name_provided__154.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_m2exwv_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
@@ -32330,7 +32045,7 @@
   function _no_name_provided__155() {
   }
   _no_name_provided__155.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_143());
+    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_133());
   };
   _no_name_provided__155.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
@@ -32347,7 +32062,7 @@
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       var tmp = $composer_0;
-      H2$composable(null, composableLambda(tmp, -819893406, true, _no_name_provided_$factory_144(this._$data_2)), $composer_0, 48, 1);
+      H2$composable(null, composableLambda(tmp, -819893486, true, _no_name_provided_$factory_134(this._$data_2)), $composer_0, 48, 1);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
@@ -32364,7 +32079,7 @@
   function _no_name_provided__157() {
   }
   _no_name_provided__157.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_148());
+    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_138());
   };
   _no_name_provided__157.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
@@ -32385,7 +32100,7 @@
         var movie = tmp0_iterator.next_0_k$();
         var tmp$ret$3;
         $l$block_2: {
-          var tmp0_remember$composable_0 = _no_name_provided_$factory_149(movie);
+          var tmp0_remember$composable_0 = _no_name_provided_$factory_139(movie);
           var tmp1_remember$composable_0 = $composer_0;
           var $composer_1 = tmp1_remember$composable_0;
           $composer_1.startReplaceableGroup_majfzk_k$(884179877);
@@ -32426,7 +32141,7 @@
         }
         var tmp_1 = tmp$ret$3;
         var tmp_2 = $composer_0;
-        A$composable(null, tmp_1, composableLambda(tmp_2, -819891194, true, _no_name_provided_$factory_150(movie)), $composer_0, 384, 1);
+        A$composable(null, tmp_1, composableLambda(tmp_2, -819891018, true, _no_name_provided_$factory_140(movie)), $composer_0, 384, 1);
       }
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
@@ -32443,62 +32158,17 @@
   };
   function _no_name_provided__159() {
   }
-  _no_name_provided__159.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    fontSize($this$style, _get_px_(40));
-    var tmp$ret$3;
-    $l$block_2: {
-      var tmp0__get_Center__0 = Companion_getInstance_19();
-      var tmp$ret$2;
-      $l$block_1: {
-        var tmp$ret$1;
-        $l$block_0: {
-          var tmp$ret$0;
-          $l$block: {
-            tmp$ret$0 = 'center';
-            break $l$block;
-          }
-          tmp$ret$1 = tmp$ret$0;
-          break $l$block_0;
-        }
-        tmp$ret$2 = tmp$ret$1;
-        break $l$block_1;
-      }
-      tmp$ret$3 = tmp$ret$2;
-      break $l$block_2;
-    }
-    textAlign($this$style, toString_1(tmp$ret$3));
-    var tmp$ret$7;
-    $l$block_6: {
-      var tmp1__get_Block__0 = Companion_getInstance_20();
-      var tmp$ret$6;
-      $l$block_5: {
-        var tmp$ret$5;
-        $l$block_4: {
-          var tmp$ret$4;
-          $l$block_3: {
-            tmp$ret$4 = 'block';
-            break $l$block_3;
-          }
-          tmp$ret$5 = tmp$ret$4;
-          break $l$block_4;
-        }
-        tmp$ret$6 = tmp$ret$5;
-        break $l$block_5;
-      }
-      tmp$ret$7 = tmp$ret$6;
-      break $l$block_6;
-    }
-    display($this$style, tmp$ret$7);
-    var tmp$ret$8;
-    $l$block_7: {
-      var tmp2__get_white__0 = Color_getInstance_0();
-      tmp$ret$8 = Color_1('white');
-      break $l$block_7;
-    }
-    color($this$style, tmp$ret$8);
+  _no_name_provided__159.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
+    var $composer_0 = $composer;
+    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
+      Text$composable('\u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u0444\u0438\u043B\u044C\u043C\u043E\u0432', $composer_0, 6);
+    } else
+      $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__159.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
+  _no_name_provided__159.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
+    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
+    this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
   _no_name_provided__159.$metadata$ = {
@@ -32507,11 +32177,17 @@
   };
   function _no_name_provided__160() {
   }
-  _no_name_provided__160.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_159());
+  _no_name_provided__160.prototype.invoke_dbxwd0_k$ = function ($this$Header, $composer, $changed) {
+    var $composer_0 = $composer;
+    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
+      Label$composable(null, _no_name_provided_$factory_127(), ComposableSingletons$MainKt_getInstance()._lambda_1_0, $composer_0, 432, 1);
+    } else
+      $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__160.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
+  _no_name_provided__160.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
+    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
+    this.invoke_dbxwd0_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
   _no_name_provided__160.$metadata$ = {
@@ -32520,1025 +32196,41 @@
   };
   function _no_name_provided__161() {
   }
-  _no_name_provided__161.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    var tmp$ret$3;
-    $l$block_2: {
-      var tmp0__get_TableRow__0 = Companion_getInstance_20();
-      var tmp$ret$2;
-      $l$block_1: {
-        var tmp$ret$1;
-        $l$block_0: {
-          var tmp$ret$0;
-          $l$block: {
-            tmp$ret$0 = 'table-row';
-            break $l$block;
-          }
-          tmp$ret$1 = tmp$ret$0;
-          break $l$block_0;
-        }
-        tmp$ret$2 = tmp$ret$1;
-        break $l$block_1;
-      }
-      tmp$ret$3 = tmp$ret$2;
-      break $l$block_2;
-    }
-    display($this$style, tmp$ret$3);
-    width($this$style, _get_percent_(100));
-    height($this$style, _get_percent_(100));
-    padding($this$style, [_get_px_(100)]);
-    margin($this$style, [_get_px_(100)]);
-    var tmp$ret$7;
-    $l$block_6: {
-      var tmp1__get_Center__0 = Companion_getInstance_19();
-      var tmp$ret$6;
-      $l$block_5: {
-        var tmp$ret$5;
-        $l$block_4: {
-          var tmp$ret$4;
-          $l$block_3: {
-            tmp$ret$4 = 'center';
-            break $l$block_3;
-          }
-          tmp$ret$5 = tmp$ret$4;
-          break $l$block_4;
-        }
-        tmp$ret$6 = tmp$ret$5;
-        break $l$block_5;
-      }
-      tmp$ret$7 = tmp$ret$6;
-      break $l$block_6;
-    }
-    textAlign($this$style, toString_1(tmp$ret$7));
-    fontSize($this$style, _get_px_(20));
-    var tmp$ret$8;
-    $l$block_7: {
-      var tmp2__get_white__0 = Color_getInstance_0();
-      tmp$ret$8 = Color_1('white');
-      break $l$block_7;
-    }
-    color($this$style, tmp$ret$8);
-  };
-  _no_name_provided__161.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__161.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__162() {
-  }
-  _no_name_provided__162.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_161());
-  };
-  _no_name_provided__162.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__162.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__163() {
-  }
-  _no_name_provided__163.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    width($this$style, _get_px_(400));
-    height($this$style, _get_px_(400));
-    margin($this$style, [_get_px_(20)]);
-    var tmp0_topLeft = _get_px_(20);
-    var tmp1_topRight = _get_px_(20);
-    var tmp2_bottomLeft = _get_px_(20);
-    var tmp3_bottomRight = _get_px_(20);
-    borderRadius($this$style, tmp0_topLeft, tmp1_topRight, tmp3_bottomRight, tmp2_bottomLeft);
-  };
-  _no_name_provided__163.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__163.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__164() {
-  }
-  _no_name_provided__164.prototype.invoke_ksytq9_k$ = function ($this$Img) {
-    $this$Img.style_gcyay2_k$(_no_name_provided_$factory_163());
-  };
-  _no_name_provided__164.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_ksytq9_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__164.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__165() {
-  }
-  _no_name_provided__165.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    width($this$style, _get_percent_(100));
-    height($this$style, _get_px_(440));
-    var tmp$ret$3;
-    $l$block_2: {
-      var tmp0__get_Block__0 = Companion_getInstance_20();
-      var tmp$ret$2;
-      $l$block_1: {
-        var tmp$ret$1;
-        $l$block_0: {
-          var tmp$ret$0;
-          $l$block: {
-            tmp$ret$0 = 'block';
-            break $l$block;
-          }
-          tmp$ret$1 = tmp$ret$0;
-          break $l$block_0;
-        }
-        tmp$ret$2 = tmp$ret$1;
-        break $l$block_1;
-      }
-      tmp$ret$3 = tmp$ret$2;
-      break $l$block_2;
-    }
-    display($this$style, tmp$ret$3);
-    overflowX($this$style, 'auto');
-    whiteSpace($this$style, 'nowrap');
-  };
-  _no_name_provided__165.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__165.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__166() {
-  }
-  _no_name_provided__166.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_165());
-  };
-  _no_name_provided__166.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__166.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__167() {
-  }
-  _no_name_provided__167.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    width($this$style, _get_percent_(100));
-    height($this$style, _get_percent_(100));
-  };
-  _no_name_provided__167.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__167.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__168() {
-  }
-  _no_name_provided__168.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_167());
-  };
-  _no_name_provided__168.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__168.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__169() {
-  }
-  _no_name_provided__169.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    fontSize($this$style, _get_px_(40));
-    var tmp$ret$3;
-    $l$block_2: {
-      var tmp0__get_Center__0 = Companion_getInstance_19();
-      var tmp$ret$2;
-      $l$block_1: {
-        var tmp$ret$1;
-        $l$block_0: {
-          var tmp$ret$0;
-          $l$block: {
-            tmp$ret$0 = 'center';
-            break $l$block;
-          }
-          tmp$ret$1 = tmp$ret$0;
-          break $l$block_0;
-        }
-        tmp$ret$2 = tmp$ret$1;
-        break $l$block_1;
-      }
-      tmp$ret$3 = tmp$ret$2;
-      break $l$block_2;
-    }
-    textAlign($this$style, toString_1(tmp$ret$3));
-    var tmp$ret$7;
-    $l$block_6: {
-      var tmp1__get_Block__0 = Companion_getInstance_20();
-      var tmp$ret$6;
-      $l$block_5: {
-        var tmp$ret$5;
-        $l$block_4: {
-          var tmp$ret$4;
-          $l$block_3: {
-            tmp$ret$4 = 'block';
-            break $l$block_3;
-          }
-          tmp$ret$5 = tmp$ret$4;
-          break $l$block_4;
-        }
-        tmp$ret$6 = tmp$ret$5;
-        break $l$block_5;
-      }
-      tmp$ret$7 = tmp$ret$6;
-      break $l$block_6;
-    }
-    display($this$style, tmp$ret$7);
-    var tmp$ret$8;
-    $l$block_7: {
-      var tmp2__get_white__0 = Color_getInstance_0();
-      tmp$ret$8 = Color_1('white');
-      break $l$block_7;
-    }
-    color($this$style, tmp$ret$8);
-  };
-  _no_name_provided__169.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__169.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__170() {
-  }
-  _no_name_provided__170.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_169());
-  };
-  _no_name_provided__170.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__170.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__171() {
-  }
-  _no_name_provided__171.prototype.invoke_9dcepc_k$ = function (it) {
-    var tmp0_this = FlowersData_getInstance();
-    var tmp1 = tmp0_this._currentCount;
-    tmp0_this._currentCount = tmp1 + 1 | 0;
-    Unit_getInstance();
-  };
-  _no_name_provided__171.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_9dcepc_k$(p1 instanceof SyntheticMouseEvent ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__171.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__172() {
-  }
-  _no_name_provided__172.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    width($this$style, _get_percent_(100));
-    textDecoration($this$style, 'none');
-    var tmp$ret$0;
-    $l$block: {
-      var tmp0__get_transparent__0 = Color_getInstance_0();
-      tmp$ret$0 = Color_1('transparent');
-      break $l$block;
-    }
-    backgroundColor($this$style, tmp$ret$0);
-  };
-  _no_name_provided__172.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__172.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__173() {
-  }
-  _no_name_provided__173.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    padding($this$style, [_get_px_(25)]);
-  };
-  _no_name_provided__173.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__173.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__174() {
-  }
-  _no_name_provided__174.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    var tmp$ret$3;
-    $l$block_2: {
-      var tmp0__get_Block__0 = Companion_getInstance_20();
-      var tmp$ret$2;
-      $l$block_1: {
-        var tmp$ret$1;
-        $l$block_0: {
-          var tmp$ret$0;
-          $l$block: {
-            tmp$ret$0 = 'block';
-            break $l$block;
-          }
-          tmp$ret$1 = tmp$ret$0;
-          break $l$block_0;
-        }
-        tmp$ret$2 = tmp$ret$1;
-        break $l$block_1;
-      }
-      tmp$ret$3 = tmp$ret$2;
-      break $l$block_2;
-    }
-    display($this$style, tmp$ret$3);
-    width($this$style, _get_px_(200));
-    var tmp$ret$7;
-    $l$block_6: {
-      var tmp1__get_Center__0 = Companion_getInstance_19();
-      var tmp$ret$6;
-      $l$block_5: {
-        var tmp$ret$5;
-        $l$block_4: {
-          var tmp$ret$4;
-          $l$block_3: {
-            tmp$ret$4 = 'center';
-            break $l$block_3;
-          }
-          tmp$ret$5 = tmp$ret$4;
-          break $l$block_4;
-        }
-        tmp$ret$6 = tmp$ret$5;
-        break $l$block_5;
-      }
-      tmp$ret$7 = tmp$ret$6;
-      break $l$block_6;
-    }
-    textAlign($this$style, toString_1(tmp$ret$7));
-    fontSize($this$style, _get_px_(20));
-    paddingBottom($this$style, _get_px_(20));
-    var tmp$ret$8;
-    $l$block_7: {
-      var tmp2__get_white__0 = Color_getInstance_0();
-      tmp$ret$8 = Color_1('white');
-      break $l$block_7;
-    }
-    color($this$style, tmp$ret$8);
-  };
-  _no_name_provided__174.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__174.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__175() {
-  }
-  _no_name_provided__175.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    width($this$style, _get_percent_(100));
-    height($this$style, _get_px_(200));
-    var tmp$ret$3;
-    $l$block_2: {
-      var tmp0__get_Flex__0 = Companion_getInstance_20();
-      var tmp$ret$2;
-      $l$block_1: {
-        var tmp$ret$1;
-        $l$block_0: {
-          var tmp$ret$0;
-          $l$block: {
-            tmp$ret$0 = 'flex';
-            break $l$block;
-          }
-          tmp$ret$1 = tmp$ret$0;
-          break $l$block_0;
-        }
-        tmp$ret$2 = tmp$ret$1;
-        break $l$block_1;
-      }
-      tmp$ret$3 = tmp$ret$2;
-      break $l$block_2;
-    }
-    display($this$style, tmp$ret$3);
-  };
-  _no_name_provided__175.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__175.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__176() {
-  }
-  _no_name_provided__176.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    width($this$style, _get_px_(200));
-    height($this$style, _get_px_(200));
-    var tmp0_topLeft = _get_px_(20);
-    var tmp1_topRight = _get_px_(20);
-    var tmp2_bottomLeft = _get_px_(20);
-    var tmp3_bottomRight = _get_px_(20);
-    borderRadius($this$style, tmp0_topLeft, tmp1_topRight, tmp3_bottomRight, tmp2_bottomLeft);
-  };
-  _no_name_provided__176.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__176.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__177() {
-  }
-  _no_name_provided__177.prototype.invoke_k9hshx_k$ = function ($this$style) {
-    var tmp$ret$3;
-    $l$block_2: {
-      var tmp0__get_Center__0 = Companion_getInstance_19();
-      var tmp$ret$2;
-      $l$block_1: {
-        var tmp$ret$1;
-        $l$block_0: {
-          var tmp$ret$0;
-          $l$block: {
-            tmp$ret$0 = 'center';
-            break $l$block;
-          }
-          tmp$ret$1 = tmp$ret$0;
-          break $l$block_0;
-        }
-        tmp$ret$2 = tmp$ret$1;
-        break $l$block_1;
-      }
-      tmp$ret$3 = tmp$ret$2;
-      break $l$block_2;
-    }
-    alignContent($this$style, tmp$ret$3);
-    var tmp$ret$7;
-    $l$block_6: {
-      var tmp1__get_Block__0 = Companion_getInstance_20();
-      var tmp$ret$6;
-      $l$block_5: {
-        var tmp$ret$5;
-        $l$block_4: {
-          var tmp$ret$4;
-          $l$block_3: {
-            tmp$ret$4 = 'block';
-            break $l$block_3;
-          }
-          tmp$ret$5 = tmp$ret$4;
-          break $l$block_4;
-        }
-        tmp$ret$6 = tmp$ret$5;
-        break $l$block_5;
-      }
-      tmp$ret$7 = tmp$ret$6;
-      break $l$block_6;
-    }
-    display($this$style, tmp$ret$7);
-    width($this$style, _get_percent_(100));
-    height($this$style, _get_px_(200));
-    paddingLeft($this$style, _get_px_(30));
-    var tmp$ret$11;
-    $l$block_10: {
-      var tmp2__get_Center__0 = Companion_getInstance_19();
-      var tmp$ret$10;
-      $l$block_9: {
-        var tmp$ret$9;
-        $l$block_8: {
-          var tmp$ret$8;
-          $l$block_7: {
-            tmp$ret$8 = 'center';
-            break $l$block_7;
-          }
-          tmp$ret$9 = tmp$ret$8;
-          break $l$block_8;
-        }
-        tmp$ret$10 = tmp$ret$9;
-        break $l$block_9;
-      }
-      tmp$ret$11 = tmp$ret$10;
-      break $l$block_10;
-    }
-    textAlign($this$style, toString_1(tmp$ret$11));
-    fontSize($this$style, _get_px_(20));
-    var tmp$ret$12;
-    $l$block_11: {
-      var tmp3__get_white__0 = Color_getInstance_0();
-      tmp$ret$12 = Color_1('white');
-      break $l$block_11;
-    }
-    color($this$style, tmp$ret$12);
-  };
-  _no_name_provided__177.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__177.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__178() {
-  }
-  _no_name_provided__178.prototype.invoke_ksytq9_k$ = function ($this$Img) {
-    $this$Img.style_gcyay2_k$(_no_name_provided_$factory_186());
-  };
-  _no_name_provided__178.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_ksytq9_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__178.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__179() {
-  }
-  _no_name_provided__179.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_187());
-  };
-  _no_name_provided__179.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__179.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__180($flower) {
-    this._$flower = $flower;
-  }
-  _no_name_provided__180.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable(this._$flower._titleShort, $composer_0, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__180.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__180.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__181() {
-  }
-  _no_name_provided__181.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_181());
-  };
-  _no_name_provided__181.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__181.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__182($flower) {
-    this._$flower_0 = $flower;
-  }
-  _no_name_provided__182.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable(this._$flower_0._title, $composer_0, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__182.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__182.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__183() {
-  }
-  _no_name_provided__183.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_182());
-  };
-  _no_name_provided__183.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__183.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__184($flower) {
-    this._$flower_1 = $flower;
-  }
-  _no_name_provided__184.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Img$composable(this._$flower_1._src, null, _no_name_provided_$factory_183(), $composer_0, 384, 2);
-      var tmp = _no_name_provided_$factory_184();
-      var tmp_0 = $composer_0;
-      Label$composable(null, tmp, composableLambda(tmp_0, -819898727, true, _no_name_provided_$factory_185(this._$flower_1)), $composer_0, 432, 1);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__184.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_ovmwdp_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__184.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__185() {
-  }
-  _no_name_provided__185.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_176());
-  };
-  _no_name_provided__185.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__185.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__186($flower) {
-    this._$flower_2 = $flower;
-  }
-  _no_name_provided__186.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      var tmp = _no_name_provided_$factory_177();
-      var tmp_0 = $composer_0;
-      Label$composable(null, tmp, composableLambda(tmp_0, -819900640, true, _no_name_provided_$factory_178(this._$flower_2)), $composer_0, 432, 1);
-      var tmp_1 = _no_name_provided_$factory_179();
-      var tmp_2 = $composer_0;
-      Div$composable(tmp_1, composableLambda(tmp_2, -819901341, true, _no_name_provided_$factory_180(this._$flower_2)), $composer_0, 54, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__186.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_ovmwdp_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__186.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__187($flower) {
-    this._$flower_3 = $flower;
-  }
-  _no_name_provided__187.prototype.invoke_m2exwv_k$ = function ($this$A) {
-    $this$A.onClick_hxe0av_k$(_no_name_provided_$factory_172());
-    href($this$A, '' + window.document.location + '?flower=' + this._$flower_3._id_0);
-    Unit_getInstance();
-    target($this$A, Blank_getInstance());
-    Unit_getInstance();
-    $this$A.style_gcyay2_k$(_no_name_provided_$factory_173());
-  };
-  _no_name_provided__187.prototype.invoke_20e8_k$ = function (p1) {
-    this.invoke_m2exwv_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__187.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__188($flower) {
-    this._$flower_4 = $flower;
-  }
-  _no_name_provided__188.prototype.invoke_sv8dqv_k$ = function ($this$A, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      var tmp = _no_name_provided_$factory_174();
-      var tmp_0 = $composer_0;
-      Div$composable(tmp, composableLambda(tmp_0, -819904208, true, _no_name_provided_$factory_175(this._$flower_4)), $composer_0, 54, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__188.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_sv8dqv_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__188.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__189() {
-  }
-  _no_name_provided__189.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable('\u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u0444\u0438\u043B\u044C\u043C\u043E\u0432', $composer_0, 6);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__189.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__189.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__190() {
-  }
-  _no_name_provided__190.prototype.invoke_dbxwd0_k$ = function ($this$Header, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Label$composable(null, _no_name_provided_$factory_137(), ComposableSingletons$MainKt_getInstance()._lambda_1_0, $composer_0, 432, 1);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__190.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_dbxwd0_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__190.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__191() {
-  }
-  _no_name_provided__191.prototype.invoke_owl2sw_k$ = function ($this$P, $composer, $changed) {
+  _no_name_provided__161.prototype.invoke_owl2sw_k$ = function ($this$P, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       Header$composable(null, ComposableSingletons$MainKt_getInstance()._lambda_2_0, $composer_0, 48, 1);
       var tmp0_iterator = MovieData_getInstance()._arrayMovies.iterator_0_k$();
       while (tmp0_iterator.hasNext_0_k$()) {
         var data = tmp0_iterator.next_0_k$();
-        var tmp = _no_name_provided_$factory_139();
+        var tmp = _no_name_provided_$factory_129();
         var tmp_0 = $composer_0;
-        Div$composable(tmp, composableLambda(tmp_0, -819893415, true, _no_name_provided_$factory_140(data)), $composer_0, 54, 0);
-        var tmp_1 = _no_name_provided_$factory_141();
+        Div$composable(tmp, composableLambda(tmp_0, -819893495, true, _no_name_provided_$factory_130(data)), $composer_0, 54, 0);
+        var tmp_1 = _no_name_provided_$factory_131();
         var tmp_2 = $composer_0;
-        Div$composable(tmp_1, composableLambda(tmp_2, -819890462, true, _no_name_provided_$factory_142(data)), $composer_0, 54, 0);
+        Div$composable(tmp_1, composableLambda(tmp_2, -819890542, true, _no_name_provided_$factory_132(data)), $composer_0, 54, 0);
       }
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__191.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+  _no_name_provided__161.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
     var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
     var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
     this.invoke_owl2sw_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__191.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__192() {
-  }
-  _no_name_provided__192.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable(currentFlower._get_value__0_k$()._title, $composer_0, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__192.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__192.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__193() {
-  }
-  _no_name_provided__193.prototype.invoke_dbxwd0_k$ = function ($this$Header, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Label$composable(null, _no_name_provided_$factory_158(), ComposableSingletons$MainKt_getInstance()._lambda_4, $composer_0, 432, 1);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__193.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_dbxwd0_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__193.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__194() {
-  }
-  _no_name_provided__194.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable(currentFlower._get_value__0_k$()._titleFull, $composer_0, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__194.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__194.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__195() {
-  }
-  _no_name_provided__195.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Label$composable(null, _no_name_provided_$factory_160(), ComposableSingletons$MainKt_getInstance()._lambda_6, $composer_0, 432, 1);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__195.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_ovmwdp_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__195.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__196() {
-  }
-  _no_name_provided__196.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      var tmp0_iterator = currentFlower._get_value__0_k$()._srcArray.iterator_0_k$();
-      while (tmp0_iterator.hasNext_0_k$()) {
-        var src_0 = tmp0_iterator.next_0_k$();
-        Img$composable(src_0, null, _no_name_provided_$factory_162(), $composer_0, 384, 2);
-      }
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__196.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_ovmwdp_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__196.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__197() {
-  }
-  _no_name_provided__197.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Div$composable(null, ComposableSingletons$MainKt_getInstance()._lambda_7, $composer_0, 48, 1);
-      Div$composable(_no_name_provided_$factory_164(), ComposableSingletons$MainKt_getInstance()._lambda_8, $composer_0, 54, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__197.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_ovmwdp_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__197.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__198() {
-  }
-  _no_name_provided__198.prototype.invoke_owl2sw_k$ = function ($this$P, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Header$composable(null, ComposableSingletons$MainKt_getInstance()._lambda_5, $composer_0, 48, 1);
-      Div$composable(_no_name_provided_$factory_166(), ComposableSingletons$MainKt_getInstance()._lambda_9, $composer_0, 54, 0);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__198.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_owl2sw_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__198.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__199() {
-  }
-  _no_name_provided__199.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable('\u0426\u0432\u0435\u0442\u043E\u0447\u043D\u0430\u044F \u0433\u0430\u043B\u043B\u0435\u0440\u0435\u044F', $composer_0, 6);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__199.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__199.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__200() {
-  }
-  _no_name_provided__200.prototype.invoke_dbxwd0_k$ = function ($this$Header, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Label$composable(null, _no_name_provided_$factory_168(), ComposableSingletons$MainKt_getInstance()._lambda_11, $composer_0, 432, 1);
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__200.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_dbxwd0_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__200.$metadata$ = {
-    kind: 'class',
-    interfaces: []
-  };
-  function _no_name_provided__201() {
-  }
-  _no_name_provided__201.prototype.invoke_owl2sw_k$ = function ($this$P, $composer, $changed) {
-    var $composer_0 = $composer;
-    if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Header$composable(null, ComposableSingletons$MainKt_getInstance()._lambda_12, $composer_0, 48, 1);
-      var tmp0_iterator = FlowersData_getInstance()._flowerArray.iterator_0_k$();
-      while (tmp0_iterator.hasNext_0_k$()) {
-        var flower = tmp0_iterator.next_0_k$();
-        var tmp = _no_name_provided_$factory_170(flower);
-        var tmp_0 = $composer_0;
-        A$composable(null, tmp, composableLambda(tmp_0, -819904252, true, _no_name_provided_$factory_171(flower)), $composer_0, 384, 1);
-      }
-    } else
-      $composer_0.skipToGroupEnd_sv8swh_k$();
-  };
-  _no_name_provided__201.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
-    var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
-    var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
-    this.invoke_owl2sw_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
-    return Unit_getInstance();
-  };
-  _no_name_provided__201.$metadata$ = {
+  _no_name_provided__161.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
   function ComposableSingletons$MainKt() {
     ComposableSingletons$MainKt_instance = this;
     var tmp = this;
-    tmp._lambda_1_0 = composableLambdaInstance(-985530909, false, _no_name_provided_$factory_124());
+    tmp._lambda_1_0 = composableLambdaInstance(-985531117, false, _no_name_provided_$factory_124());
     var tmp_0 = this;
-    tmp_0._lambda_2_0 = composableLambdaInstance(-985531682, false, _no_name_provided_$factory_125());
+    tmp_0._lambda_2_0 = composableLambdaInstance(-985531890, false, _no_name_provided_$factory_125());
     var tmp_1 = this;
-    tmp_1._lambda_3 = composableLambdaInstance(-985531697, false, _no_name_provided_$factory_126());
-    var tmp_2 = this;
-    tmp_2._lambda_4 = composableLambdaInstance(-985535611, false, _no_name_provided_$factory_127());
-    var tmp_3 = this;
-    tmp_3._lambda_5 = composableLambdaInstance(-985536384, false, _no_name_provided_$factory_128());
-    var tmp_4 = this;
-    tmp_4._lambda_6 = composableLambdaInstance(-985535259, false, _no_name_provided_$factory_129());
-    var tmp_5 = this;
-    tmp_5._lambda_7 = composableLambdaInstance(-985535797, false, _no_name_provided_$factory_130());
-    var tmp_6 = this;
-    tmp_6._lambda_8 = composableLambdaInstance(-985534890, false, _no_name_provided_$factory_131());
-    var tmp_7 = this;
-    tmp_7._lambda_9 = composableLambdaInstance(-985535947, false, _no_name_provided_$factory_132());
-    var tmp_8 = this;
-    tmp_8._lambda_10 = composableLambdaInstance(-985536271, false, _no_name_provided_$factory_133());
-    var tmp_9 = this;
-    tmp_9._lambda_11 = composableLambdaInstance(-985541588, false, _no_name_provided_$factory_134());
-    var tmp_10 = this;
-    tmp_10._lambda_12 = composableLambdaInstance(-985541329, false, _no_name_provided_$factory_135());
-    var tmp_11 = this;
-    tmp_11._lambda_13 = composableLambdaInstance(-985541352, false, _no_name_provided_$factory_136());
+    tmp_1._lambda_3 = composableLambdaInstance(-985531777, false, _no_name_provided_$factory_126());
   }
   ComposableSingletons$MainKt.$metadata$ = {
     simpleName: 'ComposableSingletons$MainKt',
@@ -33553,7 +32245,7 @@
   }
   function currentMovie$composable($composer, $changed) {
     var $composer_0 = $composer;
-    $composer_0 = $composer_0.startRestartGroup_ha5a7z_k$(-776050529);
+    $composer_0 = $composer_0.startRestartGroup_ha5a7z_k$(-776050609);
     if (!($changed === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       var tmp0_safe_receiver = document.body;
       var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.style;
@@ -33562,21 +32254,21 @@
       } else
         tmp1_safe_receiver.backgroundColor = '#2E4053';
       var movie = currentMovie._get_value__0_k$();
-      var tmp = _no_name_provided_$factory_188();
+      var tmp = _no_name_provided_$factory_148();
       var tmp_0 = $composer_0;
-      P$composable(tmp, composableLambda(tmp_0, -819895690, true, _no_name_provided_$factory_189(movie)), $composer_0, 54, 0);
+      P$composable(tmp, composableLambda(tmp_0, -819895770, true, _no_name_provided_$factory_149(movie)), $composer_0, 54, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
     var tmp0_safe_receiver_0 = $composer_0.endRestartGroup_0_k$();
     if (tmp0_safe_receiver_0 === null)
       null;
     else {
-      tmp0_safe_receiver_0.updateScope_wte2v3_k$(_no_name_provided_$factory_190($changed));
+      tmp0_safe_receiver_0.updateScope_wte2v3_k$(_no_name_provided_$factory_150($changed));
     }
   }
   function movies$composable($composer, $changed) {
     var $composer_0 = $composer;
-    $composer_0 = $composer_0.startRestartGroup_ha5a7z_k$(-1545777304);
+    $composer_0 = $composer_0.startRestartGroup_ha5a7z_k$(-1545777384);
     if (!($changed === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       var tmp0_safe_receiver = document.body;
       var tmp1_safe_receiver = tmp0_safe_receiver == null ? null : tmp0_safe_receiver.style;
@@ -33584,14 +32276,14 @@
         Unit_getInstance();
       } else
         tmp1_safe_receiver.backgroundColor = '#2E4053';
-      P$composable(_no_name_provided_$factory_191(), ComposableSingletons$MainKt_getInstance()._lambda_3, $composer_0, 54, 0);
+      P$composable(_no_name_provided_$factory_151(), ComposableSingletons$MainKt_getInstance()._lambda_3, $composer_0, 54, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
     var tmp0_safe_receiver_0 = $composer_0.endRestartGroup_0_k$();
     if (tmp0_safe_receiver_0 === null)
       null;
     else {
-      tmp0_safe_receiver_0.updateScope_wte2v3_k$(_no_name_provided_$factory_192($changed));
+      tmp0_safe_receiver_0.updateScope_wte2v3_k$(_no_name_provided_$factory_152($changed));
     }
   }
   function currentMovie$composable$lambda($$changed, $composer, $force) {
@@ -33600,37 +32292,37 @@
   function movies$composable$lambda($$changed, $composer, $force) {
     return movies$composable($composer, $$changed | 1);
   }
-  function _no_name_provided__202($int) {
+  function _no_name_provided__162($int) {
     this._$int = $int;
   }
-  _no_name_provided__202.prototype.invoke_9m2agf_k$ = function ($this$renderComposable, $composer, $changed) {
+  _no_name_provided__162.prototype.invoke_9m2agf_k$ = function ($this$renderComposable, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       if (this._$int == null) {
-        $composer_0.startReplaceableGroup_majfzk_k$(1910166707);
+        $composer_0.startReplaceableGroup_majfzk_k$(1910166627);
         movies$composable($composer_0, 0);
         $composer_0.endReplaceableGroup_sv8swh_k$();
       } else {
-        $composer_0.startReplaceableGroup_majfzk_k$(1910166741);
+        $composer_0.startReplaceableGroup_majfzk_k$(1910166661);
         currentMovie$composable($composer_0, 0);
         $composer_0.endReplaceableGroup_sv8swh_k$();
       }
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__202.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+  _no_name_provided__162.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
     var tmp = (!(p1 == null) ? isInterface(p1, DOMScope) : false) ? p1 : THROW_CCE();
     var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
     this.invoke_9m2agf_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__202.$metadata$ = {
+  _no_name_provided__162.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__203() {
+  function _no_name_provided__163() {
   }
-  _no_name_provided__203.prototype.invoke_k9hshx_k$ = function ($this$style) {
+  _no_name_provided__163.prototype.invoke_k9hshx_k$ = function ($this$style) {
     width($this$style, _get_percent_(100));
     height($this$style, _get_percent_(100));
     var tmp$ret$3;
@@ -33656,30 +32348,30 @@
     }
     alignContent($this$style, tmp$ret$3);
   };
-  _no_name_provided__203.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__163.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__203.$metadata$ = {
+  _no_name_provided__163.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__204() {
+  function _no_name_provided__164() {
   }
-  _no_name_provided__204.prototype.invoke_168kmk_k$ = function ($this$P) {
-    $this$P.style_gcyay2_k$(_no_name_provided_$factory_193());
+  _no_name_provided__164.prototype.invoke_168kmk_k$ = function ($this$P) {
+    $this$P.style_gcyay2_k$(_no_name_provided_$factory_153());
   };
-  _no_name_provided__204.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__164.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_168kmk_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__204.$metadata$ = {
+  _no_name_provided__164.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__205() {
+  function _no_name_provided__165() {
   }
-  _no_name_provided__205.prototype.invoke_k9hshx_k$ = function ($this$style) {
+  _no_name_provided__165.prototype.invoke_k9hshx_k$ = function ($this$style) {
     fontSize($this$style, _get_px_(40));
     var tmp$ret$3;
     $l$block_2: {
@@ -33733,50 +32425,50 @@
     }
     color($this$style, tmp$ret$8);
   };
-  _no_name_provided__205.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__165.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__205.$metadata$ = {
+  _no_name_provided__165.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__206() {
+  function _no_name_provided__166() {
   }
-  _no_name_provided__206.prototype.invoke_m7oom2_k$ = function ($this$Label) {
-    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_199());
+  _no_name_provided__166.prototype.invoke_m7oom2_k$ = function ($this$Label) {
+    $this$Label.style_gcyay2_k$(_no_name_provided_$factory_159());
   };
-  _no_name_provided__206.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__166.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_m7oom2_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__206.$metadata$ = {
+  _no_name_provided__166.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__207($movie) {
+  function _no_name_provided__167($movie) {
     this._$movie_3 = $movie;
   }
-  _no_name_provided__207.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
+  _no_name_provided__167.prototype.invoke_5hqh2u_k$ = function ($this$Label, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      Text$composable(this._$movie_3._title_0, $composer_0, 0);
+      Text$composable(this._$movie_3._title, $composer_0, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__207.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+  _no_name_provided__167.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
     var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
     var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
     this.invoke_5hqh2u_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__207.$metadata$ = {
+  _no_name_provided__167.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__208() {
+  function _no_name_provided__168() {
   }
-  _no_name_provided__208.prototype.invoke_k9hshx_k$ = function ($this$style) {
+  _no_name_provided__168.prototype.invoke_k9hshx_k$ = function ($this$style) {
     var tmp$ret$3;
     $l$block_2: {
       var tmp0__get_Flex__0 = Companion_getInstance_20();
@@ -33800,17 +32492,17 @@
     }
     display($this$style, tmp$ret$3);
   };
-  _no_name_provided__208.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__168.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__208.$metadata$ = {
+  _no_name_provided__168.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__209() {
+  function _no_name_provided__169() {
   }
-  _no_name_provided__209.prototype.invoke_k9hshx_k$ = function ($this$style) {
+  _no_name_provided__169.prototype.invoke_k9hshx_k$ = function ($this$style) {
     fontSize($this$style, _get_px_(20));
     width($this$style, _get_percent_(100));
     height($this$style, _get_percent_(100));
@@ -33845,19 +32537,19 @@
     }
     color($this$style, tmp$ret$4);
   };
-  _no_name_provided__209.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__169.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__209.$metadata$ = {
+  _no_name_provided__169.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__210($width, $height) {
+  function _no_name_provided__170($width, $height) {
     this._$width = $width;
     this._$height = $height;
   }
-  _no_name_provided__210.prototype.invoke_k9hshx_k$ = function ($this$style) {
+  _no_name_provided__170.prototype.invoke_k9hshx_k$ = function ($this$style) {
     width($this$style, _get_px_(this._$width));
     height($this$style, _get_px_(this._$height));
     margin($this$style, [_get_px_(50)]);
@@ -33867,122 +32559,122 @@
     var tmp3_bottomRight = _get_px_(20);
     borderRadius($this$style, tmp0_topLeft, tmp1_topRight, tmp3_bottomRight, tmp2_bottomLeft);
   };
-  _no_name_provided__210.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__170.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__210.$metadata$ = {
+  _no_name_provided__170.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
   function invoke$lambda_0($width, $height) {
-    return _no_name_provided_$factory_204($width, $height);
+    return _no_name_provided_$factory_164($width, $height);
   }
-  function _no_name_provided__211($width, $height) {
+  function _no_name_provided__171($width, $height) {
     this._$width_0 = $width;
     this._$height_0 = $height;
   }
-  _no_name_provided__211.prototype.invoke_0_k$ = function () {
+  _no_name_provided__171.prototype.invoke_0_k$ = function () {
     return invoke$lambda_0(this._$width_0, this._$height_0);
   };
-  _no_name_provided__211.$metadata$ = {
+  _no_name_provided__171.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__212() {
+  function _no_name_provided__172() {
   }
-  _no_name_provided__212.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_205());
+  _no_name_provided__172.prototype.invoke_4sn14n_k$ = function ($this$Div) {
+    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_165());
   };
-  _no_name_provided__212.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__172.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__212.$metadata$ = {
+  _no_name_provided__172.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__213($movie) {
+  function _no_name_provided__173($movie) {
     this._$movie_4 = $movie;
   }
-  _no_name_provided__213.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
+  _no_name_provided__173.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       Text$composable(this._$movie_4._overview, $composer_0, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__213.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+  _no_name_provided__173.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
     var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
     var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
     this.invoke_ovmwdp_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__213.$metadata$ = {
+  _no_name_provided__173.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__214($width, $height) {
+  function _no_name_provided__174($width, $height) {
     this._$width_1 = $width;
     this._$height_1 = $height;
   }
-  _no_name_provided__214.prototype.invoke_ksytq9_k$ = function ($this$Img) {
-    $this$Img.style_gcyay2_k$(_no_name_provided_$factory_206(this._$width_1, this._$height_1));
+  _no_name_provided__174.prototype.invoke_ksytq9_k$ = function ($this$Img) {
+    $this$Img.style_gcyay2_k$(_no_name_provided_$factory_166(this._$width_1, this._$height_1));
   };
-  _no_name_provided__214.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__174.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_ksytq9_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__214.$metadata$ = {
+  _no_name_provided__174.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__215($movie) {
+  function _no_name_provided__175($movie) {
     this._$movie_5 = $movie;
   }
-  _no_name_provided__215.prototype.invoke_dbxwd0_k$ = function ($this$Header, $composer, $changed) {
+  _no_name_provided__175.prototype.invoke_dbxwd0_k$ = function ($this$Header, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
-      var tmp = _no_name_provided_$factory_197();
+      var tmp = _no_name_provided_$factory_157();
       var tmp_0 = $composer_0;
-      Label$composable(null, tmp, composableLambda(tmp_0, -819896190, true, _no_name_provided_$factory_198(this._$movie_5)), $composer_0, 432, 1);
+      Label$composable(null, tmp, composableLambda(tmp_0, -819895502, true, _no_name_provided_$factory_158(this._$movie_5)), $composer_0, 432, 1);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__215.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+  _no_name_provided__175.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
     var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
     var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
     this.invoke_dbxwd0_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__215.$metadata$ = {
+  _no_name_provided__175.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__216() {
+  function _no_name_provided__176() {
   }
-  _no_name_provided__216.prototype.invoke_4sn14n_k$ = function ($this$Div) {
-    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_200());
+  _no_name_provided__176.prototype.invoke_4sn14n_k$ = function ($this$Div) {
+    $this$Div.style_gcyay2_k$(_no_name_provided_$factory_160());
   };
-  _no_name_provided__216.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__176.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_4sn14n_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__216.$metadata$ = {
+  _no_name_provided__176.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__217($movie, $width, $height) {
+  function _no_name_provided__177($movie, $width, $height) {
     this._$movie_6 = $movie;
     this._$width_2 = $width;
     this._$height_2 = $height;
   }
-  _no_name_provided__217.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
+  _no_name_provided__177.prototype.invoke_ovmwdp_k$ = function ($this$Div, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       var tmp$ret$3;
       $l$block_2: {
-        var tmp0_remember$composable_0 = _no_name_provided_$factory_201(this._$width_2, this._$height_2);
+        var tmp0_remember$composable_0 = _no_name_provided_$factory_161(this._$width_2, this._$height_2);
         var tmp1_remember$composable_0 = $composer_0;
         var $composer_1 = tmp1_remember$composable_0;
         $composer_1.startReplaceableGroup_majfzk_k$(884180255);
@@ -34022,66 +32714,66 @@
         break $l$block_2;
       }
       Img$composable(this._$movie_6._imageUrl, null, tmp$ret$3, $composer_0, 0, 2);
-      var tmp_1 = _no_name_provided_$factory_202();
+      var tmp_1 = _no_name_provided_$factory_162();
       var tmp_2 = $composer_0;
-      Div$composable(tmp_1, composableLambda(tmp_2, -819893036, true, _no_name_provided_$factory_203(this._$movie_6)), $composer_0, 54, 0);
+      Div$composable(tmp_1, composableLambda(tmp_2, -819893116, true, _no_name_provided_$factory_163(this._$movie_6)), $composer_0, 54, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__217.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+  _no_name_provided__177.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
     var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
     var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
     this.invoke_ovmwdp_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__217.$metadata$ = {
+  _no_name_provided__177.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__218($movie) {
+  function _no_name_provided__178($movie) {
     this._$movie_7 = $movie;
   }
-  _no_name_provided__218.prototype.invoke_owl2sw_k$ = function ($this$P, $composer, $changed) {
+  _no_name_provided__178.prototype.invoke_owl2sw_k$ = function ($this$P, $composer, $changed) {
     var $composer_0 = $composer;
     if (!(($changed & 81 ^ 16) === 0) ? true : !$composer_0._get_skipping__0_k$()) {
       var tmp = $composer_0;
-      Header$composable(null, composableLambda(tmp, -819895417, true, _no_name_provided_$factory_194(this._$movie_7)), $composer_0, 48, 1);
+      Header$composable(null, composableLambda(tmp, -819895753, true, _no_name_provided_$factory_154(this._$movie_7)), $composer_0, 48, 1);
       var height_0 = window.screen.height * 0.7;
       var width_0 = height_0 * 3 / 4;
-      var tmp_0 = _no_name_provided_$factory_195();
+      var tmp_0 = _no_name_provided_$factory_155();
       var tmp_1 = $composer_0;
-      Div$composable(tmp_0, composableLambda(tmp_1, -819895924, true, _no_name_provided_$factory_196(this._$movie_7, width_0, height_0)), $composer_0, 54, 0);
+      Div$composable(tmp_0, composableLambda(tmp_1, -819896260, true, _no_name_provided_$factory_156(this._$movie_7, width_0, height_0)), $composer_0, 54, 0);
     } else
       $composer_0.skipToGroupEnd_sv8swh_k$();
   };
-  _no_name_provided__218.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
+  _no_name_provided__178.prototype.invoke_ifn5k1_k$ = function (p1, p2, p3) {
     var tmp = (!(p1 == null) ? isInterface(p1, ElementScope) : false) ? p1 : THROW_CCE();
     var tmp_0 = (p2 == null ? true : isInterface(p2, Composer)) ? p2 : THROW_CCE();
     this.invoke_owl2sw_k$(tmp, tmp_0, (!(p3 == null) ? typeof p3 === 'number' : false) ? p3 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__218.$metadata$ = {
+  _no_name_provided__178.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__219($$changed) {
+  function _no_name_provided__179($$changed) {
     this._$$changed_8 = $$changed;
   }
-  _no_name_provided__219.prototype.invoke_xtxync_k$ = function (p0, p1) {
+  _no_name_provided__179.prototype.invoke_xtxync_k$ = function (p0, p1) {
     return currentMovie$composable$lambda(this._$$changed_8, p0, p1);
   };
-  _no_name_provided__219.prototype.invoke_osx4an_k$ = function (p1, p2) {
+  _no_name_provided__179.prototype.invoke_osx4an_k$ = function (p1, p2) {
     var tmp = (!(p1 == null) ? isInterface(p1, Composer) : false) ? p1 : THROW_CCE();
     this.invoke_xtxync_k$(tmp, (!(p2 == null) ? typeof p2 === 'number' : false) ? p2 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__219.$metadata$ = {
+  _no_name_provided__179.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__220() {
+  function _no_name_provided__180() {
   }
-  _no_name_provided__220.prototype.invoke_k9hshx_k$ = function ($this$style) {
+  _no_name_provided__180.prototype.invoke_k9hshx_k$ = function ($this$style) {
     width($this$style, _get_percent_(100));
     height($this$style, _get_percent_(100));
     var tmp$ret$3;
@@ -34107,638 +32799,354 @@
     }
     alignContent($this$style, tmp$ret$3);
   };
-  _no_name_provided__220.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__180.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_k9hshx_k$((!(p1 == null) ? isInterface(p1, StyleBuilder) : false) ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__220.$metadata$ = {
+  _no_name_provided__180.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__221() {
+  function _no_name_provided__181() {
   }
-  _no_name_provided__221.prototype.invoke_168kmk_k$ = function ($this$P) {
-    $this$P.style_gcyay2_k$(_no_name_provided_$factory_207());
+  _no_name_provided__181.prototype.invoke_168kmk_k$ = function ($this$P) {
+    $this$P.style_gcyay2_k$(_no_name_provided_$factory_167());
   };
-  _no_name_provided__221.prototype.invoke_20e8_k$ = function (p1) {
+  _no_name_provided__181.prototype.invoke_20e8_k$ = function (p1) {
     this.invoke_168kmk_k$(p1 instanceof AttrsBuilder ? p1 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__221.$metadata$ = {
+  _no_name_provided__181.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
-  function _no_name_provided__222($$changed) {
+  function _no_name_provided__182($$changed) {
     this._$$changed_9 = $$changed;
   }
-  _no_name_provided__222.prototype.invoke_xtxync_k$ = function (p0, p1) {
+  _no_name_provided__182.prototype.invoke_xtxync_k$ = function (p0, p1) {
     return movies$composable$lambda(this._$$changed_9, p0, p1);
   };
-  _no_name_provided__222.prototype.invoke_osx4an_k$ = function (p1, p2) {
+  _no_name_provided__182.prototype.invoke_osx4an_k$ = function (p1, p2) {
     var tmp = (!(p1 == null) ? isInterface(p1, Composer) : false) ? p1 : THROW_CCE();
     this.invoke_xtxync_k$(tmp, (!(p2 == null) ? typeof p2 === 'number' : false) ? p2 : THROW_CCE());
     return Unit_getInstance();
   };
-  _no_name_provided__222.$metadata$ = {
+  _no_name_provided__182.$metadata$ = {
     kind: 'class',
     interfaces: []
   };
   function _no_name_provided_$factory_123($int) {
-    var i = new _no_name_provided__202($int);
+    var i = new _no_name_provided__162($int);
     return function (p1, p2, p3) {
       i.invoke_9m2agf_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
   function _no_name_provided_$factory_124() {
-    var i = new _no_name_provided__189();
+    var i = new _no_name_provided__159();
     return function (p1, p2, p3) {
       i.invoke_5hqh2u_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
   function _no_name_provided_$factory_125() {
-    var i = new _no_name_provided__190();
+    var i = new _no_name_provided__160();
     return function (p1, p2, p3) {
       i.invoke_dbxwd0_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
   function _no_name_provided_$factory_126() {
-    var i = new _no_name_provided__191();
+    var i = new _no_name_provided__161();
     return function (p1, p2, p3) {
       i.invoke_owl2sw_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
   function _no_name_provided_$factory_127() {
-    var i = new _no_name_provided__192();
-    return function (p1, p2, p3) {
-      i.invoke_5hqh2u_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_128() {
-    var i = new _no_name_provided__193();
-    return function (p1, p2, p3) {
-      i.invoke_dbxwd0_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_129() {
-    var i = new _no_name_provided__194();
-    return function (p1, p2, p3) {
-      i.invoke_5hqh2u_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_130() {
-    var i = new _no_name_provided__195();
-    return function (p1, p2, p3) {
-      i.invoke_ovmwdp_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_131() {
-    var i = new _no_name_provided__196();
-    return function (p1, p2, p3) {
-      i.invoke_ovmwdp_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_132() {
-    var i = new _no_name_provided__197();
-    return function (p1, p2, p3) {
-      i.invoke_ovmwdp_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_133() {
-    var i = new _no_name_provided__198();
-    return function (p1, p2, p3) {
-      i.invoke_owl2sw_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_134() {
-    var i = new _no_name_provided__199();
-    return function (p1, p2, p3) {
-      i.invoke_5hqh2u_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_135() {
-    var i = new _no_name_provided__200();
-    return function (p1, p2, p3) {
-      i.invoke_dbxwd0_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_136() {
-    var i = new _no_name_provided__201();
-    return function (p1, p2, p3) {
-      i.invoke_owl2sw_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_137() {
     var i = new _no_name_provided__139();
     return function (p1) {
       i.invoke_m7oom2_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_138() {
+  function _no_name_provided_$factory_128() {
     var i = new _no_name_provided__138();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_139() {
+  function _no_name_provided_$factory_129() {
     var i = new _no_name_provided__155();
     return function (p1) {
       i.invoke_4sn14n_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_140($data) {
+  function _no_name_provided_$factory_130($data) {
     var i = new _no_name_provided__156($data);
     return function (p1, p2, p3) {
       i.invoke_ovmwdp_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_141() {
+  function _no_name_provided_$factory_131() {
     var i = new _no_name_provided__157();
     return function (p1) {
       i.invoke_4sn14n_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_142($data) {
+  function _no_name_provided_$factory_132($data) {
     var i = new _no_name_provided__158($data);
     return function (p1, p2, p3) {
       i.invoke_ovmwdp_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_143() {
+  function _no_name_provided_$factory_133() {
     var i = new _no_name_provided__140();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_144($data) {
+  function _no_name_provided_$factory_134($data) {
     var i = new _no_name_provided__144($data);
     return function (p1, p2, p3) {
       i.invoke_j69ozo_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_145() {
+  function _no_name_provided_$factory_135() {
     var i = new _no_name_provided__142();
     return function (p1) {
       i.invoke_m7oom2_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_146($data) {
+  function _no_name_provided_$factory_136($data) {
     var i = new _no_name_provided__143($data);
     return function (p1, p2, p3) {
       i.invoke_5hqh2u_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_147() {
+  function _no_name_provided_$factory_137() {
     var i = new _no_name_provided__141();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_148() {
+  function _no_name_provided_$factory_138() {
     var i = new _no_name_provided__145();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_149($movie) {
+  function _no_name_provided_$factory_139($movie) {
     var i = new _no_name_provided__152($movie);
     return function () {
       return i.invoke_0_k$();
     };
   }
-  function _no_name_provided_$factory_150($movie) {
+  function _no_name_provided_$factory_140($movie) {
     var i = new _no_name_provided__153($movie);
     return function (p1, p2, p3) {
       i.invoke_sv8dqv_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_151($movie) {
+  function _no_name_provided_$factory_141($movie) {
     var i = new _no_name_provided__154($movie);
     return function (p1) {
       i.invoke_m2exwv_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_152() {
+  function _no_name_provided_$factory_142() {
     var i = new _no_name_provided__148();
     return function (p1) {
       i.invoke_ksytq9_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_153() {
+  function _no_name_provided_$factory_143() {
     var i = new _no_name_provided__149();
     return function (p1) {
       i.invoke_4sn14n_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_154($movie) {
+  function _no_name_provided_$factory_144($movie) {
     var i = new _no_name_provided__150($movie);
     return function (p1, p2, p3) {
       i.invoke_ovmwdp_k$(p1, p2, p3);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_155() {
+  function _no_name_provided_$factory_145() {
     var i = new _no_name_provided__146();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_156() {
+  function _no_name_provided_$factory_146() {
     var i = new _no_name_provided__147();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_157() {
+  function _no_name_provided_$factory_147() {
     var i = new _no_name_provided__151();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_158() {
-    var i = new _no_name_provided__160();
-    return function (p1) {
-      i.invoke_m7oom2_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_159() {
-    var i = new _no_name_provided__159();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_160() {
-    var i = new _no_name_provided__162();
-    return function (p1) {
-      i.invoke_m7oom2_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_161() {
-    var i = new _no_name_provided__161();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_162() {
+  function _no_name_provided_$factory_148() {
     var i = new _no_name_provided__164();
     return function (p1) {
-      i.invoke_ksytq9_k$(p1);
+      i.invoke_168kmk_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_163() {
+  function _no_name_provided_$factory_149($movie) {
+    var i = new _no_name_provided__178($movie);
+    return function (p1, p2, p3) {
+      i.invoke_owl2sw_k$(p1, p2, p3);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_150($$changed) {
+    var i = new _no_name_provided__179($$changed);
+    return function (p1, p2) {
+      i.invoke_xtxync_k$(p1, p2);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_151() {
+    var i = new _no_name_provided__181();
+    return function (p1) {
+      i.invoke_168kmk_k$(p1);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_152($$changed) {
+    var i = new _no_name_provided__182($$changed);
+    return function (p1, p2) {
+      i.invoke_xtxync_k$(p1, p2);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_153() {
     var i = new _no_name_provided__163();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_164() {
-    var i = new _no_name_provided__166();
+  function _no_name_provided_$factory_154($movie) {
+    var i = new _no_name_provided__175($movie);
+    return function (p1, p2, p3) {
+      i.invoke_dbxwd0_k$(p1, p2, p3);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_155() {
+    var i = new _no_name_provided__176();
     return function (p1) {
       i.invoke_4sn14n_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_165() {
+  function _no_name_provided_$factory_156($movie, $width, $height) {
+    var i = new _no_name_provided__177($movie, $width, $height);
+    return function (p1, p2, p3) {
+      i.invoke_ovmwdp_k$(p1, p2, p3);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_157() {
+    var i = new _no_name_provided__166();
+    return function (p1) {
+      i.invoke_m7oom2_k$(p1);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_158($movie) {
+    var i = new _no_name_provided__167($movie);
+    return function (p1, p2, p3) {
+      i.invoke_5hqh2u_k$(p1, p2, p3);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_159() {
     var i = new _no_name_provided__165();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_166() {
+  function _no_name_provided_$factory_160() {
     var i = new _no_name_provided__168();
-    return function (p1) {
-      i.invoke_4sn14n_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_167() {
-    var i = new _no_name_provided__167();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_168() {
-    var i = new _no_name_provided__170();
+  function _no_name_provided_$factory_161($width, $height) {
+    var i = new _no_name_provided__171($width, $height);
+    return function () {
+      return i.invoke_0_k$();
+    };
+  }
+  function _no_name_provided_$factory_162() {
+    var i = new _no_name_provided__172();
     return function (p1) {
-      i.invoke_m7oom2_k$(p1);
+      i.invoke_4sn14n_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_169() {
+  function _no_name_provided_$factory_163($movie) {
+    var i = new _no_name_provided__173($movie);
+    return function (p1, p2, p3) {
+      i.invoke_ovmwdp_k$(p1, p2, p3);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_164($width, $height) {
+    var i = new _no_name_provided__174($width, $height);
+    return function (p1) {
+      i.invoke_ksytq9_k$(p1);
+      return Unit_getInstance();
+    };
+  }
+  function _no_name_provided_$factory_165() {
     var i = new _no_name_provided__169();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_170($flower) {
-    var i = new _no_name_provided__187($flower);
-    return function (p1) {
-      i.invoke_m2exwv_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_171($flower) {
-    var i = new _no_name_provided__188($flower);
-    return function (p1, p2, p3) {
-      i.invoke_sv8dqv_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_172() {
-    var i = new _no_name_provided__171();
-    return function (p1) {
-      i.invoke_9dcepc_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_173() {
-    var i = new _no_name_provided__172();
+  function _no_name_provided_$factory_166($width, $height) {
+    var i = new _no_name_provided__170($width, $height);
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
   }
-  function _no_name_provided_$factory_174() {
-    var i = new _no_name_provided__185();
-    return function (p1) {
-      i.invoke_4sn14n_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_175($flower) {
-    var i = new _no_name_provided__186($flower);
-    return function (p1, p2, p3) {
-      i.invoke_ovmwdp_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_176() {
-    var i = new _no_name_provided__173();
+  function _no_name_provided_$factory_167() {
+    var i = new _no_name_provided__180();
     return function (p1) {
       i.invoke_k9hshx_k$(p1);
       return Unit_getInstance();
     };
-  }
-  function _no_name_provided_$factory_177() {
-    var i = new _no_name_provided__181();
-    return function (p1) {
-      i.invoke_m7oom2_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_178($flower) {
-    var i = new _no_name_provided__182($flower);
-    return function (p1, p2, p3) {
-      i.invoke_5hqh2u_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_179() {
-    var i = new _no_name_provided__183();
-    return function (p1) {
-      i.invoke_4sn14n_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_180($flower) {
-    var i = new _no_name_provided__184($flower);
-    return function (p1, p2, p3) {
-      i.invoke_ovmwdp_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_181() {
-    var i = new _no_name_provided__174();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_182() {
-    var i = new _no_name_provided__175();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_183() {
-    var i = new _no_name_provided__178();
-    return function (p1) {
-      i.invoke_ksytq9_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_184() {
-    var i = new _no_name_provided__179();
-    return function (p1) {
-      i.invoke_m7oom2_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_185($flower) {
-    var i = new _no_name_provided__180($flower);
-    return function (p1, p2, p3) {
-      i.invoke_5hqh2u_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_186() {
-    var i = new _no_name_provided__176();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_187() {
-    var i = new _no_name_provided__177();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_188() {
-    var i = new _no_name_provided__204();
-    return function (p1) {
-      i.invoke_168kmk_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_189($movie) {
-    var i = new _no_name_provided__218($movie);
-    return function (p1, p2, p3) {
-      i.invoke_owl2sw_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_190($$changed) {
-    var i = new _no_name_provided__219($$changed);
-    return function (p1, p2) {
-      i.invoke_xtxync_k$(p1, p2);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_191() {
-    var i = new _no_name_provided__221();
-    return function (p1) {
-      i.invoke_168kmk_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_192($$changed) {
-    var i = new _no_name_provided__222($$changed);
-    return function (p1, p2) {
-      i.invoke_xtxync_k$(p1, p2);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_193() {
-    var i = new _no_name_provided__203();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_194($movie) {
-    var i = new _no_name_provided__215($movie);
-    return function (p1, p2, p3) {
-      i.invoke_dbxwd0_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_195() {
-    var i = new _no_name_provided__216();
-    return function (p1) {
-      i.invoke_4sn14n_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_196($movie, $width, $height) {
-    var i = new _no_name_provided__217($movie, $width, $height);
-    return function (p1, p2, p3) {
-      i.invoke_ovmwdp_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_197() {
-    var i = new _no_name_provided__206();
-    return function (p1) {
-      i.invoke_m7oom2_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_198($movie) {
-    var i = new _no_name_provided__207($movie);
-    return function (p1, p2, p3) {
-      i.invoke_5hqh2u_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_199() {
-    var i = new _no_name_provided__205();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_200() {
-    var i = new _no_name_provided__208();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_201($width, $height) {
-    var i = new _no_name_provided__211($width, $height);
-    return function () {
-      return i.invoke_0_k$();
-    };
-  }
-  function _no_name_provided_$factory_202() {
-    var i = new _no_name_provided__212();
-    return function (p1) {
-      i.invoke_4sn14n_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_203($movie) {
-    var i = new _no_name_provided__213($movie);
-    return function (p1, p2, p3) {
-      i.invoke_ovmwdp_k$(p1, p2, p3);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_204($width, $height) {
-    var i = new _no_name_provided__214($width, $height);
-    return function (p1) {
-      i.invoke_ksytq9_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_205() {
-    var i = new _no_name_provided__209();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_206($width, $height) {
-    var i = new _no_name_provided__210($width, $height);
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function _no_name_provided_$factory_207() {
-    var i = new _no_name_provided__220();
-    return function (p1) {
-      i.invoke_k9hshx_k$(p1);
-      return Unit_getInstance();
-    };
-  }
-  function currentFlower$init$() {
-    var tmp = FlowerArray_init_$Create$(0, null, null, null, null, null, 63, null);
-    return mutableStateOf$default(tmp, null, 2, null);
   }
   function currentMovie$init$() {
     var tmp = Companion_getInstance_22().default_0_k$();
@@ -34849,7 +33257,7 @@
     Unit_getInstance();
     this._arrayMovies.add_2bq_k$(new JsonMovie('\u0420\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u0443\u0435\u043C\u043E\u0435', array));
     Unit_getInstance();
-    this._$stable_56 = 8;
+    this._$stable_51 = 8;
   }
   MovieData.prototype.getMovie_ha5a7z_k$ = function (id) {
     var tmp0_iterator = this._arrayMovies.iterator_0_k$();
@@ -34858,7 +33266,7 @@
       var tmp1_iterator = data._movies.iterator_0_k$();
       while (tmp1_iterator.hasNext_0_k$()) {
         var movie = tmp1_iterator.next_0_k$();
-        if (movie._id_1 === id)
+        if (movie._id_0 === id)
           return movie;
       }
     }
@@ -34876,15 +33284,15 @@
     return MovieData_instance;
   }
   function JsonMovie(type, movies) {
-    this._type_0 = type;
+    this._type = type;
     this._movies = movies;
-    this._$stable_57 = 8;
+    this._$stable_52 = 8;
   }
   JsonMovie.prototype.toString = function () {
-    return '' + 'JsonMovie(type=' + this._type_0 + ', movies=' + this._movies + ')';
+    return '' + 'JsonMovie(type=' + this._type + ', movies=' + this._movies + ')';
   };
   JsonMovie.prototype.hashCode = function () {
-    var result = getStringHashCode(this._type_0);
+    var result = getStringHashCode(this._type);
     result = imul(result, 31) + hashCode(this._movies) | 0;
     return result;
   };
@@ -34896,7 +33304,7 @@
     else {
     }
     var tmp0_other_with_cast = other instanceof JsonMovie ? other : THROW_CCE();
-    if (!(this._type_0 === tmp0_other_with_cast._type_0))
+    if (!(this._type === tmp0_other_with_cast._type))
       return false;
     if (!equals(this._movies, tmp0_other_with_cast._movies))
       return false;
@@ -34926,21 +33334,21 @@
   }
   function JsonMovieData(title, voteAverage, id, imageUrl, isAdult, overview) {
     Companion_getInstance_22();
-    this._title_0 = title;
+    this._title = title;
     this._voteAverage = voteAverage;
-    this._id_1 = id;
+    this._id_0 = id;
     this._imageUrl = imageUrl;
     this._isAdult = isAdult;
     this._overview = overview;
-    this._$stable_58 = 0;
+    this._$stable_53 = 0;
   }
   JsonMovieData.prototype.toString = function () {
-    return '' + 'JsonMovieData(title=' + this._title_0 + ', voteAverage=' + this._voteAverage + ', id=' + this._id_1 + ', imageUrl=' + this._imageUrl + ', isAdult=' + this._isAdult + ', overview=' + this._overview + ')';
+    return '' + 'JsonMovieData(title=' + this._title + ', voteAverage=' + this._voteAverage + ', id=' + this._id_0 + ', imageUrl=' + this._imageUrl + ', isAdult=' + this._isAdult + ', overview=' + this._overview + ')';
   };
   JsonMovieData.prototype.hashCode = function () {
-    var result = getStringHashCode(this._title_0);
+    var result = getStringHashCode(this._title);
     result = imul(result, 31) + getNumberHashCode(this._voteAverage) | 0;
-    result = imul(result, 31) + this._id_1 | 0;
+    result = imul(result, 31) + this._id_0 | 0;
     result = imul(result, 31) + getStringHashCode(this._imageUrl) | 0;
     result = imul(result, 31) + (this._isAdult | 0) | 0;
     result = imul(result, 31) + getStringHashCode(this._overview) | 0;
@@ -34954,11 +33362,11 @@
     else {
     }
     var tmp0_other_with_cast = other instanceof JsonMovieData ? other : THROW_CCE();
-    if (!(this._title_0 === tmp0_other_with_cast._title_0))
+    if (!(this._title === tmp0_other_with_cast._title))
       return false;
     if (!equals(this._voteAverage, tmp0_other_with_cast._voteAverage))
       return false;
-    if (!(this._id_1 === tmp0_other_with_cast._id_1))
+    if (!(this._id_0 === tmp0_other_with_cast._id_0))
       return false;
     if (!(this._imageUrl === tmp0_other_with_cast._imageUrl))
       return false;
@@ -35237,7 +33645,6 @@
   radioGroupCompositionLocalValue = compositionLocalOf$default(null, _no_name_provided_$factory_121(), 1, null);
   radioGroupCompositionLocalName = compositionLocalOf$default(null, _no_name_provided_$factory_122(), 1, null);
   normalizedKeys = mapOf([to('Esc', 'Escape'), to('Spacebar', ' '), to('Left', 'ArrowLeft'), to('Up', 'ArrowUp'), to('Right', 'ArrowRight'), to('Down', 'ArrowDown'), to('Del', 'Delete'), to('Apps', 'ContextMenu'), to('Menu', 'ContextMenu'), to('Scroll', 'ScrollLock'), to('MozPrintableKey', 'Unidentified')]);
-  currentFlower = currentFlower$init$();
   currentMovie = currentMovie$init$();
   var $kotlinx = _.kotlinx || (_.kotlinx = {});
   var $kotlinx$atomicfu = $kotlinx.atomicfu || ($kotlinx.atomicfu = {});

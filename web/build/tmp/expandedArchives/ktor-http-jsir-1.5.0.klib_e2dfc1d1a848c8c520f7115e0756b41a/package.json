@@ -1,0 +1,15 @@
+{
+  "main": "ktor-ktor-http-jsIr.js",
+  "types": "ktor-ktor-http-jsIr.d.ts",
+  "devDependencies": {
+    "dukat": "0.5.8-rc.3"
+  },
+  "dependencies": {
+    "text-encoding": "0.7.0"
+  },
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "bundledDependencies": [],
+  "name": "ktor-ktor-http-jsIr",
+  "version": "1.5.0"
+}

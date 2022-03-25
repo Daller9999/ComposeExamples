@@ -23,8 +23,29 @@
     "95ae823c20132b21a1079fd103feed1d": {
       "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-js/0.16.3/5820096bcb0d08c0c3e8301e8a45c92868c03dd1/atomicfu-jsir-0.16.3.klib"
     },
-    "aba76f6fde7219168d10a0df1050afbb": {
-      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.9.0/8a1167e089096758b49f9b34066ef98b2f4b37aa/gson-2.9.0.jar"
+    "e23e93f29f67d789f43d033db54b9588": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-core-js/1.5.0/e040fcc2bf174e0aeffe103f43d841230b617ced/ktor-client-core-jsir-1.5.0.klib",
+      "target": "ktor-ktor-client-core-jsIr/1.5.0"
+    },
+    "e18745b23bdcb128807efeafd50a4e6a": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-cio-js/1.5.0/8c6960513e4d23d4fcf8948e494377d8ad322652/ktor-http-cio-jsir-1.5.0.klib",
+      "target": "ktor-ktor-http-cio-jsIr/1.5.0"
+    },
+    "e2dfc1d1a848c8c520f7115e0756b41a": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-js/1.5.0/7010ffd5486e48b966641327aff77b02b9ebb1ad/ktor-http-jsir-1.5.0.klib",
+      "target": "ktor-ktor-http-jsIr/1.5.0"
+    },
+    "e7bf4ac7cfed19ddd42fbddf0bda4330": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-utils-js/1.5.0/f8e580532867b93fadc06f8067f104f3d79fcf83/ktor-utils-jsir-1.5.0.klib",
+      "target": "ktor-ktor-utils-jsIr/1.5.0"
+    },
+    "cfcfaf4913c615c5027778e222284ecf": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-io-js/1.5.0/f5431cc98ad2cc3de09367b6d1e25258d9234c9c/ktor-io-jsir-1.5.0.klib",
+      "target": "ktor-ktor-io-jsIr/1.5.0"
+    },
+    "03247f9f780817f7b7956a594f6e6d26": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-js/1.5.0/8ceabf26cad162e826789735f753f96f5441581d/ktor-client-js-jsir-1.5.0.klib",
+      "target": "ktor-ktor-client-js-jsIr/1.5.0"
     },
     "337ff817e087aded273dfc9ba494baf4": {
       "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-js-runner/1.5.31/20ef83e15f8c2cde090f3bfd8c1eba72947f7ab8/kotlin-test-js-runner-1.5.31.jar",
@@ -33,6 +54,25 @@
     "d48c49450e9eb3b3c0cc6040ca564f91": {
       "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-js/1.5.31/2c5105ba30e3396c0a5d112ad75a7076f5409a62/kotlin-test-js-1.5.31.jar",
       "target": "kotlin-test/1.5.31"
+    },
+    "15ebb943c276c1b5ce61047fa940ef99": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-core-js/1.5.4/9adc58ae68bffba8ad5b758664c1436a038f499/ktor-client-core-jsir-1.5.4.klib",
+      "target": "ktor-ktor-client-core-jsIr/1.5.4"
+    },
+    "d58db98bb4a59f349295dc882a3fd2f9": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-cio-js/1.5.4/a01639d43714dc4666ecf08ba748c32f269f1f42/ktor-http-cio-jsir-1.5.4.klib"
+    },
+    "4738c3979c7d4db405d0f7de08d8e93b": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-js/1.5.4/2afcc75952defbda1ccb431fc6ae2564f0592d5d/ktor-http-jsir-1.5.4.klib"
+    },
+    "c480ef49b520957b2bd7bd30827464d4": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-utils-js/1.5.4/76eb24aa6e9cc8def4231320728a16acd7ac480b/ktor-utils-jsir-1.5.4.klib"
+    },
+    "e0c50db06b4677aadde1bd8b7c608e83": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-io-js/1.5.4/ec5030bc4b4196a86853fbc1adfc11e5e3c3ec49/ktor-io-jsir-1.5.4.klib"
+    },
+    "6408f39f071fcb047c76efdfb944c1f2": {
+      "src": "/Users/dalerhamzaev/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-js/1.5.4/88e37f40f48533e20013b3e82b1b0516c5b9afbf/ktor-client-js-jsir-1.5.4.klib"
     }
   }
 }

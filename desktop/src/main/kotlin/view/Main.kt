@@ -122,7 +122,6 @@ private fun movieView(apiCall: ApiCall) {
             list.add(apiCall.getActualMovieListNowAutoDecode())
             movieList.addAll(list)
             listRemember.value = list
-            println(Gson().toJson(list))
         }
     } else {
         listRemember.value = movieList

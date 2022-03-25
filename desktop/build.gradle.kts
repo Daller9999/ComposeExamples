@@ -19,13 +19,13 @@ repositories {
 }
 
 dependencies {
-    val ktorVersion = "1.6.0"
-    val kotlinxSerializationVersion = "1.6.0"
+    val ktorVersion = "1.6.7"
+    val kotlinxSerializationVersion = "1.6.7"
 
     implementation(compose.desktop.currentOs)
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-serialization:$kotlinxSerializationVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0-native-mt")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.google.code.gson:gson:2.9.0")
