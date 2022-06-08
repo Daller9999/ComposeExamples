@@ -18,11 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalViewConfiguration
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Window
@@ -30,7 +26,6 @@ import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import api.ApiCall
-import com.google.gson.Gson
 import data.MovieData
 import data.MovieInfo
 import io.ktor.client.*
@@ -51,14 +46,14 @@ val movieList = arrayListOf<MovieData>()
 @Preview
 fun App(apiCall: ApiCall, windowState: WindowState) {
     if (state.value) {
-        movieView(apiCall)
+        MovieView(apiCall)
     } else {
-        currentMovieView(apiCall, windowState)
+        CurrentMovieView(apiCall, windowState)
     }
 }
 
 @Composable
-private fun currentMovieView(apiCall: ApiCall, windowState: WindowState) {
+private fun CurrentMovieView(apiCall: ApiCall, windowState: WindowState) {
     MaterialTheme {
         val movie = movieInfo.value
         val image = remember { mutableStateOf<ImageBitmap?>(null) }
@@ -113,7 +108,7 @@ private fun currentMovieView(apiCall: ApiCall, windowState: WindowState) {
 }
 
 @Composable
-private fun movieView(apiCall: ApiCall) {
+private fun MovieView(apiCall: ApiCall) {
     val listRemember = remember { mutableStateOf(arrayListOf<MovieData>()) }
     if (movieList.isEmpty()) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -154,7 +149,7 @@ private fun movieView(apiCall: ApiCall) {
                             LazyRow {
                                 for (movie in data.movies) {
                                     item {
-                                        MovieView().Movie(apiCall, movie) {
+                                        Movie(apiCall, movie) {
                                             movieInfo.value = movie
                                             state.value = false
                                         }

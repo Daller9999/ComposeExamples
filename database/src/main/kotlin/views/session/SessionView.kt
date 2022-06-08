@@ -19,57 +19,54 @@ import views.ButtonView
 import views.DropDownViewText
 import views.EditTextView
 
-class SessionView {
 
-    @Composable
-    fun SessionView(onButtonBack: () -> Unit) {
-        MaterialTheme {
-            Column {
-                Button(
-                    modifier = Modifier.width(170.dp).height(80.dp).padding(all = 20.dp),
-                    onClick = onButtonBack
-                ) {
-                    Text("Назад")
-                }
+@Composable
+fun SessionView(onButtonBack: () -> Unit) {
+    MaterialTheme {
+        Column {
+            Button(
+                modifier = Modifier.width(170.dp).height(80.dp).padding(all = 20.dp),
+                onClick = onButtonBack
+            ) {
+                Text("Back")
+            }
 
-                val textName = remember { mutableStateOf("") }
-                val listMovies = arrayListOf<String>()
-                for (movie in DataBaseController.getMovies()) {
-                    listMovies.add(movie.Name)
-                }
+            val textName = remember { mutableStateOf("") }
+            val listMovies = arrayListOf<String>()
+            for (movie in DataBaseController.getMovies()) {
+                listMovies.add(movie.Name)
+            }
 
-                val textHall = remember { mutableStateOf("") }
-                val halls = arrayListOf<String>()
-                for (hall in DataBaseController.getHalls()) {
-                    halls.add(hall.Name)
-                }
+            val textHall = remember { mutableStateOf("") }
+            val halls = arrayListOf<String>()
+            for (hall in DataBaseController.getHalls()) {
+                halls.add(hall.Name)
+            }
 
-                val start = remember { mutableStateOf("") }
-                val end = remember { mutableStateOf("") }
-                val tickets = remember { mutableStateOf("") }
-                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                    DropDownViewText("Имя фильма", listMovies, textName)
-                    DropDownViewText("Имя зала", halls, textHall)
-                    EditTextView("Начало сеанса", start)
-                    EditTextView("Конец сеанса", end)
-                    EditTextView("Куплено билетов", tickets)
-                    ButtonView("Добавить") {
-                        DataBaseController.addSession(
-                            textName.value,
-                            textHall.value,
-                            start.value,
-                            end.value,
-                            tickets.value.toIntOrNull() ?: 0
-                        )
-                        textName.value = ""
-                        textHall.value = ""
-                        start.value = ""
-                        end.value = ""
-                        tickets.value = ""
-                    }
+            val start = remember { mutableStateOf("") }
+            val end = remember { mutableStateOf("") }
+            val tickets = remember { mutableStateOf("") }
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                DropDownViewText("Movie name", listMovies, textName)
+                DropDownViewText("Hall name", halls, textHall)
+                EditTextView("Session start", start)
+                EditTextView("Session end", end)
+                EditTextView("Bought tickets", tickets)
+                ButtonView("Add") {
+                    DataBaseController.addSession(
+                        textName.value,
+                        textHall.value,
+                        start.value,
+                        end.value,
+                        tickets.value.toIntOrNull() ?: 0
+                    )
+                    textName.value = ""
+                    textHall.value = ""
+                    start.value = ""
+                    end.value = ""
+                    tickets.value = ""
                 }
             }
         }
     }
-
 }

@@ -18,33 +18,30 @@ import androidx.compose.ui.unit.dp
 import views.ButtonView
 import views.EditTextView
 
-class HallView {
 
-    @Composable
-    fun HallView(onButtonBack: () -> Unit) {
+@Composable
+fun HallView(onButtonBack: () -> Unit) {
+    MaterialTheme {
         MaterialTheme {
-            MaterialTheme {
-                Column {
-                    val textHallName = remember { mutableStateOf("") }
-                    val textSeatCount = remember { mutableStateOf("") }
-                    Button(
-                        modifier = Modifier.width(170.dp).height(80.dp).padding(all = 20.dp),
-                        onClick = onButtonBack
-                    ) {
-                        Text("Назад")
-                    }
-                    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                        EditTextView("Имя зала", textHallName)
-                        EditTextView("Колличество мест", textSeatCount)
-                        ButtonView("Добавить") {
-                            DataBaseController.addHall(textHallName.value, textSeatCount.value.toIntOrNull() ?: 0)
-                            textHallName.value = ""
-                            textSeatCount.value = ""
-                        }
+            Column {
+                val textHallName = remember { mutableStateOf("") }
+                val textSeatCount = remember { mutableStateOf("") }
+                Button(
+                    modifier = Modifier.width(170.dp).height(80.dp).padding(all = 20.dp),
+                    onClick = onButtonBack
+                ) {
+                    Text("Back")
+                }
+                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                    EditTextView("Hall name", textHallName)
+                    EditTextView("Seats count", textSeatCount)
+                    ButtonView("Add") {
+                        DataBaseController.addHall(textHallName.value, textSeatCount.value.toIntOrNull() ?: 0)
+                        textHallName.value = ""
+                        textSeatCount.value = ""
                     }
                 }
             }
         }
     }
-
 }
